@@ -98,7 +98,7 @@ class Main {
 		// 始终保持主角和鼠标位置一致
 		// this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY)
 		// console.log("onMouseMove", Laya.stage.mouseX, Laya.stage.mouseY)
-		console.log(`map[${Laya.stage.mouseY}] = ${Laya.stage.mouseX}`)
+		console.log(`map[${-this.screen1BackGround.y+230}] = ${Laya.stage.mouseX}`)
 		this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY)
 	}
 
@@ -115,9 +115,10 @@ class Main {
 	
 
 	onBackgroundMove(): void {
-		console.log("onBackgroundMove", this.screen1BackGround.x, this.screen1BackGround.y, this.football.x, this.football.y)
+		console.log("onBackgroundMove", this.screen1BackGround.y, this.football.x, 'this.football.y',this.football.y)
+		// console.log(`map[${-this.screen1BackGround.y+230}] = ${Laya.stage.mouseX}`)
 
-		if (this.screen1BackGround.y <= -800) {	// 不给拖动，摇一摇显示射门动画
+		if (this.screen1BackGround.y <= -1100) {	// 不给拖动，摇一摇显示射门动画
 			
 
 			if (this.hasPlayShotAni) {
@@ -146,7 +147,22 @@ class Main {
 			this.football.show()
 
 			// 移动足球位置
-			const y = -this.screen1BackGround.y + 232
+			let y:number = 0;
+			if((-this.screen1BackGround.y + 232) < 960){
+				y = -this.screen1BackGround.y + 100;
+			}
+			if((-this.screen1BackGround.y + 232) < 850){
+				y = -this.screen1BackGround.y + 130;
+			}
+			if((-this.screen1BackGround.y + 232) < 730){
+				y = -this.screen1BackGround.y + 150;
+			}
+			if((-this.screen1BackGround.y + 232) < 580){
+				y = -this.screen1BackGround.y + 180;
+			}
+			if((-this.screen1BackGround.y + 232) < 435){
+				y = -this.screen1BackGround.y + 200;
+			}
 			const x = getFootballX(y)
 			if (x == 0) {
 				this.football.y = y

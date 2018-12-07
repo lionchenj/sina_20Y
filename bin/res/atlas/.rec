@@ -1,6 +1,6 @@
 D .
 D bg
-R 04C9C343 background1.png
+S 04C9C343 background1.png
 D sports
 P 14031C44 2002T.png
 P 3756C21C cup.png
@@ -25,8 +25,8 @@ P 6233C2F7 page2_clock.png
 P E6409035 page2_dumbbell.png
 P EA21482F page2_electric.png
 P E803210A page2_equipment.png
-R 0E703AF7 page2_jump.png
+P 0E703AF7 page2_jump.png
 P 93CD4CCD page2_Ljump.png
 P 41B506CD page2_Lrun.png
-R DA92FF0E page2_run.png
+P DA92FF0E page2_run.png
 P 16836C8F page2_start.png
