@@ -2,6 +2,8 @@ import GameConfig from "./GameConfig";
 import Screen1BackGround from "./Screen1BackGround";
 import Football from "./Football";
 import { getFootballX } from "./FootballPath";
+import { QuestionDialog } from "./QuestionDialog";
+import Constants from "./Constants";
 class Main {
 	private football: Football
 	private screen1BackGround: Screen1BackGround
@@ -13,14 +15,12 @@ class Main {
 	private console: Laya.Text;
 
 	constructor() {
-		//根据IDE设置初始化引擎		
-		if (window["Laya3D"]) Laya3D.init(GameConfig.width, GameConfig.height);
-		else Laya.init(GameConfig.width, GameConfig.height, Laya["WebGL"]);
-		// else Laya.init(Laya.Browser.clientWidth, Laya.Browser.clientWidth, Laya["WebGL"]);
+		Laya.init(Constants.stageWidth, Constants.stateHeight, Laya["WebGL"]);
+	
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
-		Laya.stage.scaleMode = GameConfig.scaleMode;
-		Laya.stage.screenMode = GameConfig.screenMode;
+		Laya.stage.scaleMode = Constants.scaleMode;
+		Laya.stage.screenMode = Constants.screenMode;
 		//兼容微信不支持加载scene后缀场景
 		Laya.URL.exportSceneToJson = GameConfig.exportSceneToJson;
 
@@ -37,7 +37,7 @@ class Main {
 
 		const assets: Array<any> = []
 		assets.push({
-			url: "bg/background.png",
+			url: "bg/background1.png",
 			type: Laya.Loader.IMAGE
 		})
 		assets.push({
@@ -98,7 +98,7 @@ class Main {
 		// 始终保持主角和鼠标位置一致
 		// this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY)
 		// console.log("onMouseMove", Laya.stage.mouseX, Laya.stage.mouseY)
-		console.log(`map[${-this.screen1BackGround.y+230}] = ${Laya.stage.mouseX}`)
+		console.log(`map[${Laya.stage.mouseY}] = ${Laya.stage.mouseX}`)
 		this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY)
 	}
 
@@ -115,10 +115,9 @@ class Main {
 	
 
 	onBackgroundMove(): void {
-		console.log("onBackgroundMove", this.screen1BackGround.y, this.football.x, 'this.football.y',this.football.y)
-		// console.log(`map[${-this.screen1BackGround.y+230}] = ${Laya.stage.mouseX}`)
+		console.log("onBackgroundMove", this.screen1BackGround.x, this.screen1BackGround.y, this.football.x, this.football.y)
 
-		if (this.screen1BackGround.y <= -1100) {	// 不给拖动，摇一摇显示射门动画
+		if (this.screen1BackGround.y <= -800) {	// 不给拖动，摇一摇显示射门动画
 			
 
 			if (this.hasPlayShotAni) {
@@ -141,12 +140,13 @@ class Main {
 		}
 	
 		
-		if (this.screen1BackGround.y <= -800) { // 隐藏足球
+		if (this.screen1BackGround.y <= -1100) { // 隐藏足球
 			this.football.hide()
 		} else {
 			this.football.show()
 
 			// 移动足球位置
+			// const y = -this.screen1BackGround.y + 232
 			let y:number = 0;
 			if((-this.screen1BackGround.y + 232) < 960){
 				y = -this.screen1BackGround.y + 100;

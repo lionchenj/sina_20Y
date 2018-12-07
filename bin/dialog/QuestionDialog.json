@@ -1,0 +1,1 @@
+{"type":"Dialog","props":{"width":512,"height":640},"compId":2,"child":[{"type":"Text","props":{"y":0,"x":177,"width":159,"text":"text","height":114,"fontSize":50,"color":"#6b1f1f","runtime":"laya.display.Text"},"compId":3}],"loadList":[],"loadList3D":[]}
