@@ -1,0 +1,13 @@
+D .
+D bg
+S 04C9C343 background1.png
+D sports
+P 3756C21C cup.png
+P 4088D7EE football.png
+R C34CC658 shot_1.png
+R 3752810B shot_2.png
+R A60162A5 shot_3.png
+R AAB78BC1 shot_4.png
+R 244D06A8 shot_5.png
+R E22350EA shot_6.png
+P 5A495988 whistle.png

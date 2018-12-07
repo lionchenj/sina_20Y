@@ -1,0 +1,32 @@
+D .
+D bg
+R 04C9C343 background1.png
+D sports
+P 14031C44 2002T.png
+P 3756C21C cup.png
+P 3621334B cxlT.png
+P 4088D7EE football.png
+P 3EC8D04E miH.png
+P F36B6511 miL.png
+P C107FF1B miR.png
+P 20ACD7F1 page1foot.png
+P 7FD2DFD0 playH.png
+P EB7B0F80 playL.png
+P C34CC658 shot_1.png
+P 3752810B shot_2.png
+P A60162A5 shot_3.png
+P AAB78BC1 shot_4.png
+P 244D06A8 shot_5.png
+P E22350EA shot_6.png
+P 5A495988 whistle.png
+D sports/page2
+P 298F4A0D page2_2004.png
+P 6233C2F7 page2_clock.png
+P E6409035 page2_dumbbell.png
+P EA21482F page2_electric.png
+P E803210A page2_equipment.png
+R 0E703AF7 page2_jump.png
+P 93CD4CCD page2_Ljump.png
+P 41B506CD page2_Lrun.png
+R DA92FF0E page2_run.png
+P 16836C8F page2_start.png
