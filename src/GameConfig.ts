@@ -5,12 +5,12 @@
 */
 export default class GameConfig{
     static width:number=512;
-    static height:number=3578;
+    static height:number=768;
     static scaleMode:string="noborder";
     static screenMode:string="vertical";
-    static alignV:string="middle";
+    static alignV:string="top";
     static alignH:string="center";
-    static startScene:any="";
+    static startScene:any="dialog/QuestionDialog.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=false;

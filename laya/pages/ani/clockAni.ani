@@ -60,7 +60,7 @@
                             }],
                         "skin":[
                             {
-                                "value":"sports/page2/page2_clock.png",
+                                "value":"sports/page2_clock.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,

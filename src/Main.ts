@@ -4,18 +4,24 @@ import Football from "./Football";
 import { getFootballX } from "./FootballPath";
 import { QuestionDialog } from "./QuestionDialog";
 import Constants from "./Constants";
+import { QuestionData, QuestionItem, QuestionShowY } from "./QuestionData";
 class Main {
 	private football: Football
 	private screen1BackGround: Screen1BackGround
 	private dragRegion: Laya.Rectangle
 
 	private shakeCount:number = 0;
-	private hasPlayShotAni = false
+	private hasPlayShotAni = true
 
 	private console: Laya.Text;
 
+	private hasShowQuestionIndex = 0 // 已经显示到的问题id
+	private showQuestionIndexList = new Array<number>()	// 已经显示的问题index列表
+	private showingDialog = false
+
 	constructor() {
-		Laya.init(Constants.stageWidth, Constants.stateHeight, Laya["WebGL"]);
+		// warning: 第三个参数不要使用WebGL，当背景太长的时候在iPhone上会有非常严重的锯齿
+		Laya.init(Constants.stageWidth, Constants.stateHeight, Laya[""]);
 	
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
@@ -33,15 +39,40 @@ class Main {
 		//激活资源版本控制，version.json由IDE发布功能自动生成，如果没有也不影响后续流程
 		Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
 	
+	
+		UIConfig.closeDialogOnSide = false
+		UIConfig.popupBgColor = "#000000"
+		UIConfig.popupBgAlpha = 0.8
+
 		Laya.stage.bgColor = "white"
 
 		const assets: Array<any> = []
 		assets.push({
-			url: "bg/background1.png",
+			url: Constants.background1,
+			type: Laya.Loader.IMAGE
+		})
+		assets.push({
+			url: Constants.background2,
+			type: Laya.Loader.IMAGE
+		})
+		assets.push({
+			url: Constants.background3,
+			type: Laya.Loader.IMAGE
+		})
+		assets.push({
+			url: Constants.background4,
+			type: Laya.Loader.IMAGE
+		})
+		assets.push({
+			url: Constants.background5,
 			type: Laya.Loader.IMAGE
 		})
 		assets.push({
 			url: "res/atlas/sports.atlas",
+			type: Laya.Loader.ATLAS
+		})
+		assets.push({
+			url: "res/atlas/comp.atlas",
 			type: Laya.Loader.ATLAS
 		})
 
@@ -61,7 +92,7 @@ class Main {
 
 	onConfigLoaded(): void {
 		//加载IDE指定的场景
-		GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
+		// GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
 	}
 
 	onAssetsLoading(progress: number): void {
@@ -71,6 +102,7 @@ class Main {
 	}
 
 	onAssetsLoaded(): void {
+		
 		this.console.text += '资源加载完成。';
 		this.screen1BackGround = new Screen1BackGround()
 		Laya.stage.addChild(this.screen1BackGround)
@@ -104,6 +136,9 @@ class Main {
 
 	onStartDrag(): void {
 		console.log("onStartDrag", Laya.stage.mouseX, Laya.stage.mouseY)
+		if (this.showingDialog) {
+			return 
+		}
 	
 		this.screen1BackGround.startDrag(this.dragRegion, false, 0)
 	}
@@ -117,7 +152,14 @@ class Main {
 	onBackgroundMove(): void {
 		console.log("onBackgroundMove", this.screen1BackGround.x, this.screen1BackGround.y, this.football.x, this.football.y)
 
-		if (this.screen1BackGround.y <= -800) {	// 不给拖动，摇一摇显示射门动画
+		const needShowQuestion = this.showQuestionDialogIfNeed(this.screen1BackGround.y)
+		if (needShowQuestion) {
+			this.screen1BackGround.stopDrag()
+			return 
+		}
+		
+
+		if (this.screen1BackGround.y <= -1100) {	// 不给拖动，摇一摇显示射门动画
 			
 
 			if (this.hasPlayShotAni) {
@@ -140,7 +182,7 @@ class Main {
 		}
 	
 		
-		if (this.screen1BackGround.y <= -1100) { // 隐藏足球
+		if (this.screen1BackGround.y <= -800) { // 隐藏足球
 			this.football.hide()
 		} else {
 			this.football.show()
@@ -148,7 +190,7 @@ class Main {
 			// 移动足球位置
 			// const y = -this.screen1BackGround.y + 232
 			let y:number = 0;
-			if((-this.screen1BackGround.y + 232) < 960){
+			if((-this.screen1BackGround.y + 232) < 1032){
 				y = -this.screen1BackGround.y + 100;
 			}
 			if((-this.screen1BackGround.y + 232) < 850){
@@ -163,6 +205,9 @@ class Main {
 			if((-this.screen1BackGround.y + 232) < 435){
 				y = -this.screen1BackGround.y + 200;
 			}
+			if((-this.screen1BackGround.y + 232) > 1032){
+				y = -this.screen1BackGround.y + 232;
+			}
 			const x = getFootballX(y)
 			if (x == 0) {
 				this.football.y = y
@@ -171,7 +216,7 @@ class Main {
 			}
 
 			// 判断足球是否需要旋转
-			if (this.screen1BackGround.y <= -500) {
+			if (this.screen1BackGround.y <= -585) {
 				this.football.stopRotate()
 			} else {
 				this.football.playRotate()
@@ -219,6 +264,55 @@ class Main {
 			this.hasPlayShotAni = true
 			this.console.text += "播放射门动画";
 		}
+	}
+
+	onQuestionDialogClose(index: string, type: string): void {
+		console.log("onQuestionDialogClose", type, index)
+		const right = (type === "true")
+		this.hasShowQuestionIndex = parseInt(index)
+		this.showingDialog = false
+	}
+
+	// 判断是否需要显示问题
+	private showQuestionDialogIfNeed(y: number): boolean {
+		const offset = Laya.Browser.clientHeight 
+		const hasShowLength = this.showQuestionIndexList.length
+		if (length >= 10) {
+			return false
+		}
+		if (y > offset-QuestionShowY[hasShowLength]){
+			return false
+		}
+		const isOdd = !(hasShowLength%2)
+		if (isOdd) { // 随机
+			const random = this.getRandomQuestionIndex()
+			this.showQuestion(random)
+		} else {	// 取前5位
+			const index = Math.floor(hasShowLength/2)
+			this.showQuestion(index)
+		}
+		return true
+	}
+
+	private getRandomQuestionIndex(): number {
+		const max = QuestionData.length - 5
+		const random = Math.round((Math.random()*max)) + 5
+		if (this.showQuestionIndexList.indexOf(random) == -1) {
+			return random
+		} else { // 已经显示过重新获取
+			return this.getRandomQuestionIndex()
+		}
+	}
+
+	private showQuestion(index: number): void {
+		if (index >= QuestionData.length) {
+			return 
+		}
+		this.showingDialog = true
+		this.showQuestionIndexList.push(index)
+		const questionData = QuestionData[index]
+		const questionDialog = new QuestionDialog(questionData)
+		questionDialog.closeHandler = Laya.Handler.create(this, this.onQuestionDialogClose, [index])
 	}
 
 	private showConsoleText(visible: boolean):void

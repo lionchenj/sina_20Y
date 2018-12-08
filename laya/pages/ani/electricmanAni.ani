@@ -5,11 +5,12 @@
     "searchKey":"View",
     "props":{"sceneWidth":400,"sceneHeight":400,"sceneColor":"#000000"},
     "nodeParent":-1,
-    "maxID":3,
+    "maxID":4,
     "label":"View",
-    "isDirectory":false,
+    "isOpen":null,
+    "isDirectory":true,
     "isAniNode":true,
-    "hasChild":false,
+    "hasChild":true,
     "compId":2,
     "child":[
         {
@@ -51,7 +52,7 @@
                             }],
                         "skin":[
                             {
-                                "value":"sports/page2/page2_electric.png",
+                                "value":"sports/page2_electric.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":3,

@@ -4,6 +4,15 @@ import Dialog=Laya.Dialog;
 import Scene=Laya.Scene;
 export module ui.dialog {
     export class QuestionDialogUI extends Dialog {
+		public resultAImg:Laya.Sprite;
+		public resultCImg:Laya.Sprite;
+		public resultBImg:Laya.Sprite;
+		public resultDImg:Laya.Sprite;
+		public questionLabel:Laya.Label;
+		public answerABtn:Laya.Button;
+		public answerBBtn:Laya.Button;
+		public answerCBtn:Laya.Button;
+		public answerDBtn:Laya.Button;
         constructor(){ super()}
         createChildren():void {
             super.createChildren();
