@@ -47,7 +47,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"y",
-                                "index":10
+                                "index":30
                             }],
                         "x":[
                             {
@@ -82,7 +82,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleY",
-                                "index":10
+                                "index":30
                             }],
                         "scaleX":[
                             {
@@ -99,7 +99,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleX",
-                                "index":10
+                                "index":30
                             }],
                         "anchorY":[
                             {

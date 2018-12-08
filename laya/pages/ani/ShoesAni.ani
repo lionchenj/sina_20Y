@@ -42,7 +42,7 @@
                                 "index":0
                             },
                             {
-                                "value":92,
+                                "value":0,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -59,7 +59,7 @@
                                 "index":0
                             },
                             {
-                                "value":-141,
+                                "value":0,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -126,6 +126,23 @@
                                 "target":3,
                                 "key":"anchorX",
                                 "index":0
+                            }],
+                        "alpha":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"alpha",
+                                "index":0
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"alpha",
+                                "index":20
                             }]
                     }
                 }],

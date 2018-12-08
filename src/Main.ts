@@ -10,7 +10,7 @@ class Main {
 	private screen1BackGround: Screen1BackGround
 	private dragRegion: Laya.Rectangle
 
-	private shakeCount:number = 0;
+	private shakeCount: number = 0;
 	private hasPlayShotAni = true
 
 	private console: Laya.Text;
@@ -22,7 +22,7 @@ class Main {
 	constructor() {
 		// warning: 第三个参数不要使用WebGL，当背景太长的时候在iPhone上会有非常严重的锯齿
 		Laya.init(Constants.stageWidth, Constants.stateHeight, Laya[""]);
-	
+
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
 		Laya.stage.scaleMode = Constants.scaleMode;
@@ -38,8 +38,8 @@ class Main {
 
 		//激活资源版本控制，version.json由IDE发布功能自动生成，如果没有也不影响后续流程
 		Laya.ResourceVersion.enable("version.json", Laya.Handler.create(this, this.onVersionLoaded), Laya.ResourceVersion.FILENAME_VERSION);
-	
-	
+
+
 		UIConfig.closeDialogOnSide = false
 		UIConfig.popupBgColor = "#000000"
 		UIConfig.popupBgAlpha = 0.8
@@ -82,7 +82,7 @@ class Main {
 
 		// 需要显示调试信息可以打开这里
 		this.showConsoleText(false);
-	
+
 	}
 
 	onVersionLoaded(): void {
@@ -97,12 +97,12 @@ class Main {
 
 	onAssetsLoading(progress: number): void {
 		console.log("加载进度: " + progress);
-		
+
 		// TODO: 显示进度条
 	}
 
 	onAssetsLoaded(): void {
-		
+
 		this.console.text += '资源加载完成。';
 		this.screen1BackGround = new Screen1BackGround()
 		Laya.stage.addChild(this.screen1BackGround)
@@ -137,9 +137,9 @@ class Main {
 	onStartDrag(): void {
 		console.log("onStartDrag", Laya.stage.mouseX, Laya.stage.mouseY)
 		if (this.showingDialog) {
-			return 
+			return
 		}
-	
+
 		this.screen1BackGround.startDrag(this.dragRegion, false, 0)
 	}
 
@@ -147,7 +147,7 @@ class Main {
 		// TODO: 这里同样要做一些能否拖动的判断，onBackgroundMove部分逻辑也适应于此方法
 	}
 
-	
+
 
 	onBackgroundMove(): void {
 		console.log("onBackgroundMove", this.screen1BackGround.x, this.screen1BackGround.y, this.football.x, this.football.y)
@@ -155,12 +155,12 @@ class Main {
 		const needShowQuestion = this.showQuestionDialogIfNeed(this.screen1BackGround.y)
 		if (needShowQuestion) {
 			this.screen1BackGround.stopDrag()
-			return 
+			return
 		}
-		
+
 
 		if (this.screen1BackGround.y <= -1100) {	// 不给拖动，摇一摇显示射门动画
-			
+
 
 			if (this.hasPlayShotAni) {
 				this.console.text += '已经显示过射门动画\n';
@@ -174,14 +174,14 @@ class Main {
 				Laya.Shake.instance.start(5, 500)
 				Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake)
 				this.console.text += '开始接收设备摇动\n';
-				
-				
+
+
 			}
 
 
 		}
-	
-		
+
+
 		if (this.screen1BackGround.y <= -800) { // 隐藏足球
 			this.football.hide()
 		} else {
@@ -189,23 +189,23 @@ class Main {
 
 			// 移动足球位置
 			// const y = -this.screen1BackGround.y + 232
-			let y:number = 0;
-			if((-this.screen1BackGround.y + 232) < 1032){
+			let y: number = 0;
+			if ((-this.screen1BackGround.y + 232) < 1032) {
 				y = -this.screen1BackGround.y + 100;
 			}
-			if((-this.screen1BackGround.y + 232) < 850){
+			if ((-this.screen1BackGround.y + 232) < 850) {
 				y = -this.screen1BackGround.y + 130;
 			}
-			if((-this.screen1BackGround.y + 232) < 730){
+			if ((-this.screen1BackGround.y + 232) < 730) {
 				y = -this.screen1BackGround.y + 150;
 			}
-			if((-this.screen1BackGround.y + 232) < 580){
+			if ((-this.screen1BackGround.y + 232) < 580) {
 				y = -this.screen1BackGround.y + 180;
 			}
-			if((-this.screen1BackGround.y + 232) < 435){
+			if ((-this.screen1BackGround.y + 232) < 435) {
 				y = -this.screen1BackGround.y + 200;
 			}
-			if((-this.screen1BackGround.y + 232) > 1032){
+			if ((-this.screen1BackGround.y + 232) > 1032) {
 				y = -this.screen1BackGround.y + 232;
 			}
 			const x = getFootballX(y)
@@ -245,11 +245,288 @@ class Main {
 			}
 		}
 
-		
+
+		if (this.screen1BackGround.y <= -300 && this.screen1BackGround.y >= -450) {
+			if (!this.screen1BackGround.isAniPlaying("whistle")) {
+				this.screen1BackGround.playAni("whistle")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("whistle")) {
+				this.screen1BackGround.stopAni("whistle")
+			}
+		}
+		if (this.screen1BackGround.y <= -2125 && this.screen1BackGround.y >= -2325) {
+			if (!this.screen1BackGround.isAniPlaying("text2002")) {
+				this.screen1BackGround.playAni("text2002")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("text2002")) {
+				this.screen1BackGround.stopAni("text2002")
+			}
+		}
+		if (this.screen1BackGround.y <= -300 && this.screen1BackGround.y >= -450) {
+			if (!this.screen1BackGround.isAniPlaying("shot")) {
+				this.screen1BackGround.playAni("shot")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("shot")) {
+				this.screen1BackGround.stopAni("shot")
+			}
+		}
+
+		if (this.screen1BackGround.y <= -2455 && this.screen1BackGround.y >= -2600) {
+			if (!this.screen1BackGround.isAniPlaying("win")) {
+				this.screen1BackGround.playAni("win")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("win")) {
+				this.screen1BackGround.stopAni("win")
+			}
+		}
+
+		//page2
+		if (this.screen1BackGround.y <= -3490 && this.screen1BackGround.y >= -3690) {
+			if (!this.screen1BackGround.isAniPlaying("page02Start")) {
+				this.screen1BackGround.playAni("page02Start")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("page02Start")) {
+				this.screen1BackGround.stopAni("page02Start")
+			}
+		}
+		if (this.screen1BackGround.y <= -3700 && this.screen1BackGround.y >= -3850) {
+			if (!this.screen1BackGround.isAniPlaying("dumbbell")) {
+				this.screen1BackGround.playAni("dumbbell")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("dumbbell")) {
+				this.screen1BackGround.stopAni("dumbbell")
+			}
+		}
+
+		if (this.screen1BackGround.y <= -4000 && this.screen1BackGround.y >= -4150) {
+			if (!this.screen1BackGround.isAniPlaying("equipment")) {
+				this.screen1BackGround.playAni("equipment")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("equipment")) {
+				this.screen1BackGround.stopAni("equipment")
+			}
+		}
+		if (this.screen1BackGround.y <= -4300 && this.screen1BackGround.y >= -4450) {
+			if (!this.screen1BackGround.isAniPlaying("clock")) {
+				this.screen1BackGround.playAni("clock")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("clock")) {
+				this.screen1BackGround.stopAni("clock")
+			}
+		}
+		if (this.screen1BackGround.y <= -4610 && this.screen1BackGround.y >= -4710) {
+			if (!this.screen1BackGround.isAniPlaying("text2004")) {
+				this.screen1BackGround.playAni("text2004")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("text2004")) {
+				this.screen1BackGround.stopAni("text2004")
+			}
+		}
+		if (this.screen1BackGround.y <= -4800 && this.screen1BackGround.y >= -4810) {
+			if (!this.screen1BackGround.isAniPlaying("electricman")) {
+				this.screen1BackGround.playAni("electricman")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("electricman")) {
+				this.screen1BackGround.stopAni("electricman")
+			}
+		}
+		if (this.screen1BackGround.y <= -5070 && this.screen1BackGround.y >= -5200) {
+			if (!this.screen1BackGround.isAniPlaying("liuxiang")) {
+				this.screen1BackGround.playAni("liuxiang")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("liuxiang")) {
+				this.screen1BackGround.stopAni("liuxiang")
+			}
+		}
+
+
+		//page3
+		if (this.screen1BackGround.y <= -6010 && this.screen1BackGround.y >= -6380) {
+			if (!this.screen1BackGround.isAniPlaying("computer")) {
+				this.screen1BackGround.playAni("computer")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("computer")) {
+				this.screen1BackGround.stopAni("computer")
+			}
+		}
+		if (this.screen1BackGround.y <= -6575 && this.screen1BackGround.y >= -6700) {
+			if (!this.screen1BackGround.isAniPlaying("medal")) {
+				this.screen1BackGround.playAni("medal")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("medal")) {
+				this.screen1BackGround.stopAni("medal")
+			}
+		}
+		if (this.screen1BackGround.y <= -6824 && this.screen1BackGround.y >= -7000) {
+			if (!this.screen1BackGround.isAniPlaying("stage")) {
+				this.screen1BackGround.playAni("stage")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("stage")) {
+				this.screen1BackGround.stopAni("stage")
+			}
+		}
+		if (this.screen1BackGround.y <= -7426 && this.screen1BackGround.y >= -7600) {
+			if (!this.screen1BackGround.isAniPlaying("text2008")) {
+				this.screen1BackGround.playAni("text2008")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("text2008")) {
+				this.screen1BackGround.stopAni("text2008")
+			}
+		}
+
+		if (this.screen1BackGround.y <= -7722 && this.screen1BackGround.y >= -8000) {
+			if (!this.screen1BackGround.isAniPlaying("crowd")) {
+				this.screen1BackGround.playAni("crowd")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("crowd")) {
+				this.screen1BackGround.stopAni("crowd")
+			}
+		}
+
+		//page4
+		if (this.screen1BackGround.y <= -8100 && this.screen1BackGround.y >= -8360) {
+			if (!this.screen1BackGround.isAniPlaying("heart")) {
+				this.screen1BackGround.playAni("heart")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("heart")) {
+				this.screen1BackGround.stopAni("heart")
+			}
+		}
+		if (this.screen1BackGround.y <= -8360 && this.screen1BackGround.y >= -8500) {
+			if (!this.screen1BackGround.isAniPlaying("text2012")) {
+				this.screen1BackGround.playAni("text2012")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("text2012")) {
+				this.screen1BackGround.stopAni("text2012")
+			}
+		}
+		if (this.screen1BackGround.y <= -8677 && this.screen1BackGround.y >= -8800) {
+			if (!this.screen1BackGround.isAniPlaying("waterRight")) {
+				this.screen1BackGround.playAni("waterRight")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("waterRight")) {
+				this.screen1BackGround.stopAni("waterRight")
+			}
+		}
+		if (this.screen1BackGround.y <= -8685 && this.screen1BackGround.y >= -8800) {
+			if (!this.screen1BackGround.isAniPlaying("board")) {
+				this.screen1BackGround.playAni("board")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("board")) {
+				this.screen1BackGround.stopAni("board")
+			}
+		}
+		if (this.screen1BackGround.y <= -8930 && this.screen1BackGround.y >= -9100) {
+			if (!this.screen1BackGround.isAniPlaying("wall")) {
+				this.screen1BackGround.playAni("wall")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("wall")) {
+				this.screen1BackGround.stopAni("wall")
+			}
+		}
+		if (this.screen1BackGround.y <= -9280 && this.screen1BackGround.y >= -9400) {
+			if (!this.screen1BackGround.isAniPlaying("goggles")) {
+				this.screen1BackGround.playAni("goggles")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("goggles")) {
+				this.screen1BackGround.stopAni("goggles")
+			}
+		}
+		if (this.screen1BackGround.y <= -9657 && this.screen1BackGround.y >= -9800) {
+			if (!this.screen1BackGround.isAniPlaying("waterLeft")) {
+				this.screen1BackGround.playAni("waterLeft")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("waterLeft")) {
+				this.screen1BackGround.stopAni("waterLeft")
+			}
+		}
+		if (this.screen1BackGround.y <= -10000 && this.screen1BackGround.y >= -10100) {
+			if (!this.screen1BackGround.isAniPlaying("winMan")) {
+				this.screen1BackGround.playAni("winMan")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("winMan")) {
+				this.screen1BackGround.stopAni("winMan")
+			}
+		}
+
+		//page5
+
+		if (this.screen1BackGround.y <= -10536 && this.screen1BackGround.y >= -10748) {
+			if (!this.screen1BackGround.isAniPlaying("ball")) {
+				this.screen1BackGround.playAni("ball")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("ball")) {
+				this.screen1BackGround.stopAni("ball")
+			}
+		}
+		if (this.screen1BackGround.y <= -10536 && this.screen1BackGround.y >= -10748) {
+			if (!this.screen1BackGround.isAniPlaying("scoreboard")) {
+				this.screen1BackGround.playAni("scoreboard")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("scoreboard")) {
+				this.screen1BackGround.stopAni("scoreboard")
+			}
+		}
+		if (this.screen1BackGround.y <= -11127 && this.screen1BackGround.y >= -11254) {
+			if (!this.screen1BackGround.isAniPlaying("shoes")) {
+				this.screen1BackGround.playAni("shoes")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("shoes")) {
+				this.screen1BackGround.stopAni("shoes")
+			}
+		}
+
+		if (this.screen1BackGround.y <= -11411 && this.screen1BackGround.y >= -11560) {
+			if (!this.screen1BackGround.isAniPlaying("hat")) {
+				this.screen1BackGround.playAni("hat")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("hat")) {
+				this.screen1BackGround.stopAni("hat")
+			}
+		}
+		if (this.screen1BackGround.y <= -11868 && this.screen1BackGround.y >= -11969) {
+			if (!this.screen1BackGround.isAniPlaying("ballMan")) {
+				this.screen1BackGround.playAni("ballMan")
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("ballMan")) {
+				this.screen1BackGround.stopAni("ballMan")
+			}
+		}
+
+
 	}
-	
+
 	onDeviceShake(): void {
-		this.shakeCount ++
+		this.shakeCount++
 		this.console.text += "设备摇晃了" + this.shakeCount + "次\n";
 		if (this.shakeCount >= 3) {
 			Laya.Shake.instance.stop()
@@ -275,20 +552,20 @@ class Main {
 
 	// 判断是否需要显示问题
 	private showQuestionDialogIfNeed(y: number): boolean {
-		const offset = Laya.Browser.clientHeight 
+		const offset = Laya.Browser.clientHeight
 		const hasShowLength = this.showQuestionIndexList.length
-		if (length >= 10) {
+		if (y) {
 			return false
 		}
-		if (y > offset-QuestionShowY[hasShowLength]){
+		if (y > offset - QuestionShowY[hasShowLength]) {
 			return false
 		}
-		const isOdd = !(hasShowLength%2)
+		const isOdd = !(hasShowLength % 2)
 		if (isOdd) { // 随机
 			const random = this.getRandomQuestionIndex()
 			this.showQuestion(random)
 		} else {	// 取前5位
-			const index = Math.floor(hasShowLength/2)
+			const index = Math.floor(hasShowLength / 2)
 			this.showQuestion(index)
 		}
 		return true
@@ -296,7 +573,7 @@ class Main {
 
 	private getRandomQuestionIndex(): number {
 		const max = QuestionData.length - 5
-		const random = Math.round((Math.random()*max)) + 5
+		const random = Math.round((Math.random() * max)) + 5
 		if (this.showQuestionIndexList.indexOf(random) == -1) {
 			return random
 		} else { // 已经显示过重新获取
@@ -306,7 +583,7 @@ class Main {
 
 	private showQuestion(index: number): void {
 		if (index >= QuestionData.length) {
-			return 
+			return
 		}
 		this.showingDialog = true
 		this.showQuestionIndexList.push(index)
@@ -315,22 +592,21 @@ class Main {
 		questionDialog.closeHandler = Laya.Handler.create(this, this.onQuestionDialogClose, [index])
 	}
 
-	private showConsoleText(visible: boolean):void
-		{
-			this.console = new Laya.Text();
-			Laya.stage.addChild(this.console);
-			this.console.zOrder = 10001
-			this.console.y =  10;
-			this.console.width = Laya.stage.width;
-			this.console.height = 200;
-			this.console.color = "#FFFFFF";
-			this.console.fontSize = 20;
-			this.console.leading = 10;
-			this.console.bgColor = "#000000"
-			this.console.visible = visible
-			
-		}
-	
+	private showConsoleText(visible: boolean): void {
+		this.console = new Laya.Text();
+		Laya.stage.addChild(this.console);
+		this.console.zOrder = 10001
+		this.console.y = 10;
+		this.console.width = Laya.stage.width;
+		this.console.height = 200;
+		this.console.color = "#FFFFFF";
+		this.console.fontSize = 20;
+		this.console.leading = 10;
+		this.console.bgColor = "#000000"
+		this.console.visible = visible
+
+	}
+
 }
 //激活启动类
 new Main();

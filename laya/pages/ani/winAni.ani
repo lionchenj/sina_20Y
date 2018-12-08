@@ -7,6 +7,7 @@
     "nodeParent":-1,
     "maxID":12,
     "label":"View",
+    "isOpen":null,
     "isDirectory":true,
     "isAniNode":true,
     "hasChild":true,
@@ -190,8 +191,44 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":5,
+                                "label":null,
                                 "key":"x",
                                 "index":10
+                            },
+                            {
+                                "value":32,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "label":null,
+                                "key":"x",
+                                "index":15
+                            },
+                            {
+                                "value":28,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "label":null,
+                                "key":"x",
+                                "index":20
+                            },
+                            {
+                                "value":32,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "label":null,
+                                "key":"x",
+                                "index":25
+                            },
+                            {
+                                "value":28,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "key":"x",
+                                "index":30
                             }],
                         "width":[
                             {
@@ -265,8 +302,44 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":6,
+                                "label":null,
                                 "key":"y",
                                 "index":10
+                            },
+                            {
+                                "value":-215,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":6,
+                                "label":null,
+                                "key":"y",
+                                "index":15
+                            },
+                            {
+                                "value":-210,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":6,
+                                "label":null,
+                                "key":"y",
+                                "index":20
+                            },
+                            {
+                                "value":-215,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":6,
+                                "label":null,
+                                "key":"y",
+                                "index":25
+                            },
+                            {
+                                "value":-210,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":6,
+                                "key":"y",
+                                "index":30
                             }],
                         "x":[
                             {
@@ -349,8 +422,44 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":8,
+                                "label":null,
                                 "key":"y",
                                 "index":10
+                            },
+                            {
+                                "value":-218,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"y",
+                                "index":15
+                            },
+                            {
+                                "value":-213,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"y",
+                                "index":20
+                            },
+                            {
+                                "value":-218,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"y",
+                                "index":25
+                            },
+                            {
+                                "value":-213,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "key":"y",
+                                "index":30
                             }],
                         "x":[
                             {
@@ -442,8 +551,44 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":9,
+                                "label":null,
                                 "key":"x",
                                 "index":10
+                            },
+                            {
+                                "value":-58,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":9,
+                                "label":null,
+                                "key":"x",
+                                "index":15
+                            },
+                            {
+                                "value":-52,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":9,
+                                "label":null,
+                                "key":"x",
+                                "index":20
+                            },
+                            {
+                                "value":-58,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":9,
+                                "label":null,
+                                "key":"x",
+                                "index":25
+                            },
+                            {
+                                "value":-52,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":9,
+                                "key":"x",
+                                "index":30
                             }],
                         "skin":[
                             {
@@ -499,8 +644,44 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":10,
+                                "label":null,
                                 "key":"y",
                                 "index":10
+                            },
+                            {
+                                "value":-333,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "label":null,
+                                "key":"y",
+                                "index":15
+                            },
+                            {
+                                "value":-328,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "label":null,
+                                "key":"y",
+                                "index":20
+                            },
+                            {
+                                "value":-333,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "label":null,
+                                "key":"y",
+                                "index":25
+                            },
+                            {
+                                "value":-328,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "key":"y",
+                                "index":30
                             }],
                         "x":[
                             {
@@ -557,8 +738,26 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":11,
+                                "label":null,
                                 "key":"y",
                                 "index":10
+                            },
+                            {
+                                "value":50,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"y",
+                                "index":20
+                            },
+                            {
+                                "value":50,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "key":"y",
+                                "index":30
                             }],
                         "x":[
                             {
@@ -574,8 +773,26 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":11,
+                                "label":null,
                                 "key":"x",
                                 "index":10
+                            },
+                            {
+                                "value":10,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"x",
+                                "index":20
+                            },
+                            {
+                                "value":10,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "key":"x",
+                                "index":30
                             }],
                         "skin":[
                             {
@@ -591,8 +808,26 @@
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":11,
+                                "label":null,
                                 "key":"skin",
                                 "index":10
+                            },
+                            {
+                                "value":"sports/cxlT.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":11,
+                                "label":null,
+                                "key":"skin",
+                                "index":20
+                            },
+                            {
+                                "value":"sports/cxlT.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":11,
+                                "key":"skin",
+                                "index":30
                             }],
                         "scaleY":[
                             {
@@ -616,8 +851,44 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":11,
+                                "label":null,
                                 "key":"scaleY",
                                 "index":10
+                            },
+                            {
+                                "value":1.2,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"scaleY",
+                                "index":15
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"scaleY",
+                                "index":20
+                            },
+                            {
+                                "value":1.2,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"scaleY",
+                                "index":25
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "key":"scaleY",
+                                "index":30
                             }],
                         "scaleX":[
                             {
@@ -641,8 +912,44 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":11,
+                                "label":null,
                                 "key":"scaleX",
                                 "index":10
+                            },
+                            {
+                                "value":1.2,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"scaleX",
+                                "index":15
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"scaleX",
+                                "index":20
+                            },
+                            {
+                                "value":1.2,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"scaleX",
+                                "index":25
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "key":"scaleX",
+                                "index":30
                             }],
                         "anchorY":[
                             {
@@ -658,8 +965,26 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":11,
+                                "label":null,
                                 "key":"anchorY",
                                 "index":10
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"anchorY",
+                                "index":20
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "key":"anchorY",
+                                "index":30
                             }],
                         "anchorX":[
                             {
@@ -675,8 +1000,26 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":11,
+                                "label":null,
                                 "key":"anchorX",
                                 "index":10
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "label":null,
+                                "key":"anchorX",
+                                "index":20
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":11,
+                                "key":"anchorX",
+                                "index":30
                             }]
                     }
                 }],

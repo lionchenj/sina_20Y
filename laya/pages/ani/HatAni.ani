@@ -7,6 +7,7 @@
     "nodeParent":-1,
     "maxID":4,
     "label":"View",
+    "isOpen":null,
     "isDirectory":true,
     "isAniNode":true,
     "hasChild":true,
@@ -46,7 +47,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"y",
-                                "index":10
+                                "index":20
                             }],
                         "x":[
                             {
@@ -63,7 +64,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"x",
-                                "index":10
+                                "index":20
                             }],
                         "skin":[
                             {
@@ -76,7 +77,7 @@
                             }],
                         "scaleY":[
                             {
-                                "value":0,
+                                "value":1,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -89,11 +90,11 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleY",
-                                "index":10
+                                "index":20
                             }],
                         "scaleX":[
                             {
-                                "value":0,
+                                "value":1,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -106,7 +107,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleX",
-                                "index":10
+                                "index":20
                             }],
                         "anchorY":[
                             {
@@ -125,6 +126,23 @@
                                 "target":3,
                                 "key":"anchorX",
                                 "index":0
+                            }],
+                        "alpha":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"alpha",
+                                "index":0
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"alpha",
+                                "index":20
                             }]
                     }
                 }],
