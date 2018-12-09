@@ -2,4 +2,7 @@
    <item name="dialog/TestDialog.scene" props="" ifExport="文件模式" aName=""/>
    <item name="dialog/Test2Dialog.scene" props="" ifExport="分离模式" aName=""/>
    <item name="dialog/QuestionDialog.scene" props="" ifExport="分离模式" aName=""/>
+   <item name="dialog/LoadingDialog.scene" props="" ifExport="分离模式" aName=""/>
+   <item name="dialog/ShakeDialog.scene" props="" ifExport="分离模式" aName=""/>
+   <item name="dialog/ScrollDialog.scene" props="" ifExport="分离模式" aName=""/>
 </page>

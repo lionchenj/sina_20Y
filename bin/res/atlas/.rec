@@ -2,9 +2,13 @@ D .
 D bg
 S 04C9C343 background1.png
 R 2C592419 background2.jpg
+S 379829CF background2.png
 R 48A7742F background3.jpg
+S 3A03D21C background3.png
 R E73A3C29 background4.jpg
+S 7F85D532 background4.png
 R 703C0DC0 background5.jpg
+R 1DAF2C51 background5.png
 D comp
 P 9401CC40 blank.png
 P B03390E5 btn_close.png
@@ -57,6 +61,8 @@ P 0E703AF7 page2_jump.png
 P 93CD4CCD page2_Ljump.png
 P 41B506CD page2_Lrun.png
 P DA92FF0E page2_run.png
+P 3CB1525D page2_running_L.png
+P F3F955D1 page2_running_R.png
 P 16836C8F page2_start.png
 P A18C495E page3_2008.png
 S 3A03D21C page3_bg
@@ -78,6 +84,8 @@ P 3DCF417F page4_man.png
 P 792FAE04 page4_man1.png
 P 43EB787F page4_man2.png
 P 9EEEFFAA page4_man3.png
+P 3DCF417F page4_swimming_L.png
+P 792FAE04 page4_swimming_R.png
 P 1D446663 page4_wall.png
 P 2574C395 page4_water1.png
 P AEB6F7BA page4_water2.png
@@ -106,8 +114,23 @@ D view
 P E6C494D8 a.png
 P CA87E7AA b.png
 P 4B51A8BD c.png
+P 4BAB348E click_tip.png
+P 25235E3A click_tip_white.png
 P 67DE570C d.png
 P 44FB8B00 logo.png
 P E3DA96CE question_bg.png
 P 15909C3C right.png
+P D3EC3E7F scroll_tip.jpg
+P A3C34F45 shake.jpg
 P 1A36E3D8 wrong.png
+D sports/page2
+P 298F4A0D page2_2004.png
+P 6233C2F7 page2_clock.png
+P E6409035 page2_dumbbell.png
+P EA21482F page2_electric.png
+P E803210A page2_equipment.png
+P 0E703AF7 page2_jump.png
+P 93CD4CCD page2_Ljump.png
+P 41B506CD page2_Lrun.png
+P DA92FF0E page2_run.png
+P 16836C8F page2_start.png

@@ -14,10 +14,20 @@ export class QuestionDialog extends ui.dialog.QuestionDialogUI {
         this.isModal = true
         this.pos(0, 0)
         
-        this.popup(true)
+        
     }   
     
     public onOpened() {
+        // 延时执行，避免手机上执行时报组件undefined的问题
+        Laya.timer.once(200, this, this.onCallLater)
+    }
+
+    private onCallLater() {
+        if (!this.questionLabel) {
+            Laya.timer.once(200, this, this.onCallLater)
+            return 
+        }
+        
         const question = this.question
         this.questionLabel.text = question.title
         this.answerABtn.label = question.a

@@ -5,24 +5,33 @@ import { getFootballX } from "./FootballPath";
 import { QuestionDialog } from "./QuestionDialog";
 import Constants from "./Constants";
 import { QuestionData, QuestionItem, QuestionShowY } from "./QuestionData";
+import LoadingDialog from "./LoadingDialog";
+import ShakeDialog from "./ShakeDialog";
+import ScrollDialog, { TipType } from "./ScrollDialog";
 class Main {
 	private football: Football
 	private screen1BackGround: Screen1BackGround
 	private dragRegion: Laya.Rectangle
 
-	private shakeCount: number = 0;
-	private hasPlayShotAni = true
+	private shakeCount:number = 0;
+	private hasPlayShotAni = false
+	
 
 	private console: Laya.Text;
 
-	private hasShowQuestionIndex = 0 // 已经显示到的问题id
+
 	private showQuestionIndexList = new Array<number>()	// 已经显示的问题index列表
 	private showingDialog = false
+	
+
+	private loadingDialog: LoadingDialog	// 显示加载进度条
+	private shakeDialog: ShakeDialog		// 显示摇一摇提示
+
 
 	constructor() {
 		// warning: 第三个参数不要使用WebGL，当背景太长的时候在iPhone上会有非常严重的锯齿
 		Laya.init(Constants.stageWidth, Constants.stateHeight, Laya[""]);
-
+	
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
 		Laya.stage.scaleMode = Constants.scaleMode;
@@ -43,9 +52,37 @@ class Main {
 		UIConfig.closeDialogOnSide = false
 		UIConfig.popupBgColor = "#000000"
 		UIConfig.popupBgAlpha = 0.8
+		UIConfig.closeDialogOnSide = false
+	
 
 		Laya.stage.bgColor = "white"
+		
+	
 
+		this.loadProgessAssets()
+
+		// 需要显示调试信息可以打开这里
+		this.showConsoleText(false);
+
+		
+	
+	}
+
+	onVersionLoaded(): void {
+		//激活大小图映射，加载小图的时候，如果发现小图在大图合集里面，则优先加载大图合集，而不是小图
+		Laya.AtlasInfoManager.enable("fileconfig.json", Laya.Handler.create(this, this.onConfigLoaded));
+	}
+
+	onConfigLoaded(): void {
+		//加载IDE指定的场景
+		// GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
+	}
+
+	loadProgessAssets(): void {
+		Laya.loader.load(["res/atlas/comp.atlas"], Laya.Handler.create(this, this.onProgressAssetsLoaded))
+	}
+
+	loadOtherAssets(): void {
 		const assets: Array<any> = []
 		assets.push({
 			url: Constants.background1,
@@ -72,38 +109,52 @@ class Main {
 			type: Laya.Loader.ATLAS
 		})
 		assets.push({
-			url: "res/atlas/comp.atlas",
-			type: Laya.Loader.ATLAS
+			url: Constants.sound0,
+			type: Laya.Loader.SOUND
 		})
+		assets.push({
+			url: Constants.sound1,
+			type: Laya.Loader.SOUND
+		})
+		assets.push({
+			url: Constants.sound2,
+			type: Laya.Loader.SOUND
+		})
+		assets.push({
+			url: Constants.sound3,
+			type: Laya.Loader.SOUND
+		})
+		assets.push({
+			url: Constants.sound4,
+			type: Laya.Loader.SOUND
+		})
+
 
 		// 预加载资源
 		Laya.loader.load(assets, Laya.Handler.create(this, this.onAssetsLoaded), Laya.Handler.create(this, this.onAssetsLoading, null, false))
 		Laya.loader.on(Laya.Event.ERROR, this, this.onError)
-
-		// 需要显示调试信息可以打开这里
-		this.showConsoleText(false);
-
 	}
 
-	onVersionLoaded(): void {
-		//激活大小图映射，加载小图的时候，如果发现小图在大图合集里面，则优先加载大图合集，而不是小图
-		Laya.AtlasInfoManager.enable("fileconfig.json", Laya.Handler.create(this, this.onConfigLoaded));
-	}
-
-	onConfigLoaded(): void {
-		//加载IDE指定的场景
-		// GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
+	// 必需先加载进度条资源才能显示进度条
+	onProgressAssetsLoaded(): void {
+		// 显示进度条
+		
+		this.loadingDialog = new LoadingDialog()
+		this.loadingDialog.popup()
+		this.loadOtherAssets()
 	}
 
 	onAssetsLoading(progress: number): void {
 		console.log("加载进度: " + progress);
-
-		// TODO: 显示进度条
+		this.loadingDialog.changeProgressValue(progress)
 	}
 
 	onAssetsLoaded(): void {
-
+		this.loadingDialog.close()
 		this.console.text += '资源加载完成。';
+
+		this.showTipDialog("scroll")
+
 		this.screen1BackGround = new Screen1BackGround()
 		Laya.stage.addChild(this.screen1BackGround)
 		this.screen1BackGround.on(Laya.Event.DRAG_MOVE, this, this.onBackgroundMove)
@@ -124,6 +175,7 @@ class Main {
 
 	onError(err: string): void {
 		console.log("加载失败: " + err);
+		this.loadingDialog.updateTip("加载失败: " + err)
 	}
 
 	onMouseMove(): void {
@@ -152,34 +204,28 @@ class Main {
 	onBackgroundMove(): void {
 		console.log("onBackgroundMove", this.screen1BackGround.x, this.screen1BackGround.y, this.football.x, this.football.y)
 
+		// 显示问题
 		const needShowQuestion = this.showQuestionDialogIfNeed(this.screen1BackGround.y)
 		if (needShowQuestion) {
 			this.screen1BackGround.stopDrag()
 			return
 		}
 
-
-		if (this.screen1BackGround.y <= -1100) {	// 不给拖动，摇一摇显示射门动画
-
-
-			if (this.hasPlayShotAni) {
-				this.console.text += '已经显示过射门动画\n';
-			} else {
-				this.console.text += '没有显示过射门动画\n';
-				this.screen1BackGround.stopDrag()
-				// TODO: 是否显示过摇一摇提示
-
-				// 监听摇一摇
-
-				Laya.Shake.instance.start(5, 500)
-				Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake)
-				this.console.text += '开始接收设备摇动\n';
+		// TODO: 根据实际情况显示点击提示
+		// this.showTipDialog("click_white")
+		// this.showTipDialog("click_black")
 
 
-			}
-
-
-		}
+		// if (this.screen1BackGround.y <= -1100) {	// 不给拖动，摇一摇显示射门动画
+		// 	if (this.hasPlayShotAni) {
+		// 		this.console.text += '已经显示过射门动画\n';
+		// 	} else {
+		// 		this.console.text += '没有显示过射门动画\n';
+		// 		this.screen1BackGround.stopDrag()
+		// 		// 显示过摇一摇提示
+		// 		this.showShakeDialog()			
+		// 	}
+		// }
 
 
 		if (this.screen1BackGround.y <= -800) { // 隐藏足球
@@ -526,7 +572,12 @@ class Main {
 	}
 
 	onDeviceShake(): void {
-		this.shakeCount++
+		if (this.shakeDialog) {
+			this.shakeDialog.close()
+			this.showingDialog = false
+			this.shakeDialog = null
+		}
+		this.shakeCount ++
 		this.console.text += "设备摇晃了" + this.shakeCount + "次\n";
 		if (this.shakeCount >= 3) {
 			Laya.Shake.instance.stop()
@@ -537,16 +588,23 @@ class Main {
 				return
 			}
 			this.screen1BackGround.playAni("shot")
-			// TODO: 这里需要等动画播放完才设置this.hasPlayShotAni = true
+			
 			this.hasPlayShotAni = true
 			this.console.text += "播放射门动画";
+
+			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
+			Laya.SoundManager.playSound(Constants.sound0)
+			// Laya.SoundManager.playSound(Constants.sound1)
+			// Laya.SoundManager.playSound(Constants.sound2)
+			// Laya.SoundManager.playSound(Constants.sound3)
+			// Laya.SoundManager.playSound(Constants.sound4)
 		}
 	}
 
 	onQuestionDialogClose(index: string, type: string): void {
 		console.log("onQuestionDialogClose", type, index)
-		const right = (type === "true")
-		this.hasShowQuestionIndex = parseInt(index)
+		const right = (type === "true") // TODO: 计分
+	
 		this.showingDialog = false
 	}
 
@@ -554,7 +612,8 @@ class Main {
 	private showQuestionDialogIfNeed(y: number): boolean {
 		const offset = Laya.Browser.clientHeight
 		const hasShowLength = this.showQuestionIndexList.length
-		if (y) {
+		// if (length >= 10) {
+			if(y){
 			return false
 		}
 		if (y > offset - QuestionShowY[hasShowLength]) {
@@ -588,25 +647,57 @@ class Main {
 		this.showingDialog = true
 		this.showQuestionIndexList.push(index)
 		const questionData = QuestionData[index]
+		UIConfig.closeDialogOnSide = false
+		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
 		const questionDialog = new QuestionDialog(questionData)
+		questionDialog.popup(true)
 		questionDialog.closeHandler = Laya.Handler.create(this, this.onQuestionDialogClose, [index])
 	}
 
-	private showConsoleText(visible: boolean): void {
-		this.console = new Laya.Text();
-		Laya.stage.addChild(this.console);
-		this.console.zOrder = 10001
-		this.console.y = 10;
-		this.console.width = Laya.stage.width;
-		this.console.height = 200;
-		this.console.color = "#FFFFFF";
-		this.console.fontSize = 20;
-		this.console.leading = 10;
-		this.console.bgColor = "#000000"
-		this.console.visible = visible
+	private showShakeDialog(): void {
+		this.showingDialog = true
+		UIConfig.closeDialogOnSide = false
+		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
+		this.shakeDialog = new ShakeDialog()
+		this.shakeDialog.popup()
 
+		// 监听摇一摇
+	
+		Laya.Shake.instance.start(5, 500)
+		Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake)
+		this.console.text += '开始接收设备摇动\n';
+		
 	}
 
+
+	private showTipDialog(tipType: TipType): void {
+		UIConfig.closeDialogOnSide = true
+		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
+		const scrollDialog = new ScrollDialog(tipType)
+	
+		scrollDialog.popup(true)
+	}
+
+	private onMaskLayer(item: number): void {
+		alert("onMaskLayer:" + item)
+	}
+
+	private showConsoleText(visible: boolean):void
+		{
+			this.console = new Laya.Text();
+			Laya.stage.addChild(this.console);
+			this.console.zOrder = 10001
+			this.console.y =  10;
+			this.console.width = Laya.stage.width;
+			this.console.height = 200;
+			this.console.color = "#FFFFFF";
+			this.console.fontSize = 20;
+			this.console.leading = 10;
+			this.console.bgColor = "#000000"
+			this.console.visible = visible
+			
+		}
+	
 }
 //激活启动类
 new Main();

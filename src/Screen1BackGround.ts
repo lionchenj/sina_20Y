@@ -38,7 +38,7 @@ export default class Screen1BackGround extends Laya.Sprite {
     private StageAni: Laya.Animation
     private WallAni: Laya.Animation
     private WaterLeftAni: Laya.Animation
-    private WaterRightAni: Laya.Animation
+    // private WaterRightAni: Laya.Animation
     private WhistleAni: Laya.Animation
     private winAni: Laya.Animation
     private WinManAni: Laya.Animation
@@ -119,32 +119,32 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.page02StartAni = new Laya.Animation()
         this.page02StartAni.loadAnimation("ani/page02StartAni.ani")
         this.addChild(this.page02StartAni)
-        this.page02StartAni.pos(250, 3752)
+        this.page02StartAni.pos(247, 3802)
 
         this.dumbbellAni = new Laya.Animation()
         this.dumbbellAni.loadAnimation("ani/dumbbellAni.ani")
         this.addChild(this.dumbbellAni)
-        this.dumbbellAni.pos(331, 4132)
+        this.dumbbellAni.pos(320, 4132)
 
         this.equipmentAni = new Laya.Animation()
         this.equipmentAni.loadAnimation("ani/equipmentAni.ani")
         this.addChild(this.equipmentAni)
-        this.equipmentAni.pos(346, 4427)
+        this.equipmentAni.pos(355, 4430)
 
         this.clockAni = new Laya.Animation()
         this.clockAni.loadAnimation("ani/clockAni.ani")
         this.addChild(this.clockAni)
-        this.clockAni.pos(144, 4699)
+        this.clockAni.pos(152, 4695)
 
         this.text2004Ani = new Laya.Animation()
         this.text2004Ani.loadAnimation("ani/text2004Ani.ani")
         this.addChild(this.text2004Ani)
-        this.text2004Ani.pos(339, 5037)
+        this.text2004Ani.pos(337, 5038)
 
         this.electricmanAni = new Laya.Animation()
         this.electricmanAni.loadAnimation("ani/electricmanAni.ani")
         this.addChild(this.electricmanAni)
-        this.electricmanAni.pos(330, 5260)
+        this.electricmanAni.pos(328, 5262)
 
         this.liuxiangAni = new Laya.Animation()
         this.liuxiangAni.loadAnimation("ani/liuxiangAni.ani")
@@ -155,7 +155,7 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.ComputerAni = new Laya.Animation()
         this.ComputerAni.loadAnimation("ani/ComputerAni.ani")
         this.addChild(this.ComputerAni)
-        this.ComputerAni.pos(222, 6548)
+        this.ComputerAni.pos(240, 6545)
 
         this.MedalAni = new Laya.Animation()
         this.MedalAni.loadAnimation("ani/MedalAni.ani")
@@ -188,10 +188,10 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.addChild(this.text2012Ani)
         this.text2012Ani.pos(248, 8797)
 
-        this.WaterRightAni = new Laya.Animation()
-        this.WaterRightAni.loadAnimation("ani/WaterRightAni.ani")
-        this.addChild(this.WaterRightAni)
-        this.WaterRightAni.pos(370, 9100)
+        // this.WaterRightAni = new Laya.Animation()
+        // this.WaterRightAni.loadAnimation("ani/WaterRightAni.ani")
+        // this.addChild(this.WaterRightAni)
+        // this.WaterRightAni.pos(370, 9100)
 
         this.BoardAni = new Laya.Animation()
         this.BoardAni.loadAnimation("ani/BoardAni.ani")
@@ -201,12 +201,12 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.WallAni = new Laya.Animation()
         this.WallAni.loadAnimation("ani/WallAni.ani")
         this.addChild(this.WallAni)
-        this.WallAni.pos(280, 9299)
+        this.WallAni.pos(285, 9310)
 
         this.GogglesAni = new Laya.Animation()
         this.GogglesAni.loadAnimation("ani/GogglesAni.ani")
         this.addChild(this.GogglesAni)
-        this.GogglesAni.pos(362, 9714)
+        this.GogglesAni.pos(355, 9714)
 
         this.WaterLeftAni = new Laya.Animation()
         this.WaterLeftAni.loadAnimation("ani/WaterLeftAni.ani")
@@ -216,7 +216,7 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.WinManAni = new Laya.Animation()
         this.WinManAni.loadAnimation("ani/WinManAni.ani")
         this.addChild(this.WinManAni)
-        this.WinManAni.pos(254, 10500)
+        this.WinManAni.pos(254, 10600)
         //page5
         this.ScoreboardAni = new Laya.Animation()
         this.ScoreboardAni.loadAnimation("ani/ScoreboardAni.ani")
@@ -328,9 +328,9 @@ export default class Screen1BackGround extends Laya.Sprite {
             case "waterLeft":
                 this.WaterLeftAni.gotoAndStop(10);
                 break;
-            case "waterRight":
-                this.WaterRightAni.gotoAndStop(10);
-                break;
+            // case "waterRight":
+            //     this.WaterRightAni.gotoAndStop(10);
+            //     break;
             case "whistle":
                 this.WhistleAni.gotoAndStop(0);
                 break;
@@ -425,9 +425,9 @@ export default class Screen1BackGround extends Laya.Sprite {
             case "waterLeft":
                 this.WaterLeftAni.play(0, false);
                 break;
-            case "waterRight":
-                this.WaterRightAni.play(0, false);
-                break;
+            // case "waterRight":
+            //     this.WaterRightAni.play(0, false);
+            //     break;
             case "whistle":
                 this.WhistleAni.play(0, false);
                 break;
@@ -495,8 +495,8 @@ export default class Screen1BackGround extends Laya.Sprite {
                 return this.WallAni.isPlaying;
             case "waterLeft":
                 return this.WaterLeftAni.isPlaying;
-            case "waterRight":
-                return this.WaterRightAni.isPlaying;
+            // case "waterRight":
+            //     return this.WaterRightAni.isPlaying;
             case "whistle":
                 return this.WhistleAni.isPlaying;
             case "win":
@@ -588,9 +588,9 @@ export default class Screen1BackGround extends Laya.Sprite {
             case "waterLeft":
                 this.WaterLeftAni.visible = visible;
                 break;
-            case "waterRight":
-                this.WaterRightAni.visible = visible;
-                break;
+            // case "waterRight":
+            //     this.WaterRightAni.visible = visible;
+            //     break;
             case "whistle":
                 this.WhistleAni.visible = visible;
                 break;
@@ -658,8 +658,8 @@ export default class Screen1BackGround extends Laya.Sprite {
                 return this.WallAni.visible;
             case "waterLeft":
                 return this.WaterLeftAni.visible;
-            case "waterRight":
-                return this.WaterRightAni.visible;
+            // case "waterRight":
+            //     return this.WaterRightAni.visible;
             case "whistle":
                 return this.WhistleAni.visible;
             case "win":

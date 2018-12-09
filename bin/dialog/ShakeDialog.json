@@ -1,0 +1,1 @@
+{"type":"Dialog","props":{"width":512,"height":1000},"compId":2,"child":[{"type":"Box","props":{"y":201,"x":0,"width":500,"var":"box","top":0,"height":2000},"compId":4,"child":[{"type":"Sprite","props":{"y":300,"x":141,"texture":"view/shake.jpg"},"compId":3}]}],"loadList":["view/shake.jpg"],"loadList3D":[]}

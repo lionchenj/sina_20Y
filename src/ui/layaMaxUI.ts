@@ -3,6 +3,15 @@ import View=Laya.View;
 import Dialog=Laya.Dialog;
 import Scene=Laya.Scene;
 export module ui.dialog {
+    export class LoadingDialogUI extends Dialog {
+		public tipLabel:Laya.Label;
+		public loadingProgressBar:Laya.ProgressBar;
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("dialog/LoadingDialog");
+        }
+    }
     export class QuestionDialogUI extends Dialog {
 		public resultAImg:Laya.Sprite;
 		public resultCImg:Laya.Sprite;
@@ -17,6 +26,24 @@ export module ui.dialog {
         createChildren():void {
             super.createChildren();
             this.loadScene("dialog/QuestionDialog");
+        }
+    }
+    export class ScrollDialogUI extends Dialog {
+		public tipImage:Laya.Sprite;
+		public blackClickImage:Laya.Sprite;
+		public whiteClickImage:Laya.Sprite;
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("dialog/ScrollDialog");
+        }
+    }
+    export class ShakeDialogUI extends Dialog {
+		public box:Laya.Box;
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("dialog/ShakeDialog");
         }
     }
 }
