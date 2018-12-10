@@ -187,7 +187,7 @@ class Main {
 		this.running.pos(250, 200)	// 初始位置
 		Laya.stage.addChild(this.running)
 		this.swimming = new swimming()
-		this.swimming.pos(250,700)	// 初始位置
+		this.swimming.pos(256,300)	// 初始位置
 		Laya.stage.addChild(this.swimming)
 		this.page3run = new page3run()
         this.page3run.pos(300, 500) // 初始位置
@@ -386,7 +386,7 @@ class Main {
 			this.running.goPath(81)
 			this.running.hide();
 		}
-		if (this.screen1BackGround.y <= -3700 && this.screen1BackGround.y >= -3850) {
+		if (this.screen1BackGround.y <= -3700 && this.screen1BackGround.y >= -4000) {
 			if (!this.screen1BackGround.isAniPlaying("dumbbell")) {
 				this.screen1BackGround.playAni("dumbbell")
 			}
@@ -405,7 +405,7 @@ class Main {
 				this.screen1BackGround.stopAni("equipment")
 			}
 		}
-		if (this.screen1BackGround.y <= -4300 && this.screen1BackGround.y >= -4450) {
+		if (this.screen1BackGround.y <= -4200 && this.screen1BackGround.y >= -4350) {
 			if (!this.screen1BackGround.isAniPlaying("clock")) {
 				this.screen1BackGround.playAni("clock")
 			}
@@ -414,7 +414,7 @@ class Main {
 				this.screen1BackGround.stopAni("clock")
 			}
 		}
-		if (this.screen1BackGround.y <= -4610 && this.screen1BackGround.y >= -4710) {
+		if (this.screen1BackGround.y <= -4610 && this.screen1BackGround.y >= -4760) {
 			if (!this.screen1BackGround.isAniPlaying("text2004")) {
 				this.screen1BackGround.playAni("text2004")
 			}
@@ -423,7 +423,7 @@ class Main {
 				this.screen1BackGround.stopAni("text2004")
 			}
 		}
-		if (this.screen1BackGround.y <= -4800 && this.screen1BackGround.y >= -4810) {
+		if (this.screen1BackGround.y <= -4800 && this.screen1BackGround.y >= -5000) {
 			if (!this.screen1BackGround.isAniPlaying("electricman")) {
 				this.screen1BackGround.playAni("electricman")
 			}
@@ -432,7 +432,7 @@ class Main {
 				this.screen1BackGround.stopAni("electricman")
 			}
 		}
-		if (this.screen1BackGround.y <= -5070 && this.screen1BackGround.y >= -5200) {
+		if (this.screen1BackGround.y <= -5300 && this.screen1BackGround.y >= -6000) {
 			if (!this.screen1BackGround.isAniPlaying("liuxiang")) {
 				this.screen1BackGround.playAni("liuxiang")
 			}

@@ -11,7 +11,7 @@ export default class Swimming extends Laya.Sprite {
     init(): void {
             
         this.bodyAni = new Laya.Animation()
-        this.bodyAni.loadAnimation("ani/swimming.ani")
+        this.bodyAni.loadAnimation("ani/swimmingAni.ani")
         this.addChild(this.bodyAni)
         
     }
