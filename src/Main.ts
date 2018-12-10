@@ -1,6 +1,10 @@
 import GameConfig from "./GameConfig";
 import Screen1BackGround from "./Screen1BackGround";
 import Football from "./Football";
+import Basketball from "./basketball";
+import running from "./running";
+import swimming from "./swimming";
+import page3run from "./page3_runman";
 import { getFootballX } from "./FootballPath";
 import { QuestionDialog } from "./QuestionDialog";
 import Constants from "./Constants";
@@ -10,28 +14,36 @@ import ShakeDialog from "./ShakeDialog";
 import ScrollDialog, { TipType } from "./ScrollDialog";
 class Main {
 	private football: Football
+	private basketball: Basketball
+	private running: running
+	private swimming: swimming
+	private page3run: page3run
+	private y = 0;
+	
+
 	private screen1BackGround: Screen1BackGround
 	private dragRegion: Laya.Rectangle
 
-	private shakeCount:number = 0;
+	private shakeCount: number = 0;
 	private hasPlayShotAni = false
-	
+
 
 	private console: Laya.Text;
 
 
 	private showQuestionIndexList = new Array<number>()	// 已经显示的问题index列表
 	private showingDialog = false
-	
+
 
 	private loadingDialog: LoadingDialog	// 显示加载进度条
 	private shakeDialog: ShakeDialog		// 显示摇一摇提示
+	private bgmSoundChannel: Laya.SoundChannel
 
 
 	constructor() {
 		// warning: 第三个参数不要使用WebGL，当背景太长的时候在iPhone上会有非常严重的锯齿
 		Laya.init(Constants.stageWidth, Constants.stateHeight, Laya[""]);
-	
+
 		Laya["Physics"] && Laya["Physics"].enable();
 		Laya["DebugPanel"] && Laya["DebugPanel"].enable();
 		Laya.stage.scaleMode = Constants.scaleMode;
@@ -53,19 +65,19 @@ class Main {
 		UIConfig.popupBgColor = "#000000"
 		UIConfig.popupBgAlpha = 0.8
 		UIConfig.closeDialogOnSide = false
-	
+
 
 		Laya.stage.bgColor = "white"
-		
-	
+
+
 
 		this.loadProgessAssets()
 
 		// 需要显示调试信息可以打开这里
 		this.showConsoleText(false);
 
-		
-	
+
+
 	}
 
 	onVersionLoaded(): void {
@@ -129,6 +141,11 @@ class Main {
 			type: Laya.Loader.SOUND
 		})
 
+		assets.push({
+			url: Constants.soundBgm,
+			type: Laya.Loader.SOUND
+		})
+
 
 		// 预加载资源
 		Laya.loader.load(assets, Laya.Handler.create(this, this.onAssetsLoaded), Laya.Handler.create(this, this.onAssetsLoading, null, false))
@@ -138,7 +155,7 @@ class Main {
 	// 必需先加载进度条资源才能显示进度条
 	onProgressAssetsLoaded(): void {
 		// 显示进度条
-		
+
 		this.loadingDialog = new LoadingDialog()
 		this.loadingDialog.popup()
 		this.loadOtherAssets()
@@ -163,6 +180,18 @@ class Main {
 		this.football = new Football()
 		this.football.pos(327, 233)	// 初始位置
 		Laya.stage.addChild(this.football)
+		this.basketball = new Basketball()
+		this.basketball.pos(300, 500)	// 初始位置
+		Laya.stage.addChild(this.basketball)
+		this.running = new running()
+		this.running.pos(250, 200)	// 初始位置
+		Laya.stage.addChild(this.running)
+		this.swimming = new swimming()
+		this.swimming.pos(250,700)	// 初始位置
+		Laya.stage.addChild(this.swimming)
+		this.page3run = new page3run()
+        this.page3run.pos(300, 500) // 初始位置
+        Laya.stage.addChild(this.page3run)
 		console.log("onAssetsLoaded", Laya.stage.height, Laya.Browser.height, Laya.Browser.clientHeight)
 
 		// 计算背景可拖动区域
@@ -171,6 +200,9 @@ class Main {
 
 		// Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onMouseMove)
 		Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onStartDrag)
+
+		// 播放背景音乐
+		// this.bgmSoundChannel =  Laya.SoundManager.playMusic(Constants.soundBgm, 0)
 	}
 
 	onError(err: string): void {
@@ -182,7 +214,7 @@ class Main {
 		// 始终保持主角和鼠标位置一致
 		// this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY)
 		// console.log("onMouseMove", Laya.stage.mouseX, Laya.stage.mouseY)
-		console.log(`map[${Laya.stage.mouseY}] = ${Laya.stage.mouseX}`)
+		// console.log(`map[${this.screen1BackGround.y}] = ${Laya.stage.mouseX}`)
 		this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY)
 	}
 
@@ -223,16 +255,19 @@ class Main {
 		// 		this.console.text += '没有显示过射门动画\n';
 		// 		this.screen1BackGround.stopDrag()
 		// 		// 显示过摇一摇提示
-		// 		this.showShakeDialog()			
+		// 		this.showShakeDialog()
 		// 	}
 		// }
-
+		// if (this.screen1BackGround.y <= -5289) {
+		// 		this.showTipDialog("click_black");
+		// 		this.screen1BackGround.stopDrag()
+		// 		return 
+		// }
 
 		if (this.screen1BackGround.y <= -800) { // 隐藏足球
 			this.football.hide()
 		} else {
 			this.football.show()
-
 			// 移动足球位置
 			// const y = -this.screen1BackGround.y + 232
 			let y: number = 0;
@@ -260,7 +295,6 @@ class Main {
 			} else {
 				this.football.pos(x, y)
 			}
-
 			// 判断足球是否需要旋转
 			if (this.screen1BackGround.y <= -585) {
 				this.football.stopRotate()
@@ -268,7 +302,6 @@ class Main {
 				this.football.playRotate()
 			}
 		}
-
 		// 判断是否需要播放cup ani
 		if (this.screen1BackGround.y <= -300 && this.screen1BackGround.y >= -450) {
 			if (!this.screen1BackGround.isAniPlaying("cup")) {
@@ -290,8 +323,6 @@ class Main {
 				this.screen1BackGround.stopAni("whistle")
 			}
 		}
-
-
 		if (this.screen1BackGround.y <= -300 && this.screen1BackGround.y >= -450) {
 			if (!this.screen1BackGround.isAniPlaying("whistle")) {
 				this.screen1BackGround.playAni("whistle")
@@ -330,8 +361,9 @@ class Main {
 			}
 		}
 
+		const y = -this.screen1BackGround.y + 232;
 		//page2
-		if (this.screen1BackGround.y <= -3490 && this.screen1BackGround.y >= -3690) {
+		if (this.screen1BackGround.y <= -3490 && this.screen1BackGround.y >= -3515) {
 			if (!this.screen1BackGround.isAniPlaying("page02Start")) {
 				this.screen1BackGround.playAni("page02Start")
 			}
@@ -339,6 +371,20 @@ class Main {
 			if (this.screen1BackGround.isAniPlaying("page02Start")) {
 				this.screen1BackGround.stopAni("page02Start")
 			}
+		}
+		if (this.screen1BackGround.y <= -3515 && this.screen1BackGround.y >= -4415) {
+			this.running.show();
+			let z = parseInt((-this.screen1BackGround.y - 3515)/10+'');
+			console.log('z: '+z)
+			if(z%10 == 0){
+				this.y = z; 
+			};
+			console.log('y: '+this.y)
+			this.running.goPath(z-0)
+		}else{
+			this.y = 0;
+			this.running.goPath(81)
+			this.running.hide();
 		}
 		if (this.screen1BackGround.y <= -3700 && this.screen1BackGround.y >= -3850) {
 			if (!this.screen1BackGround.isAniPlaying("dumbbell")) {
@@ -398,6 +444,25 @@ class Main {
 
 
 		//page3
+		if (this.screen1BackGround.y <= -6300 && this.screen1BackGround.y >= -6900) {
+            this.page3run.show();
+            let z = parseInt((-this.screen1BackGround.y - 6300)/10+'');
+            console.log('z: '+z)
+            if(z%10 == 0){
+                this.y = z; 
+            };
+            console.log('y: '+this.y)
+            this.page3run.goPath(z-0);      
+        }else{
+            this.y = 0;
+            this.page3run.hide();   
+        }
+		if (this.screen1BackGround.y <= -6498 && this.screen1BackGround.y >= -6598) {
+			this.screen1BackGround.playAni("running")
+		}
+		if (this.screen1BackGround.y <= -6725 && this.screen1BackGround.y >= -6825) {
+			this.screen1BackGround.playAni("running2")
+		}
 		if (this.screen1BackGround.y <= -6010 && this.screen1BackGround.y >= -6380) {
 			if (!this.screen1BackGround.isAniPlaying("computer")) {
 				this.screen1BackGround.playAni("computer")
@@ -454,6 +519,20 @@ class Main {
 			if (this.screen1BackGround.isAniPlaying("heart")) {
 				this.screen1BackGround.stopAni("heart")
 			}
+		}
+		
+		if (this.screen1BackGround.y <= -8270 && this.screen1BackGround.y >= -10120) {
+			this.swimming.show();
+			let z = parseInt((-this.screen1BackGround.y - 8270)/10+'');
+			console.log('z: '+z)
+			if(z%10 == 0){
+				this.y = z; 
+			};
+			console.log('y: '+this.y)
+			this.swimming.goPath(z-0)
+		}else{
+			this.y = 0;
+			this.swimming.hide();
 		}
 		if (this.screen1BackGround.y <= -8360 && this.screen1BackGround.y >= -8500) {
 			if (!this.screen1BackGround.isAniPlaying("text2012")) {
@@ -520,7 +599,19 @@ class Main {
 		}
 
 		//page5
-
+		if (this.screen1BackGround.y <= -11050 && this.screen1BackGround.y >= -11650) {
+			this.basketball.show();
+			let z = parseInt((-this.screen1BackGround.y - 11050)/10+'');
+			console.log('z: '+z)
+			if(z%10 == 0){
+				this.y = z; 
+			};
+			console.log('y: '+this.y)
+			this.basketball.goPath(z-0);		
+		}else{
+			this.y = 0;
+			this.basketball.hide();	
+		}
 		if (this.screen1BackGround.y <= -10536 && this.screen1BackGround.y >= -10748) {
 			if (!this.screen1BackGround.isAniPlaying("ball")) {
 				this.screen1BackGround.playAni("ball")
@@ -539,7 +630,7 @@ class Main {
 				this.screen1BackGround.stopAni("scoreboard")
 			}
 		}
-		if (this.screen1BackGround.y <= -11127 && this.screen1BackGround.y >= -11254) {
+		if (this.screen1BackGround.y <= -11127 && this.screen1BackGround.y >= -11300) {
 			if (!this.screen1BackGround.isAniPlaying("shoes")) {
 				this.screen1BackGround.playAni("shoes")
 			}
@@ -577,7 +668,7 @@ class Main {
 			this.showingDialog = false
 			this.shakeDialog = null
 		}
-		this.shakeCount ++
+		this.shakeCount++
 		this.console.text += "设备摇晃了" + this.shakeCount + "次\n";
 		if (this.shakeCount >= 3) {
 			Laya.Shake.instance.stop()
@@ -588,23 +679,24 @@ class Main {
 				return
 			}
 			this.screen1BackGround.playAni("shot")
-			
+
 			this.hasPlayShotAni = true
 			this.console.text += "播放射门动画";
 
 			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
-			Laya.SoundManager.playSound(Constants.sound0)
-			// Laya.SoundManager.playSound(Constants.sound1)
-			// Laya.SoundManager.playSound(Constants.sound2)
-			// Laya.SoundManager.playSound(Constants.sound3)
-			// Laya.SoundManager.playSound(Constants.sound4)
+			this.playSound(Constants.sound0)
+			// this.playSound(Constants.sound1)
+			// this.playSound(Constants.sound2)
+			// this.playSound(Constants.sound3)
+			// this.playSound(Constants.sound4)
+
 		}
 	}
 
 	onQuestionDialogClose(index: string, type: string): void {
 		console.log("onQuestionDialogClose", type, index)
 		const right = (type === "true") // TODO: 计分
-	
+
 		this.showingDialog = false
 	}
 
@@ -613,7 +705,7 @@ class Main {
 		const offset = Laya.Browser.clientHeight
 		const hasShowLength = this.showQuestionIndexList.length
 		// if (length >= 10) {
-			if(y){
+		if (y) {
 			return false
 		}
 		if (y > offset - QuestionShowY[hasShowLength]) {
@@ -662,42 +754,52 @@ class Main {
 		this.shakeDialog.popup()
 
 		// 监听摇一摇
-	
+
 		Laya.Shake.instance.start(5, 500)
 		Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake)
 		this.console.text += '开始接收设备摇动\n';
-		
+
 	}
 
 
 	private showTipDialog(tipType: TipType): void {
+		this.showingDialog = true
 		UIConfig.closeDialogOnSide = true
 		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
 		const scrollDialog = new ScrollDialog(tipType)
-	
+
 		scrollDialog.popup(true)
+		scrollDialog.closeHandler = Laya.Handler.create(this, this.onTipDialogClose)
 	}
 
-	private onMaskLayer(item: number): void {
-		alert("onMaskLayer:" + item)
+	private onTipDialogClose() {
+		this.showingDialog = false
 	}
 
-	private showConsoleText(visible: boolean):void
-		{
-			this.console = new Laya.Text();
-			Laya.stage.addChild(this.console);
-			this.console.zOrder = 10001
-			this.console.y =  10;
-			this.console.width = Laya.stage.width;
-			this.console.height = 200;
-			this.console.color = "#FFFFFF";
-			this.console.fontSize = 20;
-			this.console.leading = 10;
-			this.console.bgColor = "#000000"
-			this.console.visible = visible
-			
-		}
-	
+	private playSound(url: string) {
+		this.bgmSoundChannel.pause()
+		Laya.SoundManager.playSound(url, 1, Laya.Handler.create(this, this.onSoundCompete))
+	}
+
+	private onSoundCompete() {
+		this.bgmSoundChannel.resume()
+	}
+
+	private showConsoleText(visible: boolean): void {
+		this.console = new Laya.Text();
+		Laya.stage.addChild(this.console);
+		this.console.zOrder = 10001
+		this.console.y = 10;
+		this.console.width = Laya.stage.width;
+		this.console.height = 200;
+		this.console.color = "#FFFFFF";
+		this.console.fontSize = 20;
+		this.console.leading = 10;
+		this.console.bgColor = "#000000"
+		this.console.visible = visible
+
+	}
+
 }
 //激活启动类
 new Main();

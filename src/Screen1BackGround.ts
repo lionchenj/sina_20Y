@@ -269,7 +269,7 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.text2012Ani.gotoAndStop(10);
                 break;
             case "ball":
-                this.BallAni.gotoAndStop(0);
+                this.BallAni.gotoAndStop(20);
                 break;
             case "ballMan":
                 this.BallManAni.gotoAndStop(0);
@@ -299,7 +299,7 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.GogglesAni.gotoAndStop(10);
                 break;
             case "hat":
-                this.HatAni.gotoAndStop(0);
+                this.HatAni.gotoAndStop(20);
                 break;
             case "heart":
                 this.HeartAni.gotoAndStop(0);
@@ -314,10 +314,10 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.page02StartAni.gotoAndStop(30);
                 break;
             case "scoreboard":
-                this.ScoreboardAni.gotoAndStop(0);
+                this.ScoreboardAni.gotoAndStop(20);
                 break;
             case "shoes":
-                this.ShoesAni.gotoAndStop(0);
+                this.ShoesAni.gotoAndStop(20);
                 break;
             case "stage":
                 this.StageAni.gotoAndStop(10);

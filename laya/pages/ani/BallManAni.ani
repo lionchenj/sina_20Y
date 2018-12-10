@@ -327,6 +327,15 @@
                                 "index":20
                             },
                             {
+                                "value":-136.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "label":null,
+                                "key":"y",
+                                "index":25
+                            },
+                            {
                                 "value":-39,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
@@ -350,6 +359,15 @@
                                 "target":10,
                                 "key":"x",
                                 "index":20
+                            },
+                            {
+                                "value":38.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":10,
+                                "label":null,
+                                "key":"x",
+                                "index":25
                             },
                             {
                                 "value":42,
