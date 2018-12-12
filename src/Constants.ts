@@ -13,7 +13,7 @@ export default class Constants {
 
 
     static stageWidth = 512
-    static stateHeight = Constants.background1Height + Constants.background2Height + Constants.background3Height + Constants.background4Height + Constants.background5Height
+    static stateHeight = Constants.background1Height + Constants.background2Height + Constants.background3Height + Constants.background4Height + Constants.background5Height + 3880
     static scaleMode: string = "noborder";
     static screenMode: string = "vertical";
 

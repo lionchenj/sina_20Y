@@ -1,14 +1,10 @@
 D .
 D bg
-S 04C9C343 background1.png
-R 2C592419 background2.jpg
-S 379829CF background2.png
-R 48A7742F background3.jpg
-S 3A03D21C background3.png
-R E73A3C29 background4.jpg
+S E3DFAEC8 background1.png
+S 66C1BFE4 background2.png
+S E3DCDEDF background3.png
 S 7F85D532 background4.png
-R 703C0DC0 background5.jpg
-R 1DAF2C51 background5.png
+R BF0C9A51 background5.png
 D comp
 P 9401CC40 blank.png
 P B03390E5 btn_close.png
@@ -51,11 +47,13 @@ P 4088D7EE football.png
 P 3EC8D04E miH.png
 P F36B6511 miL.png
 P C107FF1B miR.png
+P CC698B5C page1_end.png
 P 20ACD7F1 page1foot.png
 P 298F4A0D page2_2004.png
 P 6233C2F7 page2_clock.png
 P E6409035 page2_dumbbell.png
 P EA21482F page2_electric.png
+P 35CFCADA page2_end.png
 P E803210A page2_equipment.png
 P 0E703AF7 page2_jump.png
 P 93CD4CCD page2_Ljump.png
@@ -63,10 +61,11 @@ P 41B506CD page2_Lrun.png
 P DA92FF0E page2_run.png
 P 3CB1525D page2_running_L.png
 P F3F955D1 page2_running_R.png
-P 16836C8F page2_start.png
+P 7CB6514F page2_start.png
 P A18C495E page3_2008.png
 S 3A03D21C page3_bg
 P 223ECB5D page3_computer.png
+P EF8DB0BD page3_end.png
 P 523DC900 page3_fire.png
 P CD698E11 page3_medal.png
 P 77CF04F0 page3_nest.png
@@ -75,15 +74,18 @@ P F3F955D1 page3_runman2.png
 P D7D19D58 page3_runman3.png
 P E1375967 page3_runman4.png
 P F5EC9CCC page3_runman5.png
+P 74648B90 page3_start.png
 P E34B017C page4_2010.png
 S 7F85D532 page4_bg.png
 P A1A9770D page4_board.png
+P E6E5EF28 page4_end.png
 P 15CBC823 page4_goggles.png
 P C1C3B508 page4_heart.png
 P 3DCF417F page4_man.png
 P 792FAE04 page4_man1.png
 P 43EB787F page4_man2.png
 P 9EEEFFAA page4_man3.png
+P E91A3387 page4_start.png
 P 3DCF417F page4_swimming_L.png
 P 792FAE04 page4_swimming_R.png
 P 1D446663 page4_wall.png
@@ -100,6 +102,7 @@ P E3F17C01 page5_man3.png
 P 3CC0E114 page5_man3_1.png
 P 9AA6ED6C page5_scoreboard.png
 P 1B859DEC page5_shoes.png
+P 564F34E1 page5_start.png
 P F3117D1C page_stage.png
 P 7FD2DFD0 playH.png
 P EB7B0F80 playL.png
@@ -123,14 +126,3 @@ P 15909C3C right.png
 P D3EC3E7F scroll_tip.jpg
 P A3C34F45 shake.jpg
 P 1A36E3D8 wrong.png
-D sports/page2
-P 298F4A0D page2_2004.png
-P 6233C2F7 page2_clock.png
-P E6409035 page2_dumbbell.png
-P EA21482F page2_electric.png
-P E803210A page2_equipment.png
-P 0E703AF7 page2_jump.png
-P 93CD4CCD page2_Ljump.png
-P 41B506CD page2_Lrun.png
-P DA92FF0E page2_run.png
-P 16836C8F page2_start.png
