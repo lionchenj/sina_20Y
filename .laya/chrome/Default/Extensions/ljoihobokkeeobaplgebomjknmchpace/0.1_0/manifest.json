@@ -1,0 +1,15 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkPGiVpwCeSrsCZDg7t3wOV2YOi/0pNgd5mGj0i7xnPQPT782S6azXjsNsvVgCqhIJCBtqN+UoqUS2+7i/yR+6jb4zEIr9QyexbEYiUC+dgNldKREnfwasibSDS9iSuBbIB6kbs/umXhgk7ODDQLKXgZdkb89tG0PepivBkIh9HQCOPLuNIiPdwj/7a2nI5RktTrdm4AA5sWvmEjL/nVjz5K/YSTkOIPyqxYFxcOhGHNzCZTOBDRYmuehpvEkoqH5N7WPaZTEa/Kst/WimYA3gGsUl9DwgaFQ1VusceXGFE+g4VEuqSogZTgwkBGX8lG7CSlVvlqOc3DV/fEzgq3TAwIDAQAB",
+   "manifest_version": 2,
+   "name": "Full Window YouTube",
+   "permissions": [ "activeTab" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.1"
+}

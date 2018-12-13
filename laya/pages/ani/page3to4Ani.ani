@@ -57,7 +57,7 @@
                                 "index":0
                             },
                             {
-                                "value":0,
+                                "value":-225,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":3,
@@ -125,7 +125,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleY",
-                                "index":174
+                                "index":156
                             }],
                         "scaleX":[
                             {
@@ -151,7 +151,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleX",
-                                "index":174
+                                "index":156
                             }],
                         "anchorY":[
                             {
@@ -213,7 +213,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"alpha",
-                                "index":174
+                                "index":156
                             }]
                     }
                 },
@@ -230,12 +230,12 @@
                                 "index":0
                             },
                             {
-                                "value":-500,
+                                "value":-430,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
                                 "key":"y",
-                                "index":174
+                                "index":156
                             }],
                         "x":[
                             {
@@ -245,6 +245,14 @@
                                 "target":4,
                                 "key":"x",
                                 "index":0
+                            },
+                            {
+                                "value":-20,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"x",
+                                "index":156
                             }],
                         "skin":[
                             {
@@ -270,7 +278,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"scaleY",
-                                "index":174
+                                "index":156
                             }],
                         "scaleX":[
                             {
@@ -287,7 +295,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"scaleX",
-                                "index":174
+                                "index":156
                             }],
                         "anchorY":[
                             {
@@ -330,7 +338,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"alpha",
-                                "index":174
+                                "index":156
                             }]
                     }
                 }],

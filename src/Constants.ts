@@ -23,6 +23,12 @@ export default class Constants {
     static sound3 = "res/sound/3.mp3"
     static sound4 = "res/sound/4.mp3"
     static soundBgm = "res/sound/bgm.mp3"
+    static soundBgm8 = "res/sound/bgm8.mp3"
+    
+    static score1 = "view/score_1.jpg"
+    static score2 = "view/score_2.jpg"
+    static score3 = "view/score_3.jpg"
+    static score4 = "view/score_4.jpg"
 
 
 

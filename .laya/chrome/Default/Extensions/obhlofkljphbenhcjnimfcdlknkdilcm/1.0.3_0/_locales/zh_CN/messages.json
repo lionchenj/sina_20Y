@@ -1,0 +1,10 @@
+{
+   "appDescription": {
+      "description": "The description of the application",
+      "message": "百度翻译官方出品，支持中英互译。在浏览器任意界面，使用鼠标截图，即可对图片上的文字进行翻译，双语对照查看。"
+   },
+   "appName": {
+      "description": "The name of the application",
+      "message": "百度截图翻译插件"
+   }
+}

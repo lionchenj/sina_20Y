@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 800px;
+    height: 500px;
+    overflow: hidden;
+    font-size: 0;
+    transition: width .2s ease-in-out, height .2s ease-in-out;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#tips {
+    display: none;
+    font-size: initial;
+    text-align: center;
+}
+
+#close {
+    background: #3385ff;
+    color: #fff;
+    border: none;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    width: 150px;
+    margin-top: 80px;
+    outline: none !important;
+}
+#close:hover {
+    opacity: .8;
+}
+
+.hasLogined {
+    height: 260px;
+    width: 300px;
+}
+
+.hasLogined #login {
+    display: none;
+}
+.hasLogined #tips {
+    display: block;
+}

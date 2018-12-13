@@ -15,7 +15,10 @@ export default class LoadingDialog extends ui.dialog.LoadingDialogUI {
 
     public changeProgressValue(progress: number) {
         this.progress = progress
-        this.loadingProgressBar.value = progress
+        if (this.loadingProgressBar) {
+            this.loadingProgressBar.value = progress
+        }
+        
     }
 
     public updateTip(tip: string) {

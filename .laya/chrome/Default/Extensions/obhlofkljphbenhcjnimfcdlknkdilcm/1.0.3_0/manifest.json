@@ -1,0 +1,34 @@
+{
+   "background": {
+      "persistent": true,
+      "scripts": [ "scripts/background.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "images/icon-19.png",
+         "38": "images/icon-38.png"
+      },
+      "default_title": "OCR Translate"
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "css": [ "bower_components/Jcrop/css/jquery.Jcrop.css", "styles/content.css" ],
+      "js": [ "bower_components/jquery/dist/jquery.js", "bower_components/Jcrop/js/jquery.Jcrop.js", "bower_components/fabric.js/dist/fabric.js", "scripts/content/ocrtcapture.js", "scripts/content/ocrtclipboard.js", "scripts/content/ocrtpanel.js", "scripts/content/ocrtimgedit.js", "scripts/content/contentscript.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self'; object-src 'self'",
+   "default_locale": "en",
+   "description": "__MSG_appDescription__",
+   "icons": {
+      "128": "images/icon-128.png",
+      "16": "images/icon-16.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzPe4wJ9xfVKXNDYbMexEwQIvZKI/FFsV7ybZIeMNP9pzY4n1MtN/BbmsGiDCwgtChVris5bBJEF6SqK7LgWoFLXs76zUeT3otEZChMOFHgCLuNPTh02KDdZsJuXEF3jimKDsMrYw60BoSdz35mw8O1pYZjyXZaWLq/km6/AaLBduAsJe7BfmEGUpWRnWbaqzJivZzfb2u+iVUKP6zNsj7MFW2KsDMc+EORgmeJntIDeHEvdWhic9WxmcWB4IC7XMXAYWOpoRpeIIcohzX/fLteGerHNxFyDcTr9QhmfisgsMYabp2hma8/wl8OyY3Ql7x+gljS5/hceK3GwTgK5MTQIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_appName__",
+   "permissions": [ "background", "cookies", "management", "tabs", "\u003Call_urls>", "tabCapture", "clipboardRead", "webRequest", "webRequestBlocking" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.3",
+   "web_accessible_resources": [ "font/iconfont.ttf" ]
+}

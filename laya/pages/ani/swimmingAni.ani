@@ -34,7 +34,7 @@
                     "keyframes":{
                         "y":[
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -43,7 +43,7 @@
                                 "index":0
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -52,7 +52,7 @@
                                 "index":5
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -61,7 +61,7 @@
                                 "index":10
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -70,7 +70,7 @@
                                 "index":30
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -79,7 +79,7 @@
                                 "index":35
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -88,7 +88,7 @@
                                 "index":40
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -97,7 +97,7 @@
                                 "index":50
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -106,7 +106,7 @@
                                 "index":55
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -115,7 +115,7 @@
                                 "index":60
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -124,7 +124,7 @@
                                 "index":80
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -133,7 +133,7 @@
                                 "index":85
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -142,7 +142,7 @@
                                 "index":90
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -151,7 +151,7 @@
                                 "index":115
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -160,7 +160,7 @@
                                 "index":120
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -169,7 +169,7 @@
                                 "index":125
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -178,7 +178,7 @@
                                 "index":145
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -187,7 +187,7 @@
                                 "index":150
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -196,7 +196,7 @@
                                 "index":155
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -205,7 +205,7 @@
                                 "index":170
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
@@ -214,7 +214,7 @@
                                 "index":175
                             },
                             {
-                                "value":0,
+                                "value":-220,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,

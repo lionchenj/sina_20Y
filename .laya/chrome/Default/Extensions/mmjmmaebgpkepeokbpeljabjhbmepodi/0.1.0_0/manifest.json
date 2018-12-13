@@ -1,0 +1,29 @@
+{
+   "background": {
+      "page": "lib/chrome/background.html"
+   },
+   "browser_action": {
+      "default_icon": "data/icon16.png",
+      "default_title": "App for Instagram™"
+   },
+   "content_scripts": [ {
+      "css": [ "data/inject.css" ],
+      "matches": [ "*://*.instagram.com/*" ]
+   } ],
+   "description": "An easy-to-use and lite App for Instagram",
+   "homepage_url": "http://mybrowseraddon.com/instagram-app.html",
+   "icons": {
+      "128": "data/icon128.png",
+      "16": "data/icon16.png",
+      "32": "data/icon32.png",
+      "48": "data/icon48.png",
+      "64": "data/icon64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAly0opEwIVfbWxzd+/hSA1Fuvb+ybQPwF6Etn4NjBrbH3YkxddsOlOp+cqnUa0sRWXAyQfyvE+X8a7z30ljwWnHUNFLKeJePNTZuy4jYmogfTJWyyXNHWlZR0gRu6ArJe3KEql649R41idNWCFmvHjjAcazlIxIJwr1Yva0H/WhNoyk/zU4Xf4jbjVOEpAN+Tl3ohThOtKNP0lfJ97qEz2+cVoxyNbfUek2k4S54uRcWm+XwHTOetWrKfQp2XXNVtizmoXKW0uQPGTHZ62skLB9D2DbU2ElHBulmyjXoaqejAyT3YJ1IKd+XdX74ZESwNpt18FKn/YgZiVXVba+G6qwIDAQAB",
+   "manifest_version": 2,
+   "name": "App for Instagram™",
+   "permissions": [ "storage" ],
+   "short_name": "appforinstagram",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.1.0"
+}

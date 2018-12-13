@@ -1,0 +1,10 @@
+{
+   "appDescription": {
+      "description": "The description of the application",
+      "message": "In any interface of the browser, having a screenshot, you will get the translation of the characters in the picture."
+   },
+   "appName": {
+      "description": "The name of the application",
+      "message": "Baidu Screenshot Translation"
+   }
+}

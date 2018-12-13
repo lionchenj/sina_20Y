@@ -16,6 +16,7 @@ import { QuestionData, QuestionItem, QuestionShowY } from "./QuestionData";
 import LoadingDialog from "./LoadingDialog";
 import ShakeDialog from "./ShakeDialog";
 import ScrollDialog, { TipType } from "./ScrollDialog";
+import ScoreResultDialog from "./ScoreResultDialog";
 class Main {
 	private football: Football
 	private basketball: Basketball
@@ -26,7 +27,6 @@ class Main {
 	private page2e3s: page2e3s
 	private page3e4s: page3e4s
 	private page4e5s: page4e5s
-	private y = 0;
 
 
 	private screen1BackGround: Screen1BackGround
@@ -58,6 +58,8 @@ class Main {
 	private shakeDialog4: ShakeDialog		// 显示摇一摇提示
 	private shakeDialog5: ShakeDialog		// 显示摇一摇提示
 	private bgmSoundChannel: Laya.SoundChannel
+
+	private questionScore: number 			// 回答问题的分数
 
 
 	constructor() {
@@ -96,7 +98,7 @@ class Main {
 		// 需要显示调试信息可以打开这里
 		this.showConsoleText(false);
 
-
+		this.questionScore = 0
 
 	}
 
@@ -162,8 +164,28 @@ class Main {
 		})
 
 		assets.push({
-			url: Constants.soundBgm,
+			url: Constants.soundBgm8,
 			type: Laya.Loader.SOUND
+		})
+
+		assets.push({
+			url: Constants.score1,
+			type: Laya.Loader.IMAGE
+		})
+
+		assets.push({
+			url: Constants.score2,
+			type: Laya.Loader.IMAGE
+		})
+
+		assets.push({
+			url: Constants.score3,
+			type: Laya.Loader.IMAGE
+		})
+
+		assets.push({
+			url: Constants.score4,
+			type: Laya.Loader.IMAGE
 		})
 
 
@@ -234,7 +256,7 @@ class Main {
 		Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onStartDrag)
 
 		// 播放背景音乐
-		// this.bgmSoundChannel = Laya.SoundManager.playMusic(Constants.soundBgm, 0)
+		// this.bgmSoundChannel = Laya.SoundManager.playMusic(Constants.soundBgm8, 0)
 	}
 
 	onError(err: string): void {
@@ -428,19 +450,12 @@ class Main {
 			}
 		}
 
-		const y = -this.screen1BackGround.y + 232;
-		if (this.screen1BackGround.y <= -2630 && this.screen1BackGround.y >= -4600) {
+		if (this.screen1BackGround.y <= -2640 && this.screen1BackGround.y >= -4600) {
 			this.page1e2s.show();
 			let z = parseInt((-this.screen1BackGround.y - 2630) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.page1e2s.goPath(z - 0)
 		} else {
-			this.y = 0;
-			this.page1e2s.goPath(90)
 			this.page1e2s.hide();
 		}
 		//page2
@@ -448,15 +463,15 @@ class Main {
 			this.running.show();
 			let z = parseInt((-this.screen1BackGround.y - 4530) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.running.goPath(z - 0)
 		} else {
-			this.y = 0;
 			this.running.goPath(81)
 			this.running.hide();
+		}
+		if (this.screen1BackGround.y <= -4600 && this.screen1BackGround.y >= -5155) {
+			this.screen1BackGround.stopAni("page2_start")
+		} else {
+			this.screen1BackGround.stopAni("page2_start1")
 		}
 		if (this.screen1BackGround.y <= -4522 && this.screen1BackGround.y >= -4621) {
 			if (!this.screen1BackGround.isAniPlaying("dumbbell")) {
@@ -508,30 +523,25 @@ class Main {
 			this.page2e3s.show();
 			let z = parseInt((-this.screen1BackGround.y - 6330) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.page2e3s.goPath(z - 0)
 		} else {
-			this.y = 0;
-			this.page2e3s.goPath(90)
 			this.page2e3s.hide();
 		}
 
 		//page3
+
 		if (this.screen1BackGround.y <= -8200 && this.screen1BackGround.y >= -8950) {
 			this.page3run.show();
 			let z = parseInt((-this.screen1BackGround.y - 8200) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.page3run.goPath(z - 0);
 		} else {
-			this.y = 0;
 			this.page3run.hide();
+		}
+		if (this.screen1BackGround.y <= -8100 && this.screen1BackGround.y >= -8470) {
+			this.screen1BackGround.stopAni("page3_start")
+		} else {
+			this.screen1BackGround.stopAni("page3_start1")
 		}
 		if (this.screen1BackGround.y <= -8348 && this.screen1BackGround.y >= -8415) {
 			if (!this.screen1BackGround.isAniPlaying("medal")) {
@@ -560,23 +570,17 @@ class Main {
 				this.screen1BackGround.stopAni("text2008")
 			}
 		}
-		if (this.screen1BackGround.y <= -9420 && this.screen1BackGround.y >= -11160) {
+		if (this.screen1BackGround.y <= - 9630&& this.screen1BackGround.y >= -11190) {
 			this.page3e4s.show();
-			let z = parseInt((-this.screen1BackGround.y - 9420) / 10 + '');
+			let z = parseInt((-this.screen1BackGround.y - 9630) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.page3e4s.goPath(z - 0)
 		} else {
-			this.y = 0;
-			this.page3e4s.goPath(90)
 			this.page3e4s.hide();
 		}
 
 		//page4
-		if (this.screen1BackGround.y <= -11160 && this.screen1BackGround.y >= -11160) {
+		if (this.screen1BackGround.y <= -11190 && this.screen1BackGround.y >= -11670) {
 			if (!this.screen1BackGround.isAniPlaying("heart")) {
 				this.screen1BackGround.playAni("heart")
 			}
@@ -586,17 +590,12 @@ class Main {
 			}
 		}
 
-		if (this.screen1BackGround.y <= -11030 && this.screen1BackGround.y >= -12880) {
+		if (this.screen1BackGround.y <= -11190 && this.screen1BackGround.y >= -13040) {
 			this.swimming.show();
-			let z = parseInt((-this.screen1BackGround.y - 11030) / 10 + '');
+			let z = parseInt((-this.screen1BackGround.y - 11190) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.swimming.goPath(z - 0)
 		} else {
-			this.y = 0;
 			this.swimming.hide();
 		}
 		if (this.screen1BackGround.y <= -11162 && this.screen1BackGround.y >= -11233) {
@@ -644,18 +643,12 @@ class Main {
 				this.screen1BackGround.stopAni("waterLeft")
 			}
 		}
-		if (this.screen1BackGround.y <= -12960 && this.screen1BackGround.y >= -14820) {
+		if (this.screen1BackGround.y <= -12960 && this.screen1BackGround.y >= -14790) {
 			this.page4e5s.show();
 			let z = parseInt((-this.screen1BackGround.y - 12830) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.page4e5s.goPath(z - 0)
 		} else {
-			this.y = 0;
-			this.page4e5s.goPath(90)
 			this.page4e5s.hide();
 		}
 
@@ -664,16 +657,11 @@ class Main {
 			this.basketball.show();
 			let z = parseInt((-this.screen1BackGround.y - 14930) / 10 + '');
 			console.log('z: ' + z)
-			if (z % 10 == 0) {
-				this.y = z;
-			};
-			console.log('y: ' + this.y)
 			this.basketball.goPath(z - 0);
 		} else {
-			this.y = 0;
 			this.basketball.hide();
 		}
-		if (this.screen1BackGround.y <= -14470 && this.screen1BackGround.y >= -14562) {
+		if (this.screen1BackGround.y <= -14790 && this.screen1BackGround.y >= -15315) {
 			if (!this.screen1BackGround.isAniPlaying("ball")) {
 				this.screen1BackGround.playAni("ball")
 			}
@@ -841,8 +829,27 @@ class Main {
 	onQuestionDialogClose(index: string, type: string): void {
 		console.log("onQuestionDialogClose", type, index)
 		const right = (type === "true") // TODO: 计分
-
+		this.questionScore++
 		this.showingDialog = false
+
+		if (this.showQuestionIndexList.length >= 10) {	// 显示了10条题了
+			// Laya.timer.once(1000, this, this.showScoreResultDialg, [this.questionScore])
+			this.showScoreResultDialg(this.questionScore)
+		}
+
+	}
+
+	private showScoreResultDialg(score: number) {
+		this.showingDialog = true
+		UIConfig.closeDialogOnSide = false
+		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
+		const scoreResultDialog = new ScoreResultDialog(score)
+		scoreResultDialog.popup(true, false)
+		scoreResultDialog.closeHandler = Laya.Handler.create(this, this.onScoreDialogClose)
+	}
+
+	private onScoreDialogClose() {
+		this.showingDialog = true
 	}
 
 	// 判断是否需要显示问题

@@ -1,0 +1,1 @@
+var bodyDom=document.body,closeDom=document.getElementById("close");closeDom.onclick=function(){chrome.runtime.sendMessage({event:"popupStartCrop"}),window.close()},bodyDom.classList.remove("hasLogined"),chrome.runtime.onMessage.addListener(function(a){switch(a.event){case"loginSuccess":bodyDom.classList.add("hasLogined")}});

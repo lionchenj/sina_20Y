@@ -1,10 +1,10 @@
 D .
 D bg
 S E3DFAEC8 background1.png
-S 66C1BFE4 background2.png
-S E3DCDEDF background3.png
-S 7F85D532 background4.png
-R BF0C9A51 background5.png
+S 8C961F7B background2.png
+S ADCED8BC background3.png
+S A33D75AF background4.png
+R 4BB20254 background5.png
 D comp
 P 9401CC40 blank.png
 P B03390E5 btn_close.png
@@ -55,6 +55,7 @@ P E6409035 page2_dumbbell.png
 P EA21482F page2_electric.png
 P 35CFCADA page2_end.png
 P E803210A page2_equipment.png
+P BC43649A page2_head.png
 P 0E703AF7 page2_jump.png
 P 93CD4CCD page2_Ljump.png
 P 41B506CD page2_Lrun.png
@@ -80,12 +81,13 @@ S 7F85D532 page4_bg.png
 P A1A9770D page4_board.png
 P E6E5EF28 page4_end.png
 P 15CBC823 page4_goggles.png
+P 11D7F1EE page4_head.png
 P C1C3B508 page4_heart.png
 P 3DCF417F page4_man.png
 P 792FAE04 page4_man1.png
 P 43EB787F page4_man2.png
 P 9EEEFFAA page4_man3.png
-P E91A3387 page4_start.png
+P 117A02F2 page4_start.png
 P 3DCF417F page4_swimming_L.png
 P 792FAE04 page4_swimming_R.png
 P 1D446663 page4_wall.png
@@ -96,6 +98,7 @@ P 45B7F9A6 page5_2016.png
 P AC7090D9 page5_ball.png
 R 1DAF2C51 page5_bg.png
 P BADE7967 page5_hat.png
+P 64259A7B page5_head.png
 P D8AB30BF page5_man1.png
 P A45B841F page5_man2.png
 P E3F17C01 page5_man3.png
@@ -121,8 +124,23 @@ P 4BAB348E click_tip.png
 P 25235E3A click_tip_white.png
 P 67DE570C d.png
 P 44FB8B00 logo.png
+P 125A71A0 num_0.png
+P 9E244ABB num_1.png
+P E2CBA877 num_10.png
+P 3C035370 num_2.png
+P AFCEC88E num_3.png
+P BABF429D num_4.png
+P 31EB3315 num_5.png
+P C232F7B6 num_6.png
+P F13A353A num_7.png
+P 54084B6A num_8.png
+P 3FEA1257 num_9.png
 P E3DA96CE question_bg.png
 P 15909C3C right.png
+R ECF12729 score_1.jpg
+R E56A327F score_2.jpg
+R 3B8A74CF score_3.jpg
+R 8FC8FADE score_4.jpg
 P D3EC3E7F scroll_tip.jpg
 P A3C34F45 shake.jpg
 P 1A36E3D8 wrong.png

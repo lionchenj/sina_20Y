@@ -28,6 +28,17 @@ export module ui.dialog {
             this.loadScene("dialog/QuestionDialog");
         }
     }
+    export class ResultDialogUI extends Dialog {
+		public bgImageView:Laya.Sprite;
+		public scoreImageView:Laya.Sprite;
+		public onceMoreButton:Laya.Button;
+		public shareButton:Laya.Button;
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.loadScene("dialog/ResultDialog");
+        }
+    }
     export class ScrollDialogUI extends Dialog {
 		public tipImage:Laya.Sprite;
 		public blackClickImage:Laya.Sprite;
