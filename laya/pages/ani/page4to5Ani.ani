@@ -125,7 +125,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleY",
-                                "index":198
+                                "index":169
                             }],
                         "scaleX":[
                             {
@@ -151,7 +151,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleX",
-                                "index":198
+                                "index":169
                             }],
                         "anchorY":[
                             {
@@ -213,7 +213,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"alpha",
-                                "index":198
+                                "index":169
                             }]
                     }
                 },
@@ -235,7 +235,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"y",
-                                "index":198
+                                "index":169
                             }],
                         "x":[
                             {
@@ -270,7 +270,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"scaleY",
-                                "index":198
+                                "index":169
                             }],
                         "scaleX":[
                             {
@@ -287,7 +287,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"scaleX",
-                                "index":198
+                                "index":169
                             }],
                         "anchorY":[
                             {
@@ -330,7 +330,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"alpha",
-                                "index":198
+                                "index":169
                             }]
                     }
                 }],

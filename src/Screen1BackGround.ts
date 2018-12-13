@@ -34,7 +34,7 @@ export default class Screen1BackGround extends Laya.Sprite {
     private HeartAni: Laya.Animation
     private liuxiangAni: Laya.Animation
     private MedalAni: Laya.Animation
-    private ScoreboardAni: Laya.Animation
+    // private ScoreboardAni: Laya.Animation
     private ShoesAni: Laya.Animation
     private StageAni: Laya.Animation
     private WallAni: Laya.Animation
@@ -114,7 +114,7 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.winAni = new Laya.Animation()
         this.winAni.loadAnimation("ani/winAni.ani")
         this.addChild(this.winAni)
-        this.winAni.pos(280, 3050)
+        this.winAni.pos(260, 3050)
 
 
         //page2
@@ -178,7 +178,7 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.CrowdAni = new Laya.Animation()
         this.CrowdAni.loadAnimation("ani/CrowdAni.ani")
         this.addChild(this.CrowdAni)
-        this.CrowdAni.pos(270, 10085)
+        this.CrowdAni.pos(270, 9985)
 
 
         //page4
@@ -224,10 +224,10 @@ export default class Screen1BackGround extends Laya.Sprite {
 
 
         //page5
-        this.ScoreboardAni = new Laya.Animation()
-        this.ScoreboardAni.loadAnimation("ani/ScoreboardAni.ani")
-        this.addChild(this.ScoreboardAni)
-        this.ScoreboardAni.pos(257, 14961)
+        // this.ScoreboardAni = new Laya.Animation()
+        // this.ScoreboardAni.loadAnimation("ani/ScoreboardAni.ani")
+        // this.addChild(this.ScoreboardAni)
+        // this.ScoreboardAni.pos(257, 14961)
 
         this.BallAni = new Laya.Animation()
         this.BallAni.loadAnimation("ani/BallAni.ani")
@@ -242,7 +242,7 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.HatAni = new Laya.Animation()
         this.HatAni.loadAnimation("ani/HatAni.ani")
         this.addChild(this.HatAni)
-        this.HatAni.pos(190, 15823)
+        this.HatAni.pos(185, 15923)
 
         this.BallManAni = new Laya.Animation()
         this.BallManAni.loadAnimation("ani/BallManAni.ani")
@@ -304,6 +304,9 @@ export default class Screen1BackGround extends Laya.Sprite {
             case "crowd":
                 this.CrowdAni.gotoAndStop(0);
                 break;
+            case "crowd1":
+                this.CrowdAni.gotoAndStop(1);
+                break;
             case "dumbbell":
                 this.dumbbellAni.gotoAndStop(0);
                 break;
@@ -323,14 +326,17 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.HeartAni.gotoAndStop(0);
                 break;
             case "liuxiang":
-                this.liuxiangAni.gotoAndStop(30);
+                this.liuxiangAni.gotoAndStop(0);
+                break;
+            case "liuxiang1":
+                this.liuxiangAni.gotoAndStop(1);
                 break;
             case "medal":
                 this.MedalAni.gotoAndStop(10);
                 break;
-            case "scoreboard":
-                this.ScoreboardAni.gotoAndStop(20);
-                break;
+            // case "scoreboard":
+            //     this.ScoreboardAni.gotoAndStop(20);
+            //     break;
             case "shoes":
                 this.ShoesAni.gotoAndStop(20);
                 break;
@@ -353,7 +359,10 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.winAni.gotoAndStop(0);
                 break;
             case "winMan":
-                this.WinManAni.gotoAndStop(30);
+                this.WinManAni.gotoAndStop(0);
+                break;
+            case "winMan1":
+                this.WinManAni.gotoAndStop(1);
                 break;
         }
     }
@@ -381,7 +390,7 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.text2012Ani.play(0, false);
                 break;
             case "ball":
-                this.BallAni.play(0, false);
+                this.BallAni.play(1, false);
                 break;
             case "ballMan":
                 this.BallManAni.play(0, false);
@@ -396,7 +405,7 @@ export default class Screen1BackGround extends Laya.Sprite {
             //     this.ComputerAni.play(0, false);
             //     break;
             case "crowd":
-                this.CrowdAni.play(0, false);
+                this.CrowdAni.play(1, false);
                 break;
             case "dumbbell":
                 this.dumbbellAni.play(0, false);
@@ -414,17 +423,17 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.HatAni.play(0, false);
                 break;
             case "heart":
-                this.HeartAni.play(0, false);
+                this.HeartAni.play(1, false);
                 break;
             case "liuxiang":
-                this.liuxiangAni.play(0, false);
+                this.liuxiangAni.play(1, false);
                 break;
             case "medal":
                 this.MedalAni.play(0, false);
                 break;
-            case "scoreboard":
-                this.ScoreboardAni.play(0, false);
-                break;
+            // case "scoreboard":
+            //     this.ScoreboardAni.play(0, false);
+            //     break;
             case "shoes":
                 this.ShoesAni.play(0, false);
                 break;
@@ -495,8 +504,8 @@ export default class Screen1BackGround extends Laya.Sprite {
                 return this.liuxiangAni.isPlaying;
             case "medal":
                 return this.MedalAni.isPlaying;
-            case "scoreboard":
-                return this.ScoreboardAni.isPlaying;
+            // case "scoreboard":
+            //     return this.ScoreboardAni.isPlaying;
             case "shoes":
                 return this.ShoesAni.isPlaying;
             case "stage":
@@ -580,9 +589,9 @@ export default class Screen1BackGround extends Laya.Sprite {
             case "medal":
                 this.MedalAni.visible = visible;
                 break;
-            case "scoreboard":
-                this.ScoreboardAni.visible = visible;
-                break;
+            // case "scoreboard":
+            //     this.ScoreboardAni.visible = visible;
+            //     break;
             case "shoes":
                 this.ShoesAni.visible = visible;
                 break;
@@ -653,8 +662,8 @@ export default class Screen1BackGround extends Laya.Sprite {
                 return this.liuxiangAni.visible;
             case "medal":
                 return this.MedalAni.visible;
-            case "scoreboard":
-                return this.ScoreboardAni.visible;
+            // case "scoreboard":
+            //     return this.ScoreboardAni.visible;
             case "shoes":
                 return this.ShoesAni.visible;
             case "stage":

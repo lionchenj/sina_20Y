@@ -9,8 +9,8 @@ export interface QuestionItem {
 }
 
 export const QuestionShowY = [
-    1363,
-    3407,
+    1313,
+    3307,
     5827,
     6628,
     9120,
@@ -18,7 +18,7 @@ export const QuestionShowY = [
     12144,
     13178,
     15760,
-    16697
+    16397
 ]
 export  const QuestionData: Array<QuestionItem> = [
     {

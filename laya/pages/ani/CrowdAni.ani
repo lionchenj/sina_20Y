@@ -92,6 +92,15 @@
                                 "target":3,
                                 "key":"y",
                                 "index":0
+                            },
+                            {
+                                "value":-74.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "label":null,
+                                "key":"y",
+                                "index":1
                             }],
                         "x":[
                             {
@@ -101,6 +110,15 @@
                                 "target":3,
                                 "key":"x",
                                 "index":0
+                            },
+                            {
+                                "value":-53,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "label":null,
+                                "key":"x",
+                                "index":1
                             },
                             {
                                 "value":-53,
@@ -134,6 +152,15 @@
                                 "target":3,
                                 "key":"skin",
                                 "index":0
+                            },
+                            {
+                                "value":"sports/page3_runman3.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":3,
+                                "label":null,
+                                "key":"skin",
+                                "index":1
                             }],
                         "anchorY":[
                             {
@@ -143,6 +170,15 @@
                                 "target":3,
                                 "key":"anchorY",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "label":null,
+                                "key":"anchorY",
+                                "index":1
                             }],
                         "anchorX":[
                             {
@@ -152,6 +188,32 @@
                                 "target":3,
                                 "key":"anchorX",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "label":null,
+                                "key":"anchorX",
+                                "index":1
+                            }],
+                        "alpha":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"alpha",
+                                "index":0
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":3,
+                                "key":"alpha",
+                                "index":1
                             }]
                     }
                 },
@@ -166,6 +228,15 @@
                                 "target":4,
                                 "key":"y",
                                 "index":0
+                            },
+                            {
+                                "value":46,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "label":null,
+                                "key":"y",
+                                "index":1
                             },
                             {
                                 "value":46,
@@ -205,6 +276,15 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
+                                "label":null,
+                                "key":"x",
+                                "index":1
+                            },
+                            {
+                                "value":-105,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
                                 "key":"x",
                                 "index":15
                             },
@@ -224,6 +304,15 @@
                                 "target":4,
                                 "key":"skin",
                                 "index":0
+                            },
+                            {
+                                "value":"sports/page3_runman4.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":4,
+                                "label":null,
+                                "key":"skin",
+                                "index":1
                             }],
                         "anchorY":[
                             {
@@ -233,6 +322,15 @@
                                 "target":4,
                                 "key":"anchorY",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "label":null,
+                                "key":"anchorY",
+                                "index":1
                             }],
                         "anchorX":[
                             {
@@ -242,6 +340,32 @@
                                 "target":4,
                                 "key":"anchorX",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "label":null,
+                                "key":"anchorX",
+                                "index":1
+                            }],
+                        "alpha":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"alpha",
+                                "index":0
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"alpha",
+                                "index":1
                             }]
                     }
                 },
@@ -262,6 +386,15 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":5,
+                                "label":null,
+                                "key":"y",
+                                "index":1
+                            },
+                            {
+                                "value":113,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
                                 "key":"y",
                                 "index":15
                             }],
@@ -279,6 +412,15 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":5,
+                                "label":null,
+                                "key":"x",
+                                "index":1
+                            },
+                            {
+                                "value":-65,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
                                 "key":"x",
                                 "index":15
                             }],
@@ -290,6 +432,15 @@
                                 "target":5,
                                 "key":"skin",
                                 "index":0
+                            },
+                            {
+                                "value":"sports/page3_runman5.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":5,
+                                "label":null,
+                                "key":"skin",
+                                "index":1
                             }],
                         "anchorY":[
                             {
@@ -299,6 +450,15 @@
                                 "target":5,
                                 "key":"anchorY",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "label":null,
+                                "key":"anchorY",
+                                "index":1
                             }],
                         "anchorX":[
                             {
@@ -308,6 +468,32 @@
                                 "target":5,
                                 "key":"anchorX",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "label":null,
+                                "key":"anchorX",
+                                "index":1
+                            }],
+                        "alpha":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "key":"alpha",
+                                "index":0
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":5,
+                                "key":"alpha",
+                                "index":1
                             }]
                     }
                 },
@@ -328,6 +514,15 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":7,
+                                "label":null,
+                                "key":"y",
+                                "index":1
+                            },
+                            {
+                                "value":-100.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":7,
                                 "key":"y",
                                 "index":10
                             }],
@@ -345,6 +540,15 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":7,
+                                "label":null,
+                                "key":"x",
+                                "index":1
+                            },
+                            {
+                                "value":95,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":7,
                                 "key":"x",
                                 "index":10
                             }],
@@ -356,6 +560,15 @@
                                 "target":7,
                                 "key":"skin",
                                 "index":0
+                            },
+                            {
+                                "value":"sports/page3_fire.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":7,
+                                "label":null,
+                                "key":"skin",
+                                "index":1
                             }],
                         "anchorY":[
                             {
@@ -365,6 +578,15 @@
                                 "target":7,
                                 "key":"anchorY",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":7,
+                                "label":null,
+                                "key":"anchorY",
+                                "index":1
                             }],
                         "anchorX":[
                             {
@@ -374,6 +596,15 @@
                                 "target":7,
                                 "key":"anchorX",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":7,
+                                "label":null,
+                                "key":"anchorX",
+                                "index":1
                             }],
                         "alpha":[
                             {
@@ -383,6 +614,15 @@
                                 "target":7,
                                 "key":"alpha",
                                 "index":0
+                            },
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":7,
+                                "label":null,
+                                "key":"alpha",
+                                "index":1
                             },
                             {
                                 "value":1,
@@ -405,6 +645,15 @@
                                 "target":8,
                                 "key":"y",
                                 "index":0
+                            },
+                            {
+                                "value":240,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"y",
+                                "index":1
                             }],
                         "x":[
                             {
@@ -414,6 +663,15 @@
                                 "target":8,
                                 "key":"x",
                                 "index":0
+                            },
+                            {
+                                "value":9,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"x",
+                                "index":1
                             }],
                         "skin":[
                             {
@@ -423,6 +681,15 @@
                                 "target":8,
                                 "key":"skin",
                                 "index":0
+                            },
+                            {
+                                "value":"sports/page3_nest.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":8,
+                                "label":null,
+                                "key":"skin",
+                                "index":1
                             }],
                         "scaleY":[
                             {
@@ -432,6 +699,15 @@
                                 "target":8,
                                 "key":"scaleY",
                                 "index":0
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"scaleY",
+                                "index":1
                             }],
                         "scaleX":[
                             {
@@ -441,6 +717,15 @@
                                 "target":8,
                                 "key":"scaleX",
                                 "index":0
+                            },
+                            {
+                                "value":2,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"scaleX",
+                                "index":1
                             }],
                         "anchorY":[
                             {
@@ -450,6 +735,15 @@
                                 "target":8,
                                 "key":"anchorY",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"anchorY",
+                                "index":1
                             }],
                         "anchorX":[
                             {
@@ -459,15 +753,33 @@
                                 "target":8,
                                 "key":"anchorX",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"anchorX",
+                                "index":1
                             }],
                         "alpha":[
                             {
-                                "value":1,
+                                "value":0,
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":8,
                                 "key":"alpha",
                                 "index":0
+                            },
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":8,
+                                "label":null,
+                                "key":"alpha",
+                                "index":1
                             },
                             {
                                 "value":1,
