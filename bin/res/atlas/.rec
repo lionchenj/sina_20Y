@@ -39,6 +39,30 @@ P B9680947 vscroll$up.png
 P 7E990267 vscroll.png
 P E466EB1C vslider$bar.png
 P 2BFF7046 vslider.png
+D loading
+R ADD93786 10.jpg
+R 99A4B833 11.jpg
+R 6A310144 12.jpg
+R BC9952B3 13.jpg
+R 962AAF06 14.jpg
+R 67B03870 15.jpg
+R 7A957974 16.jpg
+R 0E26184A 17.jpg
+R 5BF56D7C 18.jpg
+R 4214540A 19.jpg
+R 3E0A1231 2.jpg
+R B68C0534 20.jpg
+R 6A6BD1E2 21.jpg
+R 165D733A 22.jpg
+R 03139147 23.jpg
+R 7706DE13 24.jpg
+R 42D1E7C7 3.jpg
+R 477313C3 4.jpg
+R D6F3AC3F 5.jpg
+R 608A9F32 6.jpg
+R 445C487B 7.jpg
+R 2186AD51 8.jpg
+R C973BE16 9.jpg
 D sports
 P 14031C44 2002T.png
 P 3756C21C cup.png
@@ -99,6 +123,7 @@ P AC7090D9 page5_ball.png
 R 1DAF2C51 page5_bg.png
 P BADE7967 page5_hat.png
 P 64259A7B page5_head.png
+P 20FA50AC page5_kuang.png
 P D8AB30BF page5_man1.png
 P A45B841F page5_man2.png
 P E3F17C01 page5_man3.png
@@ -123,6 +148,8 @@ P 4B51A8BD c.png
 P 4BAB348E click_tip.png
 P 25235E3A click_tip_white.png
 P 67DE570C d.png
+R 0D2A6BB7 loading.png
+R 1F5EC009 loading_button.png
 P 44FB8B00 logo.png
 P 125A71A0 num_0.png
 P 9E244ABB num_1.png

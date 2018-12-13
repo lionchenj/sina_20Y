@@ -1,4 +1,6 @@
 <res>
    <item name="comp/img_bg.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=32,10,10,10" picType="0" scale="0"/>
    <item name="sports/page1_end.png" type="Sprite" compress="0" pack="1" quality="80" props="" picType="0" scale="0"/>
+   <item name="view/loading.png" type="Sprite" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
+   <item name="view/loading_button.png" type="Sprite" compress="0" pack="2" quality="80" props="" picType="0" scale="0"/>
 </res>

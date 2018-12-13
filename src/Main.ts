@@ -197,7 +197,6 @@ class Main {
 	// 必需先加载进度条资源才能显示进度条
 	onProgressAssetsLoaded(): void {
 		// 显示进度条
-
 		this.loadingDialog = new LoadingDialog()
 		this.loadingDialog.popup()
 		this.loadOtherAssets()
@@ -209,10 +208,10 @@ class Main {
 	}
 
 	onAssetsLoaded(): void {
-		this.loadingDialog.close()
+		// this.loadingDialog.close()
 		this.console.text += '资源加载完成。';
 
-		this.showTipDialog("scroll")
+		// this.showTipDialog("scroll")
 
 		this.screen1BackGround = new Screen1BackGround()
 		Laya.stage.addChild(this.screen1BackGround)
@@ -562,14 +561,14 @@ class Main {
 				this.screen1BackGround.stopAni("text2008")
 			}
 		}
-		if (this.screen1BackGround.y <= - 9480 && this.screen1BackGround.y >= -11190) {
+		if (this.screen1BackGround.y <= - 9535 && this.screen1BackGround.y >= -11190) {
 			this.screen1BackGround.stopAni("crowd")
 		} else {
 			this.screen1BackGround.stopAni("crowd1")
 		}
-		if (this.screen1BackGround.y <= - 9480 && this.screen1BackGround.y >= -11190) {
+		if (this.screen1BackGround.y <= - 9540 && this.screen1BackGround.y >= -11190) {
 			this.page3e4s.show();
-			let z = parseInt((-this.screen1BackGround.y - 9480) / 10 + '');
+			let z = parseInt((-this.screen1BackGround.y - 9540) / 10 + '');
 			console.log('z: ' + z)
 			this.page3e4s.goPath(z - 0)
 		} else {
@@ -710,7 +709,7 @@ class Main {
 		}
 		this.shakeCount++
 		this.console.text += "设备摇晃了" + this.shakeCount + "次\n";
-		if (this.shakeCount >= 3) {
+		if (this.shakeCount >= 1) {
 			Laya.Shake.instance.stop()
 			this.shakeCount = 0
 			this.console.text += "停止接收设备摇动";
@@ -735,7 +734,7 @@ class Main {
 		}
 		this.shakeCount2++
 		this.console.text += "设备摇晃了" + this.shakeCount2 + "次\n";
-		if (this.shakeCount2 >= 3) {
+		if (this.shakeCount2 >= 1) {
 			Laya.Shake.instance.stop()
 			this.shakeCount2 = 0
 			this.console.text += "停止接收设备摇动";
@@ -760,7 +759,7 @@ class Main {
 		}
 		this.shakeCount3++
 		this.console.text += "设备摇晃了" + this.shakeCount3 + "次\n";
-		if (this.shakeCount3 >= 3) {
+		if (this.shakeCount3 >= 1) {
 			Laya.Shake.instance.stop()
 			this.shakeCount3 = 0
 			this.console.text += "停止接收设备摇动";
@@ -785,7 +784,7 @@ class Main {
 		}
 		this.shakeCount4++
 		this.console.text += "设备摇晃了" + this.shakeCount4 + "次\n";
-		if (this.shakeCount4 >= 3) {
+		if (this.shakeCount4 >= 1) {
 			Laya.Shake.instance.stop()
 			this.shakeCount4 = 0
 			this.console.text += "停止接收设备摇动";
@@ -838,6 +837,9 @@ class Main {
 
 		if (this.showQuestionIndexList.length >= 10) {	// 显示了10条题了
 			// Laya.timer.once(1000, this, this.showScoreResultDialg, [this.questionScore])
+			setTimeout(() => {
+				
+			}, 2000);
 			this.showScoreResultDialg(this.questionScore)
 		}
 

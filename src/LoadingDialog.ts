@@ -1,27 +1,39 @@
 import { ui } from "./ui/layaMaxUI";
 export default class LoadingDialog extends ui.dialog.LoadingDialogUI {
-    private progress = 0
+    // private progress = '0'
 
     constructor() {
         super()
         this.autoDestroyAtClosed = true
         this.isPopupCenter = false
-        this.pos(0, (Laya.Browser.clientHeight - 200)/2)
+        this.pos(0, 0)
     }
 
     onOpened() {
         // this.changeProgressValue(0)
     }
 
-    public changeProgressValue(progress: number) {
-        this.progress = progress
-        if (this.loadingProgressBar) {
-            this.loadingProgressBar.value = progress
+    public changeProgressValue(nber: number) {
+        if (!this.progress) {
+            Laya.timer.once(200, this, this.changeProgressValue)
+            return 
         }
-        
+        const num = Math.ceil(nber*100) + "%"
+        console.log(num)
+        this.loadBtn.visible = false;
+        this.progress.text = num;
+        if (nber == 1) {
+            this.loadBtn.visible = true;
+            this.on(Laya.Event.MOUSE_DOWN, this, this.onClick);
+        }
     }
 
     public updateTip(tip: string) {
-        this.tipLabel.text = tip
+        this.progress.text = tip
+    }
+
+
+    private onClick() {
+        this.close()
     }
 }
