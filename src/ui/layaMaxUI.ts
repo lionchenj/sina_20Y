@@ -6,6 +6,7 @@ export module ui.dialog {
     export class LoadingDialogUI extends Dialog {
 		public loadBtn:Laya.Sprite;
 		public progress:Laya.Label;
+		public showText:Laya.Animation;
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

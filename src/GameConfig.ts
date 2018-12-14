@@ -10,7 +10,7 @@ export default class GameConfig{
     static screenMode:string="vertical";
     static alignV:string="top";
     static alignH:string="center";
-    static startScene:any="dialog/LoadingDialog.scene";
+    static startScene:any="dialog/QuestionDialog.scene";
     static sceneRoot:string="";
     static debug:boolean=false;
     static stat:boolean=false;

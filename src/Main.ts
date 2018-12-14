@@ -188,6 +188,25 @@ class Main {
 			type: Laya.Loader.IMAGE
 		})
 
+		assets.push({
+			url: Constants.sports0,
+			type: Laya.Loader.IMAGE
+		})
+
+		assets.push({
+			url: Constants.sports1,
+			type: Laya.Loader.IMAGE
+		})
+
+		assets.push({
+			url: Constants.sports2,
+			type: Laya.Loader.IMAGE
+		})
+
+		assets.push({
+			url: Constants.view,
+			type: Laya.Loader.IMAGE
+		})
 
 		// 预加载资源
 		Laya.loader.load(assets, Laya.Handler.create(this, this.onAssetsLoaded), Laya.Handler.create(this, this.onAssetsLoading, null, false))
@@ -199,7 +218,9 @@ class Main {
 		// 显示进度条
 		this.loadingDialog = new LoadingDialog()
 		this.loadingDialog.popup()
-		this.loadOtherAssets()
+		setTimeout(() => {
+			this.loadOtherAssets()
+		}, 4000);
 	}
 
 	onAssetsLoading(progress: number): void {
@@ -521,9 +542,9 @@ class Main {
 
 		//page3
 
-		if (this.screen1BackGround.y <= -8200 && this.screen1BackGround.y >= -8950) {
+		if (this.screen1BackGround.y <= -8110 && this.screen1BackGround.y >= -9060) {
 			this.page3run.show();
-			let z = parseInt((-this.screen1BackGround.y - 8200) / 10 + '');
+			let z = parseInt((-this.screen1BackGround.y - 8110) / 10 + '');
 			console.log('z: ' + z)
 			this.page3run.goPath(z - 0);
 		} else {
@@ -793,7 +814,7 @@ class Main {
 				return
 			}
 			this.screen1BackGround.playAni("winMan")
-			this.page4e5s.hide();
+			this.swimming.hide()
 			this.hasPlayShotAni4 = true
 			this.console.text += "播放射门动画";
 
@@ -808,39 +829,36 @@ class Main {
 			this.shakeDialog5 = null
 		}
 		this.shakeCount5++
-		this.console.text += "设备摇晃了" + this.shakeCount5 + "次\n";
 		if (this.shakeCount5 >= 1) {
 			Laya.Shake.instance.stop()
 			this.shakeCount5 = 0
-			this.console.text += "停止接收设备摇动";
-			// 播放射门动画
 			if (this.hasPlayShotAni5) {
 				return
 			}
 			this.screen1BackGround.playAni("ballMan")
 
 			this.hasPlayShotAni5 = true
-			this.console.text += "播放射门动画";
-
-			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
 			this.playSound(Constants.sound4)
+			setTimeout(() => {
+				this.showScoreResultDialg(this.questionScore)
+			}, 3000);
 		}
 	}
 
 	onQuestionDialogClose(index: string, type: string): void {
 		console.log("onQuestionDialogClose", type, index)
 		const right = (type === "true") // TODO: 计分
-		if(right){
+		if (right) {
 			this.questionScore++;
 		}
 		this.showingDialog = false
 
 		if (this.showQuestionIndexList.length >= 10) {	// 显示了10条题了
 			// Laya.timer.once(1000, this, this.showScoreResultDialg, [this.questionScore])
-			setTimeout(() => {
-				
-			}, 2000);
-			this.showScoreResultDialg(this.questionScore)
+			// setTimeout(() => {
+			// 	this.showScoreResultDialg(this.questionScore)
+			// }, 2000);
+			// this.showScoreResultDialg(this.questionScore)
 		}
 
 	}

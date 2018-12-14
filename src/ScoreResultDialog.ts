@@ -44,9 +44,11 @@ export default class ScoreResultDialog extends ui.dialog.ResultDialogUI {
 
     private onOnceMore() {
         console.log("ScoreResultDialog", "clicked once more button")
+        window.location.reload()
     }
     private onShare() {
         console.log("ScoreResultDialog", "clicked on share")
+        
     }
 
     private onDown() {

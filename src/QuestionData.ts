@@ -17,8 +17,8 @@ export const QuestionShowY = [
     9980,
     12144,
     13178,
-    15760,
-    16397
+    15460,
+    15900
 ]
 export  const QuestionData: Array<QuestionItem> = [
     {
@@ -203,7 +203,7 @@ export  const QuestionData: Array<QuestionItem> = [
     },
     {
         id: 21,
-        title: "本赛季武磊有望斩获金靴，那么上一名夺得中超金靴的本土球员是谁？",
+        title: "本赛季武磊夺取中超金靴，上一名夺得中超金靴的本土球员是谁？",
         a: "郝海东",
         b: "李金羽",
         c: "宿茂臻",

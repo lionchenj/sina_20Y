@@ -10,20 +10,22 @@ export default class LoadingDialog extends ui.dialog.LoadingDialogUI {
     }
 
     onOpened() {
-        // this.changeProgressValue(0)
+        // this.changeProgressValue(0)       
     }
 
     public changeProgressValue(nber: number) {
         if (!this.progress) {
             Laya.timer.once(200, this, this.changeProgressValue)
-            return 
+            return
         }
-        const num = Math.ceil(nber*100) + "%"
+        const num = Math.ceil(nber * 100) + "%"
         console.log(num)
-        this.loadBtn.visible = false;
         this.progress.text = num;
         if (nber == 1) {
-            this.loadBtn.visible = true;
+            this.showText.play(0, false);
+            setTimeout(() => {
+                this.loadBtn.visible = true;
+            }, 1500);
             this.on(Laya.Event.MOUSE_DOWN, this, this.onClick);
         }
     }

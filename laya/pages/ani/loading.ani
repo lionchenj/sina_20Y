@@ -1,14 +1,16 @@
 {
+    "x":0,
     "type":"View",
     "selectedBox":2,
     "searchKey":"View",
     "props":{"sceneWidth":512,"sceneHeight":1000,"sceneColor":"#000000"},
     "nodeParent":-1,
-    "maxID":3,
+    "maxID":27,
     "label":"View",
-    "isDirectory":false,
+    "isOpen":null,
+    "isDirectory":true,
     "isAniNode":true,
-    "hasChild":false,
+    "hasChild":true,
     "compId":2,
     "child":[
         {
@@ -38,6 +40,15 @@
                                 "target":26,
                                 "key":"y",
                                 "index":0
+                            },
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":26,
+                                "label":null,
+                                "key":"y",
+                                "index":1
                             }],
                         "x":[
                             {
@@ -47,10 +58,19 @@
                                 "target":26,
                                 "key":"x",
                                 "index":0
+                            },
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":26,
+                                "label":null,
+                                "key":"x",
+                                "index":1
                             }],
                         "skin":[
                             {
-                                "value":"loading/2.jpg",
+                                "value":"loading/1.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
@@ -58,7 +78,32 @@
                                 "index":0
                             },
                             {
-                                "value":"loading/3.jpg",
+                                "value":"loading/2.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "label":null,
+                                "key":"skin",
+                                "index":1
+                            },
+                            {
+                                "value":"loading/3.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":2
+                            },
+                            {
+                                "value":"loading/4.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":3
+                            },
+                            {
+                                "value":"loading/5.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
@@ -66,7 +111,31 @@
                                 "index":4
                             },
                             {
-                                "value":"loading/4.jpg",
+                                "value":"loading/6.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":5
+                            },
+                            {
+                                "value":"loading/7.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":6
+                            },
+                            {
+                                "value":"loading/8.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":7
+                            },
+                            {
+                                "value":"loading/9.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
@@ -74,7 +143,31 @@
                                 "index":8
                             },
                             {
-                                "value":"loading/5.jpg",
+                                "value":"loading/10.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":9
+                            },
+                            {
+                                "value":"loading/11.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":10
+                            },
+                            {
+                                "value":"loading/12.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":11
+                            },
+                            {
+                                "value":"loading/13.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
@@ -82,7 +175,31 @@
                                 "index":12
                             },
                             {
-                                "value":"loading/6.jpg",
+                                "value":"loading/14.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":13
+                            },
+                            {
+                                "value":"loading/15.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":14
+                            },
+                            {
+                                "value":"loading/16.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":15
+                            },
+                            {
+                                "value":"loading/17.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
@@ -90,7 +207,31 @@
                                 "index":16
                             },
                             {
-                                "value":"loading/7.jpg",
+                                "value":"loading/18.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":17
+                            },
+                            {
+                                "value":"loading/19.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":18
+                            },
+                            {
+                                "value":"loading/20.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":26,
+                                "key":"skin",
+                                "index":19
+                            },
+                            {
+                                "value":"loading/21.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
@@ -98,140 +239,28 @@
                                 "index":20
                             },
                             {
-                                "value":"loading/8.jpg",
+                                "value":"loading/22.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
                                 "key":"skin",
-                                "index":24
+                                "index":21
                             },
                             {
-                                "value":"loading/9.jpg",
+                                "value":"loading/23.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
                                 "key":"skin",
-                                "index":28
+                                "index":22
                             },
                             {
-                                "value":"loading/10.jpg",
+                                "value":"loading/24.png",
                                 "tweenMethod":"linearNone",
                                 "tween":false,
                                 "target":26,
                                 "key":"skin",
-                                "index":32
-                            },
-                            {
-                                "value":"loading/11.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":36
-                            },
-                            {
-                                "value":"loading/12.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":40
-                            },
-                            {
-                                "value":"loading/13.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":44
-                            },
-                            {
-                                "value":"loading/14.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":48
-                            },
-                            {
-                                "value":"loading/15.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":53
-                            },
-                            {
-                                "value":"loading/16.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":58
-                            },
-                            {
-                                "value":"loading/17.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":63
-                            },
-                            {
-                                "value":"loading/18.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":68
-                            },
-                            {
-                                "value":"loading/19.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":73
-                            },
-                            {
-                                "value":"loading/20.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":78
-                            },
-                            {
-                                "value":"loading/21.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":83
-                            },
-                            {
-                                "value":"loading/22.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":88
-                            },
-                            {
-                                "value":"loading/23.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":94
-                            },
-                            {
-                                "value":"loading/24.jpg",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":26,
-                                "key":"skin",
-                                "index":100
+                                "index":23
                             }],
                         "anchorY":[
                             {
@@ -241,6 +270,15 @@
                                 "target":26,
                                 "key":"anchorY",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":26,
+                                "label":null,
+                                "key":"anchorY",
+                                "index":1
                             }],
                         "anchorX":[
                             {
@@ -250,6 +288,15 @@
                                 "target":26,
                                 "key":"anchorX",
                                 "index":0
+                            },
+                            {
+                                "value":0.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":26,
+                                "label":null,
+                                "key":"anchorX",
+                                "index":1
                             }]
                     }
                 }],

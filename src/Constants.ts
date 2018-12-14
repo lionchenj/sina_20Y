@@ -30,6 +30,12 @@ export default class Constants {
     static score3 = "view/score_3.jpg"
     static score4 = "view/score_4.jpg"
 
+    static sports0 = "res/atlas/sports.png"
+    static sports1 = "res/atlas/sports1.png"
+    static sports2 = "res/atlas/sports2.png"
+
+    static view = "res/atlas/view.png"
+    
 
 
 }
