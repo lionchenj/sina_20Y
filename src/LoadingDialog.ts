@@ -10,7 +10,7 @@ export default class LoadingDialog extends ui.dialog.LoadingDialogUI {
     }
 
     onOpened() {
-        // this.changeProgressValue(0)       
+        // this.changeProgressValue(0)    
     }
 
     public changeProgressValue(nber: number) {
@@ -22,10 +22,6 @@ export default class LoadingDialog extends ui.dialog.LoadingDialogUI {
         console.log(num)
         this.progress.text = num;
         if (nber == 1) {
-            this.showText.play(0, false);
-            setTimeout(() => {
-                this.loadBtn.visible = true;
-            }, 1500);
             this.on(Laya.Event.MOUSE_DOWN, this, this.onClick);
         }
     }

@@ -27,6 +27,37 @@
         }
     </script>
      <script type="text/javascript" src="index.js"></script>
+     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+     <script src="share/jquery-1.11.3.min.js"></script>
+     <script src="share/share.js"></script>
+     <script type="text/javascript">
+        //百度统计
+        var _hmt = _hmt || [];
+        (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?867ccc7b728601a82f0ce52641414a31";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+        })();
+     </script>
+     <!--*************************************
+     *    自定义分享  *
+     ***************************************-->
+     <script>
+        var share_data={};
+        share_data['title']="热血ZAI浪";
+        share_data['desct']="让更多中国人爱上体育。新浪体育20年，因为热爱！";
+        share_data['imgUrl']="http://www.datazan.cn/sinasports20/view/sinasports20.jpg";
+        share(share_data);
+        function shareSuccess(res){
+        //分享成功方法
+            //alert(res.errMsg+'成功')
+        }
+        function shareFail(res){
+        //分享失败执行
+            //alert(res.errMsg+"用户取消")
+        }
+     </script>
 </body>
 
 </html>

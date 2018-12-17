@@ -1,5 +1,6 @@
 D .
 D bg
+R 83CD8F29 background0.png
 S E3DFAEC8 background1.png
 S 8C961F7B background2.png
 S ADCED8BC background3.png
@@ -68,6 +69,14 @@ D sports
 P 14031C44 2002T.png
 P 3756C21C cup.png
 P 3621334B cxlT.png
+P 5EC98C9E first.png
+P A1E4394C fitst_1998.png
+P FB612B86 fitst_2002.png
+P D863AFE0 fitst_2004.png
+P 4BD501BC fitst_2008.png
+P 91D6B954 fitst_2012.png
+P 8CE4856F fitst_2016.png
+P BFB19D64 fitst_2018.png
 P 4088D7EE football.png
 P 3EC8D04E miH.png
 P F36B6511 miL.png
@@ -149,7 +158,8 @@ P 4B51A8BD c.png
 P 4BAB348E click_tip.png
 P 25235E3A click_tip_white.png
 P 67DE570C d.png
-R 1B4D05E5 loading.png
+P 011172FC first_button.png
+R FDD1A1A3 loading.png
 R 1F5EC009 loading_button.png
 P 44FB8B00 logo.png
 P 125A71A0 num_0.png
@@ -166,10 +176,10 @@ P 3FEA1257 num_9.png
 P 4FCE9001 question.png
 P E3DA96CE question_bg.png
 P 15909C3C right.png
-R ECF12729 score_1.jpg
-R E56A327F score_2.jpg
-R 3B8A74CF score_3.jpg
-R 8FC8FADE score_4.jpg
+R 55DB999E score_1.jpg
+R 3F57BB0C score_2.jpg
+R 5BA53C5D score_3.jpg
+R E3F7C62E score_4.jpg
 P D3EC3E7F scroll_tip.jpg
 P A3C34F45 shake.jpg
 P 1A36E3D8 wrong.png

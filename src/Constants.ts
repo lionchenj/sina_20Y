@@ -1,5 +1,5 @@
 export default class Constants {
-
+    static background0 = "bg/background0.png"
     static background1 = "bg/background1.png"
     static background2 = "bg/background2.png"
     static background3 = "bg/background3.png"
@@ -13,7 +13,7 @@ export default class Constants {
 
 
     static stageWidth = 512
-    static stateHeight = Constants.background1Height + Constants.background2Height + Constants.background3Height + Constants.background4Height + Constants.background5Height + 3880
+    static stateHeight = Laya.Browser.clientHeight + Constants.background1Height + Constants.background2Height + Constants.background3Height + Constants.background4Height + Constants.background5Height + 3880
     static scaleMode: string = "noborder";
     static screenMode: string = "vertical";
 
@@ -36,6 +36,6 @@ export default class Constants {
 
     static view = "res/atlas/view.png"
     
-
+    static loading = "res/atlas/loading.png"
 
 }

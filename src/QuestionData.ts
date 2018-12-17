@@ -9,8 +9,8 @@ export interface QuestionItem {
 }
 
 export const QuestionShowY = [
-    1313,
-    3307,
+    1313 + Laya.Browser.clientHeight,
+    3307 + Laya.Browser.clientHeight,
     5827,
     6628,
     9120,

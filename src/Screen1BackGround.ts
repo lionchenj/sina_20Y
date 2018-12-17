@@ -8,6 +8,7 @@ import Constants from "./Constants";
 type AniName = string;
 
 export default class Screen1BackGround extends Laya.Sprite {
+    private bg0: Laya.Animation;
     private bg1: Laya.Sprite;
     private cupAni: Laya.Animation
     private whistleAni: Laya.Animation
@@ -49,12 +50,23 @@ export default class Screen1BackGround extends Laya.Sprite {
     private bg4: Laya.Sprite
     private bg5: Laya.Sprite
 
+	private LBCH = Laya.Browser.clientHeight;
+    
     constructor() {
         super();
         this.init()
     }
     init(): void {
+        
+        this.bg0 = new Laya.Animation()
+        this.bg0.size(Constants.stageWidth, Laya.Browser.clientHeight)
+        const texture0 = this.bg0.loadAnimation("ani/first.ani")
+        this.bg0.pos(256, 400)        
+        // this.bg0.graphics.drawImage(texture0)
+        this.addChild(this.bg0)
+
         this.bg1 = new Laya.Sprite()
+        this.bg1.pos(0, Laya.Browser.clientHeight +200)        
         this.bg1.size(Constants.stageWidth, Constants.background1Height)
         const texture = Laya.loader.getRes(Constants.background1)
         this.bg1.graphics.drawImage(texture)
@@ -93,28 +105,28 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.cupAni.loadAnimation("ani/CupAni.ani")
         this.addChild(this.cupAni)
         // TODO: 调整位置
-        this.cupAni.pos(400, 1020)
+        this.cupAni.pos(400, 1020 + Laya.Browser.clientHeight +200)
 
 
         this.whistleAni = new Laya.Animation()
         this.whistleAni.loadAnimation("ani/WhistleAni.ani")
         this.addChild(this.whistleAni)
-        this.whistleAni.pos(100, 980)
+        this.whistleAni.pos(100, 980 + Laya.Browser.clientHeight +200)
 
         this.ShotAni = new Laya.Animation()
         this.ShotAni.loadAnimation("ani/ShotAni.ani")
         this.addChild(this.ShotAni)
-        this.ShotAni.pos(220, 1850)
+        this.ShotAni.pos(220, 1850 + Laya.Browser.clientHeight +200)
 
         this.text2002Ani = new Laya.Animation()
         this.text2002Ani.loadAnimation("ani/text2002Ani.ani")
         this.addChild(this.text2002Ani)
-        this.text2002Ani.pos(360, 2550)
+        this.text2002Ani.pos(360, 2550 + Laya.Browser.clientHeight +200)
 
         this.winAni = new Laya.Animation()
         this.winAni.loadAnimation("ani/winAni.ani")
         this.addChild(this.winAni)
-        this.winAni.pos(260, 3050)
+        this.winAni.pos(260, 3050 + Laya.Browser.clientHeight +200)
 
 
         //page2
@@ -249,7 +261,13 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.addChild(this.BallManAni)
         this.BallManAni.pos(265, 16467)
     }
-
+    moveAni(aniName: AniName,y: number): void {
+        switch (aniName) {
+            case "first":
+                this.bg0.gotoAndStop(y);
+                break;
+        }
+    }
     stopAni(aniName: AniName): void {
         switch (aniName) {
 
@@ -368,6 +386,9 @@ export default class Screen1BackGround extends Laya.Sprite {
     }
     playAni(aniName: AniName) {
         switch (aniName) {
+            case "first":
+                this.bg0.play(180, false);
+                break;
             case "cup":
                 this.cupAni.play(0, false);
                 break;
