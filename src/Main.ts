@@ -52,7 +52,6 @@ class Main {
 
 	private showQuestionIndexList = new Array<number>()	// 已经显示的问题index列表
 	private showingDialog = false
-	private showingDialog4 = false
 
 	private loadingDialog: LoadingDialog	// 显示加载进度条
 	private shakeDialog: ShakeDialog		// 显示摇一摇提示
@@ -259,7 +258,7 @@ class Main {
 		this.beginListenDrag();
 
 		this.football = new Football();
-		this.football.pos(327, 200);
+		this.football.pos(300, 200);
 		Laya.stage.addChild(this.football);
 		this.football.hide();
 		this.basketball = new Basketball();
@@ -324,7 +323,7 @@ class Main {
 		}
 		if (this.showingDialog && this.screen1BackGround.y <= -6350) {
 			if (!this.hasPlayShotAni2) {
-				if (this.firstSt - Laya.stage.mouseY > 200) {
+				if (this.firstSt - Laya.stage.mouseY > 500) {
 					this.screen1BackGround.playAni("liuxiang");
 					this.showingDialog = false;
 					this.hasPlayShotAni2 = true;
@@ -346,7 +345,6 @@ class Main {
 			}
 			if (this.screen1BackGround.y <= -15946) {
 				if (!this.hasPlayShotAni5) {
-					this.playSound(Constants.sound4);
 					this.onBackgroundClick()
 				}
 			}
@@ -422,6 +420,7 @@ class Main {
 				this.hasPlayShotAni5 = false;
 				this.console.text += '没有显示过5动画\n';
 				this.screen1BackGround.stopDrag();
+				this.playSound(Constants.sound4);
 			}
 		}
 
@@ -757,7 +756,6 @@ class Main {
 			this.screen1BackGround.playAni("shot")
 			this.hasPlayShotAni = true
 			this.console.text += "播放射门动画";
-
 			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
 			this.playSound(Constants.sound0);
 			this.screen1BackGround.startDrag(this.dragRegion, false, 0)
@@ -766,7 +764,7 @@ class Main {
 	onDeviceShake4(): void {
 		if (this.shakeDialog4) {
 			this.shakeDialog4.close();
-			this.showingDialog4 = false
+			this.showingDialog = false
 			this.shakeDialog4 = null
 		}
 		this.shakeCount4++
@@ -933,7 +931,7 @@ class Main {
 		this.console.text += '开始接收设备摇动\n';
 	}
 	private showShakeDialog4(): void {
-		this.showingDialog4 = true
+		this.showingDialog = true
 		UIConfig.closeDialogOnSide = false
 		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
 		this.shakeDialog4 = new ShakeDialog();
@@ -1000,7 +998,9 @@ class Main {
 		} else {
 			this.showingDialog = false;
 			this.hasPlayShotAni5 = true;
-			this.showScoreResultDialg(this.questionScore)
+			setTimeout(() => {
+				this.showScoreResultDialg(this.questionScore)
+			}, 1500);
 		}
 	}
 	// 长按触发事件

@@ -100,32 +100,29 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.addChild(this.bg5)
 
         this.cupAni = new Laya.Animation()
-        // TODO: 调整动画
         this.cupAni.loadAnimation("ani/CupAni.ani")
         this.addChild(this.cupAni)
-        // TODO: 调整位置
-        this.cupAni.pos(400, 1020 + Laya.Browser.clientHeight + 200)
-
+        this.cupAni.pos(400, 1020 + Constants.background1Height)
 
         this.whistleAni = new Laya.Animation()
         this.whistleAni.loadAnimation("ani/WhistleAni.ani")
         this.addChild(this.whistleAni)
-        this.whistleAni.pos(100, 980 + Laya.Browser.clientHeight + 200)
+        this.whistleAni.pos(100, 980 + Constants.background1Height)
 
         this.ShotAni = new Laya.Animation()
         this.ShotAni.loadAnimation("ani/ShotAni.ani")
         this.addChild(this.ShotAni)
-        this.ShotAni.pos(220, 1850 + Laya.Browser.clientHeight + 200)
+        this.ShotAni.pos(220, 1850 + Constants.background1Height)
 
         this.text2002Ani = new Laya.Animation()
         this.text2002Ani.loadAnimation("ani/text2002Ani.ani")
         this.addChild(this.text2002Ani)
-        this.text2002Ani.pos(360, 2550 + Laya.Browser.clientHeight + 200)
+        this.text2002Ani.pos(360, 2600 + Constants.background1Height)
 
         this.winAni = new Laya.Animation()
         this.winAni.loadAnimation("ani/winAni.ani")
         this.addChild(this.winAni)
-        this.winAni.pos(260, 3050 + Laya.Browser.clientHeight + 200)
+        this.winAni.pos(260, 3050 + Constants.background1Height)
 
 
         //page2
