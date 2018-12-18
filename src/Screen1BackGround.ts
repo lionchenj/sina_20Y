@@ -50,23 +50,22 @@ export default class Screen1BackGround extends Laya.Sprite {
     private bg4: Laya.Sprite
     private bg5: Laya.Sprite
 
-	private LBCH = Laya.Browser.clientHeight;
-    
+    private LBCH = Laya.Browser.clientHeight;
+
     constructor() {
         super();
         this.init()
     }
     init(): void {
-        
+
         this.bg0 = new Laya.Animation()
-        this.bg0.size(Constants.stageWidth, Laya.Browser.clientHeight)
+        this.bg0.size(Constants.stageWidth, Constants.background0Height)
         const texture0 = this.bg0.loadAnimation("ani/first.ani")
-        this.bg0.pos(256, 400)        
-        // this.bg0.graphics.drawImage(texture0)
+        this.bg0.pos(256, 400)
         this.addChild(this.bg0)
 
         this.bg1 = new Laya.Sprite()
-        this.bg1.pos(0, Laya.Browser.clientHeight +200)        
+        this.bg1.pos(0, Constants.background0Height)
         this.bg1.size(Constants.stageWidth, Constants.background1Height)
         const texture = Laya.loader.getRes(Constants.background1)
         this.bg1.graphics.drawImage(texture)
@@ -105,28 +104,28 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.cupAni.loadAnimation("ani/CupAni.ani")
         this.addChild(this.cupAni)
         // TODO: 调整位置
-        this.cupAni.pos(400, 1020 + Laya.Browser.clientHeight +200)
+        this.cupAni.pos(400, 1020 + Laya.Browser.clientHeight + 200)
 
 
         this.whistleAni = new Laya.Animation()
         this.whistleAni.loadAnimation("ani/WhistleAni.ani")
         this.addChild(this.whistleAni)
-        this.whistleAni.pos(100, 980 + Laya.Browser.clientHeight +200)
+        this.whistleAni.pos(100, 980 + Laya.Browser.clientHeight + 200)
 
         this.ShotAni = new Laya.Animation()
         this.ShotAni.loadAnimation("ani/ShotAni.ani")
         this.addChild(this.ShotAni)
-        this.ShotAni.pos(220, 1850 + Laya.Browser.clientHeight +200)
+        this.ShotAni.pos(220, 1850 + Laya.Browser.clientHeight + 200)
 
         this.text2002Ani = new Laya.Animation()
         this.text2002Ani.loadAnimation("ani/text2002Ani.ani")
         this.addChild(this.text2002Ani)
-        this.text2002Ani.pos(360, 2550 + Laya.Browser.clientHeight +200)
+        this.text2002Ani.pos(360, 2550 + Laya.Browser.clientHeight + 200)
 
         this.winAni = new Laya.Animation()
         this.winAni.loadAnimation("ani/winAni.ani")
         this.addChild(this.winAni)
-        this.winAni.pos(260, 3050 + Laya.Browser.clientHeight +200)
+        this.winAni.pos(260, 3050 + Laya.Browser.clientHeight + 200)
 
 
         //page2
@@ -261,10 +260,13 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.addChild(this.BallManAni)
         this.BallManAni.pos(265, 16467)
     }
-    moveAni(aniName: AniName,y: number): void {
+    moveAni(aniName: AniName, y: number): void {
         switch (aniName) {
             case "first":
                 this.bg0.gotoAndStop(y);
+                break;
+            case "ballMan":
+                this.BallManAni.gotoAndStop(y);
                 break;
         }
     }
@@ -319,12 +321,6 @@ export default class Screen1BackGround extends Laya.Sprite {
             // case "computer":
             //     this.ComputerAni.gotoAndStop(30);
             //     break;
-            case "crowd":
-                this.CrowdAni.gotoAndStop(0);
-                break;
-            case "crowd1":
-                this.CrowdAni.gotoAndStop(1);
-                break;
             case "dumbbell":
                 this.dumbbellAni.gotoAndStop(0);
                 break;
@@ -342,12 +338,6 @@ export default class Screen1BackGround extends Laya.Sprite {
                 break;
             case "heart":
                 this.HeartAni.gotoAndStop(0);
-                break;
-            case "liuxiang":
-                this.liuxiangAni.gotoAndStop(0);
-                break;
-            case "liuxiang1":
-                this.liuxiangAni.gotoAndStop(1);
                 break;
             case "medal":
                 this.MedalAni.gotoAndStop(10);
@@ -376,18 +366,39 @@ export default class Screen1BackGround extends Laya.Sprite {
             case "win":
                 this.winAni.gotoAndStop(0);
                 break;
+            case "liuxiang":
+                this.liuxiangAni.gotoAndStop(1);
+                break;
+            case "liuxiang0":
+                this.liuxiangAni.gotoAndStop(0);
+                break;
+            case "liuxiang1":
+                this.liuxiangAni.gotoAndStop(30);
+                break;
+            case "crowd":
+                this.CrowdAni.gotoAndStop(1);
+                break;
+            case "crowd0":
+                this.CrowdAni.gotoAndStop(0);
+                break;
+            case "crowd1":
+                this.CrowdAni.gotoAndStop(30);
+                break;
             case "winMan":
+                this.WinManAni.gotoAndStop(1);
+                break;
+            case "winMan0":
                 this.WinManAni.gotoAndStop(0);
                 break;
             case "winMan1":
-                this.WinManAni.gotoAndStop(1);
+                this.WinManAni.gotoAndStop(30);
                 break;
         }
     }
     playAni(aniName: AniName) {
         switch (aniName) {
             case "first":
-                this.bg0.play(180, false);
+                this.bg0.play(204, false);
                 break;
             case "cup":
                 this.cupAni.play(0, false);

@@ -5,7 +5,7 @@
     "searchKey":"View",
     "props":{"sceneWidth":1000,"sceneHeight":1000,"sceneColor":"#000000"},
     "nodeParent":-1,
-    "maxID":4,
+    "maxID":5,
     "label":"View",
     "isOpen":null,
     "isDirectory":true,
@@ -23,6 +23,19 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":3,
+            "child":[
+                ]
+        },
+        {
+            "type":"GraphicNode",
+            "searchKey":"GraphicNode",
+            "props":{},
+            "nodeParent":2,
+            "label":"GraphicNode",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":4,
             "child":[
                 ]
         }],
@@ -188,6 +201,87 @@
                                 "target":3,
                                 "key":"alpha",
                                 "index":1
+                            }]
+                    }
+                },
+                {
+                    "target":4,
+                    "keyframes":{
+                        "y":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"y",
+                                "index":0
+                            },
+                            {
+                                "value":54,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"y",
+                                "index":1
+                            }],
+                        "x":[
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"x",
+                                "index":0
+                            },
+                            {
+                                "value":-53.5,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"x",
+                                "index":1
+                            }],
+                        "skin":[
+                            {
+                                "value":null,
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":4,
+                                "key":"skin",
+                                "index":0
+                            },
+                            {
+                                "value":"view/page2_btn.png",
+                                "tweenMethod":"linearNone",
+                                "tween":false,
+                                "target":4,
+                                "key":"skin",
+                                "index":1
+                            }],
+                        "alpha":[
+                            {
+                                "value":1,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"alpha",
+                                "index":0
+                            },
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"alpha",
+                                "index":2
+                            },
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
+                                "key":"alpha",
+                                "index":30
                             }]
                     }
                 }],

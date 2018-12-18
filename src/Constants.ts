@@ -5,6 +5,7 @@ export default class Constants {
     static background3 = "bg/background3.png"
     static background4 = "bg/background4.png"
     static background5 = "bg/background5.png"
+    static background0Height = 812
     static background1Height = 3604
     static background2Height = 2561
     static background3Height = 2190

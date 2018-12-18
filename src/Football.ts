@@ -11,9 +11,8 @@ export default class Football extends Laya.Sprite {
     init(): void {
             
         this.bodyAni = new Laya.Animation()
-        this.bodyAni.loadAnimation("ani/FootballAni.ani")
+        this.bodyAni.loadAnimation("ani/football.ani")
         this.addChild(this.bodyAni)
-        
     }
 
     /**
@@ -35,6 +34,10 @@ export default class Football extends Laya.Sprite {
         }
         this.bodyAni.play(0, true)
 
+    }
+
+    goPath(y:number): void {
+        this.bodyAni.gotoAndStop(y)
     }
 
     show(): void {

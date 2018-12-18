@@ -20,7 +20,7 @@ import ScoreResultDialog from "./ScoreResultDialog";
 class Main {
 	private firstSt: number = 0
 	private firstnum: number = 0
-
+	private ballY: number = 0
 	private football: Football
 	private basketball: Basketball
 	private running: running
@@ -52,7 +52,7 @@ class Main {
 
 	private showQuestionIndexList = new Array<number>()	// 已经显示的问题index列表
 	private showingDialog = false
-	private next = 0;
+	private showingDialog4 = false
 
 	private loadingDialog: LoadingDialog	// 显示加载进度条
 	private shakeDialog: ShakeDialog		// 显示摇一摇提示
@@ -259,7 +259,7 @@ class Main {
 		this.beginListenDrag();
 
 		this.football = new Football();
-		this.football.pos(327, 233);
+		this.football.pos(327, 200);
 		Laya.stage.addChild(this.football);
 		this.football.hide();
 		this.basketball = new Basketball();
@@ -304,11 +304,6 @@ class Main {
 	}
 
 	onMouseMove(): void {
-		// 始终保持主角和鼠标位置一致
-		// this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY);
-		// console.log("onMouseMove", Laya.stage.mouseX, Laya.stage.mouseY);
-		// console.log(`map[${this.screen1BackGround.y}] = ${Laya.stage.mouseX}`);
-		// this.football.pos(Laya.stage.mouseX, Laya.stage.mouseY);
 		console.log("onMouseMove(Y：", Laya.stage.mouseY, ";  y2：", this.screen1BackGround.y, '）');
 		if (this.screen1BackGround.y == 0) {
 			this.firstnum = this.firstnum + (this.firstSt - Laya.stage.mouseY);
@@ -319,34 +314,44 @@ class Main {
 				this.firstnum = 0;
 			}
 			this.screen1BackGround.moveAni("first", z - 0);
-			if (z > 180) {
-				z = 180;
-				this.next = z;
-				this.firstnum = 1800;
-				let si = setInterval(() => {
-					this.next++;
-					if (this.next == 205) {
-						clearInterval(si);
-						this.next = 204;
-						this.screen1BackGround.y = 10;
-						this.screen1BackGround.moveAni("first", 205);
-						this.onStartDrag();
-						return;
-					}
-					this.screen1BackGround.moveAni("first", this.next);
-				}, 250);
-				return;
+			if (z > 203) {
+				z = 203;
+				this.firstnum = 2030;
+				this.screen1BackGround.y = 10;
+				this.screen1BackGround.playAni("first");
+				this.screen1BackGround.startDrag(this.dragRegion, false, 0);
+			}
+		}
+		if (this.showingDialog && this.screen1BackGround.y <= -6350) {
+			if (!this.hasPlayShotAni2) {
+				if (this.firstSt - Laya.stage.mouseY > 200) {
+					this.screen1BackGround.playAni("liuxiang");
+					this.showingDialog = false;
+					this.hasPlayShotAni2 = true;
+					this.playSound(Constants.sound1);
+				}
 			}
 		}
 	}
 
 	onStartDrag(): void {
-		this.firstSt = Laya.stage.mouseY
 		console.log("onStartDrag", Laya.stage.mouseX, Laya.stage.mouseY);
+		this.firstSt = Laya.stage.mouseY;
 		if (this.showingDialog) {
+			if (this.screen1BackGround.y <= -9500) {
+				if (!this.hasPlayShotAni3) {
+					Laya.timer.once(1000, this, this.onLongDownCheck); // 1秒算长按
+					Laya.stage.on(Laya.Event.MOUSE_UP, this, this.notLongDownCheck)
+				}
+			}
+			if (this.screen1BackGround.y <= -15946) {
+				if (!this.hasPlayShotAni5) {
+					this.playSound(Constants.sound4);
+					this.onBackgroundClick()
+				}
+			}
 			return
 		}
-
 		this.screen1BackGround.startDrag(this.dragRegion, false, 0)
 	}
 
@@ -369,7 +374,7 @@ class Main {
 		// this.showTipDialog("click_black")
 
 
-		if (this.screen1BackGround.y <= -1470 - Laya.Browser.clientHeight -100 ) { // 不给拖动，摇一摇显示射门动画
+		if (this.screen1BackGround.y <= -2275) { // 不给拖动，摇一摇显示射门动画
 			if (this.hasPlayShotAni) {
 				this.console.text += '已经显示过射门动画\n';
 			} else {
@@ -381,29 +386,29 @@ class Main {
 		}
 		if (this.screen1BackGround.y <= -6350) {
 			if (this.hasPlayShotAni2) {
-				this.console.text += '已经显示过2动画\n';
+				this.console.text += '已经显示过3动画\n';
 			} else {
+				this.showingDialog = true;
+				this.hasPlayShotAni2 = false;
 				this.console.text += '没有显示过2动画\n';
 				this.screen1BackGround.stopDrag();
-				// 显示过摇一摇提示
-				this.showShakeDialog2();
 			}
 		}
 		if (this.screen1BackGround.y <= -9500) {
 			if (this.hasPlayShotAni3) {
 				this.console.text += '已经显示过3动画\n';
 			} else {
+				this.showingDialog = true;
+				this.hasPlayShotAni3 = false;
 				this.console.text += '没有显示过3动画\n';
 				this.screen1BackGround.stopDrag();
-				// 显示过摇一摇提示
-				this.showShakeDialog3();
 			}
 		}
 		if (this.screen1BackGround.y <= -12945) {
 			if (this.hasPlayShotAni4) {
-				this.console.text += '已经显示过4动画\n';
+				this.console.text += '已经显示过射门动画\n';
 			} else {
-				this.console.text += '没有显示过4动画\n';
+				this.console.text += '没有显示过射门动画\n';
 				this.screen1BackGround.stopDrag();
 				// 显示过摇一摇提示
 				this.showShakeDialog4();
@@ -413,53 +418,23 @@ class Main {
 			if (this.hasPlayShotAni5) {
 				this.console.text += '已经显示过5动画\n';
 			} else {
+				this.showingDialog = true;
+				this.hasPlayShotAni5 = false;
 				this.console.text += '没有显示过5动画\n';
 				this.screen1BackGround.stopDrag();
-				// 显示过摇一摇提示
-				this.showShakeDialog5();
 			}
 		}
 
-		if (this.screen1BackGround.y >= -800 || this.screen1BackGround.y <=2000) { // 隐藏足球
-			this.football.hide();
-		} else {
+		if (this.screen1BackGround.y <= -815 && this.screen1BackGround.y >= -2215) { // 隐藏足球
 			this.football.show();
-			// 移动足球位置
-			// const y = -this.screen1BackGround.y + 232
-			let y: number = 0;
-			if ((-this.screen1BackGround.y + 232 + Laya.Browser.clientHeight +200) < 1032 + Laya.Browser.clientHeight +200) {
-				y = -this.screen1BackGround.y + 100 + Laya.Browser.clientHeight +200;
-			}
-			if ((-this.screen1BackGround.y + 232 + Laya.Browser.clientHeight +200) < 850 + Laya.Browser.clientHeight +200) {
-				y = -this.screen1BackGround.y + 130 + Laya.Browser.clientHeight +200;
-			}
-			if ((-this.screen1BackGround.y + 232 + Laya.Browser.clientHeight +200) < 730 + Laya.Browser.clientHeight +200) {
-				y = -this.screen1BackGround.y + 150 + Laya.Browser.clientHeight +200;
-			}
-			if ((-this.screen1BackGround.y + 232 + Laya.Browser.clientHeight +200) < 580 + Laya.Browser.clientHeight +200) {
-				y = -this.screen1BackGround.y + 180 + Laya.Browser.clientHeight +200;
-			}
-			if ((-this.screen1BackGround.y + 232 + Laya.Browser.clientHeight +200) < 435 + Laya.Browser.clientHeight +200) {
-				y = -this.screen1BackGround.y + 200 + Laya.Browser.clientHeight +200;
-			}
-			if ((-this.screen1BackGround.y + 232 + Laya.Browser.clientHeight +200) > 1032 + Laya.Browser.clientHeight +200) {
-				y = -this.screen1BackGround.y + 232 + Laya.Browser.clientHeight +200;
-			}
-			const x = getFootballX(y);
-			if (x == 0) {
-				this.football.y = y
-			} else {
-				this.football.pos(x, y);
-			}
-			// 判断足球是否需要旋转
-			if (this.screen1BackGround.y <= -585 - Laya.Browser.clientHeight -200) {
-				this.football.stopRotate();
-			} else {
-				this.football.playRotate();
-			}
+			let z = parseInt((-this.screen1BackGround.y -815) / 10 + '');
+			this.football.goPath(z - 0);
+		} else {
+			this.football.goPath(140);
+			this.football.hide();
 		}
 		// 判断是否需要播放cup ani
-		if (this.screen1BackGround.y <= -300 - Laya.Browser.clientHeight -300 && this.screen1BackGround.y >= -450 - Laya.Browser.clientHeight -300) {
+		if (this.screen1BackGround.y <= -1575 && this.screen1BackGround.y >= -1725) {
 			if (!this.screen1BackGround.isAniPlaying("cup")) {
 				this.screen1BackGround.playAni("cup");
 			}
@@ -470,7 +445,7 @@ class Main {
 		}
 
 		// 判断是否需要播放口哨动画
-		if (this.screen1BackGround.y <= -300 - Laya.Browser.clientHeight -300  && this.screen1BackGround.y >= -450 - Laya.Browser.clientHeight -300 ) {
+		if (this.screen1BackGround.y <= -1620 && this.screen1BackGround.y >= -1770) {
 			if (!this.screen1BackGround.isAniPlaying("whistle")) {
 				this.screen1BackGround.playAni("whistle");
 			}
@@ -479,7 +454,7 @@ class Main {
 				this.screen1BackGround.stopAni("whistle");
 			}
 		}
-		if (this.screen1BackGround.y <= -2125 - Laya.Browser.clientHeight -300  && this.screen1BackGround.y >= -2325 - Laya.Browser.clientHeight -300 ) {
+		if (this.screen1BackGround.y <= -3045 && this.screen1BackGround.y >= -3200) {
 			if (!this.screen1BackGround.isAniPlaying("text2002")) {
 				this.screen1BackGround.playAni("text2002");
 			}
@@ -488,26 +463,15 @@ class Main {
 				this.screen1BackGround.stopAni("text2002");
 			}
 		}
-		if (this.screen1BackGround.y <= -300 - Laya.Browser.clientHeight -300  && this.screen1BackGround.y >= -450 - Laya.Browser.clientHeight -300 ) {
-			if (!this.screen1BackGround.isAniPlaying("shot")) {
-				this.screen1BackGround.playAni("shot");
-			}
-		} else {
-			if (this.screen1BackGround.isAniPlaying("shot")) {
-				this.screen1BackGround.stopAni("shot");
-			}
-		}
-
-		if (this.screen1BackGround.y <= -1730 - Laya.Browser.clientHeight -300  && this.screen1BackGround.y >= -2640 - Laya.Browser.clientHeight -300 ) {
+		if (this.screen1BackGround.y <= -1730 - 812 && this.screen1BackGround.y >= -3455) {
 			this.screen1BackGround.playAni("win");
 		} else {
 			this.screen1BackGround.stopAni("win");
 		}
 
-		if (this.screen1BackGround.y <= -2640 - Laya.Browser.clientHeight -300  && this.screen1BackGround.y >= -4600 - Laya.Browser.clientHeight -300 ) {
+		if (this.screen1BackGround.y <= -3455 && this.screen1BackGround.y >= -4525) {
 			this.page1e2s.show();
-			let z = parseInt((-this.screen1BackGround.y - 2640) / 10 + '');
-			console.log('z: ' + z);
+			let z = parseInt((-this.screen1BackGround.y - 3455) / 10 + '');
 			this.page1e2s.goPath(z - 0);
 		} else {
 			this.page1e2s.hide();
@@ -516,13 +480,12 @@ class Main {
 		if (this.screen1BackGround.y <= -4530 && this.screen1BackGround.y >= -5430) {
 			this.running.show();
 			let z = parseInt((-this.screen1BackGround.y - 4530) / 10 + '');
-			console.log('z: ' + z);
 			this.running.goPath(z - 0);
 		} else {
 			this.running.goPath(81);
 			this.running.hide();
 		}
-		if (this.screen1BackGround.y <= -4600 && this.screen1BackGround.y >= -5155) {
+		if (this.screen1BackGround.y <= -4520) {
 			this.screen1BackGround.stopAni("page2_start");
 		} else {
 			this.screen1BackGround.stopAni("page2_start1");
@@ -573,15 +536,18 @@ class Main {
 				this.screen1BackGround.stopAni("electricman");
 			}
 		}
-		if (this.screen1BackGround.y <= -6410 && this.screen1BackGround.y >= -8100) {
-			this.screen1BackGround.stopAni("liuxiang");
+		if (this.screen1BackGround.y <= -6415 && this.screen1BackGround.y >= -8100) {
+			this.screen1BackGround.stopAni("liuxiang0");
 		} else {
-			this.screen1BackGround.stopAni("liuxiang1");
+			if (this.hasPlayShotAni2) {
+				this.screen1BackGround.stopAni("liuxiang1");
+			} else {
+				this.screen1BackGround.stopAni("liuxiang");
+			}
 		}
 		if (this.screen1BackGround.y <= -6410 && this.screen1BackGround.y >= -8100) {
 			this.page2e3s.show();
 			let z = parseInt((-this.screen1BackGround.y - 6410) / 10 + '');
-			console.log('z: ' + z);
 			this.page2e3s.goPath(z - 0);
 		} else {
 			this.page2e3s.hide();
@@ -592,7 +558,6 @@ class Main {
 		if (this.screen1BackGround.y <= -8110 && this.screen1BackGround.y >= -9060) {
 			this.page3run.show();
 			let z = parseInt((-this.screen1BackGround.y - 8110) / 10 + '');
-			console.log('z: ' + z);
 			this.page3run.goPath(z - 0);
 		} else {
 			this.page3run.hide();
@@ -630,14 +595,17 @@ class Main {
 			}
 		}
 		if (this.screen1BackGround.y <= - 9535 && this.screen1BackGround.y >= -11190) {
-			this.screen1BackGround.stopAni("crowd");
+			this.screen1BackGround.stopAni("crowd0");
 		} else {
-			this.screen1BackGround.stopAni("crowd1");
+			if (this.hasPlayShotAni3) {
+				this.screen1BackGround.stopAni("crowd1");
+			} else {
+				this.screen1BackGround.stopAni("crowd");
+			}
 		}
 		if (this.screen1BackGround.y <= - 9540 && this.screen1BackGround.y >= -11190) {
 			this.page3e4s.show();
 			let z = parseInt((-this.screen1BackGround.y - 9540) / 10 + '');
-			console.log('z: ' + z);
 			this.page3e4s.goPath(z - 0);
 		} else {
 			this.page3e4s.hide();
@@ -657,7 +625,6 @@ class Main {
 		if (this.screen1BackGround.y <= -11190 && this.screen1BackGround.y >= -13040) {
 			this.swimming.show();
 			let z = parseInt((-this.screen1BackGround.y - 11190) / 10 + '');
-			console.log('z: ' + z);
 			this.swimming.goPath(z - 0);
 		} else {
 			this.swimming.hide();
@@ -708,14 +675,17 @@ class Main {
 			}
 		}
 		if (this.screen1BackGround.y <= -13100 && this.screen1BackGround.y >= -14790) {
-			this.screen1BackGround.stopAni("winMan");
+			this.screen1BackGround.stopAni("winMan0");
 		} else {
-			this.screen1BackGround.stopAni("winMan1");
+			if (this.hasPlayShotAni4) {
+				this.screen1BackGround.stopAni("winMan1");
+			} else {
+				this.screen1BackGround.stopAni("winMan");
+			}
 		}
 		if (this.screen1BackGround.y <= -13100 && this.screen1BackGround.y >= -14790) {
 			this.page4e5s.show();
 			let z = parseInt((-this.screen1BackGround.y - 13100) / 10 + '');
-			console.log('z: ' + z);
 			this.page4e5s.goPath(z - 0);
 		} else {
 			this.page4e5s.hide();
@@ -725,7 +695,6 @@ class Main {
 		if (this.screen1BackGround.y <= -14930 && this.screen1BackGround.y >= -15530) {
 			this.basketball.show();
 			let z = parseInt((-this.screen1BackGround.y - 14930) / 10 + '');
-			console.log('z: ' + z);
 			this.basketball.goPath(z - 0);
 		} else {
 			this.basketball.hide();
@@ -786,68 +755,18 @@ class Main {
 				return
 			}
 			this.screen1BackGround.playAni("shot")
-
 			this.hasPlayShotAni = true
 			this.console.text += "播放射门动画";
 
 			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
 			this.playSound(Constants.sound0);
-		}
-	}
-	onDeviceShake2(): void {
-		if (this.shakeDialog2) {
-			this.shakeDialog2.close();
-			this.showingDialog = false
-			this.shakeDialog2 = null
-		}
-		this.shakeCount2++
-		this.console.text += "设备摇晃了" + this.shakeCount2 + "次\n";
-		if (this.shakeCount2 >= 1) {
-			Laya.Shake.instance.stop();
-			this.shakeCount2 = 0
-			this.console.text += "停止接收设备摇动";
-			// 播放射门动画
-			if (this.hasPlayShotAni2) {
-				return
-			}
-			this.screen1BackGround.playAni("liuxiang")
-
-			this.hasPlayShotAni2 = true
-			this.console.text += "播放射门动画";
-
-			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
-			this.playSound(Constants.sound1);
-		}
-	}
-	onDeviceShake3(): void {
-		if (this.shakeDialog3) {
-			this.shakeDialog3.close();
-			this.showingDialog = false
-			this.shakeDialog3 = null
-		}
-		this.shakeCount3++
-		this.console.text += "设备摇晃了" + this.shakeCount3 + "次\n";
-		if (this.shakeCount3 >= 1) {
-			Laya.Shake.instance.stop();
-			this.shakeCount3 = 0
-			this.console.text += "停止接收设备摇动";
-			// 播放射门动画
-			if (this.hasPlayShotAni3) {
-				return
-			}
-			this.screen1BackGround.playAni("crowd")
-
-			this.hasPlayShotAni3 = true
-			this.console.text += "播放射门动画";
-
-			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
-			this.playSound(Constants.sound2);
+			this.screen1BackGround.startDrag(this.dragRegion, false, 0)
 		}
 	}
 	onDeviceShake4(): void {
 		if (this.shakeDialog4) {
 			this.shakeDialog4.close();
-			this.showingDialog = false
+			this.showingDialog4 = false
 			this.shakeDialog4 = null
 		}
 		this.shakeCount4++
@@ -860,38 +779,16 @@ class Main {
 			if (this.hasPlayShotAni4) {
 				return
 			}
-			this.screen1BackGround.playAni("winMan");
 			this.swimming.hide();
+			this.screen1BackGround.playAni("winMan")
 			this.hasPlayShotAni4 = true
 			this.console.text += "播放射门动画";
 
 			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
 			this.playSound(Constants.sound3);
+			this.screen1BackGround.startDrag(this.dragRegion, false, 0)
 		}
 	}
-	onDeviceShake5(): void {
-		if (this.shakeDialog5) {
-			this.shakeDialog5.close();
-			this.showingDialog = false
-			this.shakeDialog5 = null
-		}
-		this.shakeCount5++
-		if (this.shakeCount5 >= 1) {
-			Laya.Shake.instance.stop();
-			this.shakeCount5 = 0
-			if (this.hasPlayShotAni5) {
-				return
-			}
-			this.screen1BackGround.playAni("ballMan")
-
-			this.hasPlayShotAni5 = true
-			this.playSound(Constants.sound4);
-			setTimeout(() => {
-				this.showScoreResultDialg(this.questionScore);
-			}, 3000);
-		}
-	}
-
 	onQuestionDialogClose(index: string, type: string): void {
 		console.log("onQuestionDialogClose", type, index);
 		const right = (type === "true") // TODO: 计分
@@ -1035,28 +932,8 @@ class Main {
 		Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake);
 		this.console.text += '开始接收设备摇动\n';
 	}
-	private showShakeDialog2(): void {
-		this.showingDialog = true
-		UIConfig.closeDialogOnSide = false
-		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
-		this.shakeDialog2 = new ShakeDialog();
-		this.shakeDialog2.popup(true, false);
-		// 监听摇一摇
-		Laya.Shake.instance.start(5, 500);
-		Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake2);
-		this.console.text += '开始接收设备摇动\n';
-	} private showShakeDialog3(): void {
-		this.showingDialog = true
-		UIConfig.closeDialogOnSide = false
-		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
-		this.shakeDialog3 = new ShakeDialog();
-		this.shakeDialog3.popup(true, false);
-		// 监听摇一摇
-		Laya.Shake.instance.start(5, 500);
-		Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake3);
-		this.console.text += '开始接收设备摇动\n';
-	} private showShakeDialog4(): void {
-		this.showingDialog = true
+	private showShakeDialog4(): void {
+		this.showingDialog4 = true
 		UIConfig.closeDialogOnSide = false
 		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
 		this.shakeDialog4 = new ShakeDialog();
@@ -1064,16 +941,6 @@ class Main {
 		// 监听摇一摇
 		Laya.Shake.instance.start(5, 500);
 		Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake4);
-		this.console.text += '开始接收设备摇动\n';
-	} private showShakeDialog5(): void {
-		this.showingDialog = true
-		UIConfig.closeDialogOnSide = false
-		Laya.Dialog.manager = new Laya.DialogManager()	// 注意：要重新设置manager，UIConfig.closeDialogOnSide = true 设置才生效
-		this.shakeDialog5 = new ShakeDialog();
-		this.shakeDialog5.popup(true, false);
-		// 监听摇一摇
-		Laya.Shake.instance.start(5, 500);
-		Laya.Shake.instance.on(Laya.Event.CHANGE, this, this.onDeviceShake5);
 		this.console.text += '开始接收设备摇动\n';
 	}
 
@@ -1115,42 +982,38 @@ class Main {
 
 	}
 
-	// 开始监听拖动
+	开始监听拖动
 	private beginListenDrag(): void {
 		this.cancelListenClick();
 		this.cancelListenLongClick();
 		this.screen1BackGround.on(Laya.Event.DRAG_MOVE, this, this.onBackgroundMove)
 	}
 
-	// 开始监听点击
-	private beginListenClick(): void {
-		this.cancelListenDrag();
-		this.cancelListenLongClick();
-		this.screen1BackGround.on(Laya.Event.MOUSE_DOWN, this, this.onBackgroundClick)
-	}
-
-	// 开始监听长按
-	private beginListenLongClick(): void {
-		this.cancelListenDrag();
-		this.cancelListenClick();
-		this.screen1BackGround.on(Laya.Event.MOUSE_DOWN, this, this.onLongClickDown);
-		this.screen1BackGround.on(Laya.Event.MOUSE_UP, this, this.onLongClickUp)
-	}
-
-
 	// 点击触发事件
 	private onBackgroundClick(): void {
-		console.log("Main", "onBackgroundClick")
+		// alert('++1')
+		let bally = this.ballY
+		this.ballY = bally + 5;
+		console.log(this.ballY)
+		if (this.ballY < 41) {
+			this.screen1BackGround.moveAni('ballMan', this.ballY)
+		} else {
+			this.showingDialog = false;
+			this.hasPlayShotAni5 = true;
+			this.showScoreResultDialg(this.questionScore)
+		}
 	}
-
 	// 长按触发事件
 	private onBackgroundLongClick(): void {
-
+		this.screen1BackGround.playAni("crowd");
+		this.showingDialog = false;
+		this.hasPlayShotAni3 = true;
+		this.playSound(Constants.sound2);
 	}
 
-	private cancelListenDrag(): void {
-		this.screen1BackGround.offAll(Laya.Event.DRAG_MOVE)
-	}
+	// private cancelListenDrag(): void {
+	// 	this.screen1BackGround.offAll(Laya.Event.DRAG_MOVE)
+	// }
 
 	private cancelListenClick(): void {
 		this.screen1BackGround.offAll(Laya.Event.MOUSE_DOWN)
@@ -1162,18 +1025,27 @@ class Main {
 		this.isLongClick = false
 	}
 
-	private onLongClickDown(): void {
-		this.isLongClick = true
-		Laya.timer.once(1000, this, this.onLongDownCheck) // 1秒算长按
-	}
-	private onLongClickUp(): void {
-		this.isLongClick = false
-	}
+	// private onLongClickDown(): void {
+	// 	console.log('22')
+	// 	this.isLongClick = true;
+	// 	Laya.timer.once(1000, this, this.onLongDownCheck); // 1秒算长按
+	// 	this.screen1BackGround.on(Laya.Event.MOUSE_UP, this, this.onLongClickUp);
+	// }
+	// private onLongClickUp(): void {
+	// 	this.isLongClick = false
+	// }
 
-	private onLongDownCheck() {
-		if (!this.isLongClick) { // 不算长按
+	private notLongDownCheck() {
+		if (this.isLongClick) { // 不算长按
+			this.isLongClick = false;
 			return
+		} else {
+			Laya.timer.clear(this, this.onLongDownCheck)
 		}
+		Laya.stage.off(Laya.Event.MOUSE_UP, this, this.notLongDownCheck)
+	}
+	private onLongDownCheck() {
+		this.isLongClick = true;
 		this.onBackgroundLongClick()
 	}
 

@@ -5,7 +5,7 @@ S E3DFAEC8 background1.png
 S 8C961F7B background2.png
 S ADCED8BC background3.png
 S A33D75AF background4.png
-R 4BB20254 background5.png
+R EB18F09E background5.png
 D comp
 P 9401CC40 blank.png
 P B03390E5 btn_close.png
@@ -100,7 +100,7 @@ P 7CB6514F page2_start.png
 P A18C495E page3_2008.png
 S 3A03D21C page3_bg
 P 223ECB5D page3_computer.png
-P EF8DB0BD page3_end.png
+P 875E379D page3_end.png
 P 523DC900 page3_fire.png
 P CD698E11 page3_medal.png
 P 77CF04F0 page3_nest.png
@@ -121,7 +121,7 @@ P 3DCF417F page4_man.png
 P 792FAE04 page4_man1.png
 P 43EB787F page4_man2.png
 P 9EEEFFAA page4_man3.png
-P 117A02F2 page4_start.png
+P 9B4952BD page4_start.png
 P 3DCF417F page4_swimming_L.png
 P 792FAE04 page4_swimming_R.png
 P 1D446663 page4_wall.png
@@ -162,6 +162,7 @@ P 011172FC first_button.png
 R FDD1A1A3 loading.png
 R 1F5EC009 loading_button.png
 P 44FB8B00 logo.png
+P 1004C7BD longClick.png
 P 125A71A0 num_0.png
 P 9E244ABB num_1.png
 P E2CBA877 num_10.png
@@ -173,6 +174,7 @@ P C232F7B6 num_6.png
 P F13A353A num_7.png
 P 54084B6A num_8.png
 P 3FEA1257 num_9.png
+P 7418DF96 page2_btn.png
 P 4FCE9001 question.png
 P E3DA96CE question_bg.png
 P 15909C3C right.png
@@ -182,4 +184,5 @@ R 5BA53C5D score_3.jpg
 R E3F7C62E score_4.jpg
 P D3EC3E7F scroll_tip.jpg
 P A3C34F45 shake.jpg
+P 16BA33B4 skill.png
 P 1A36E3D8 wrong.png

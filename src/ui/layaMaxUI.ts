@@ -58,4 +58,12 @@ export module ui.dialog {
             this.loadScene("dialog/ShakeDialog");
         }
     }
+    export class clickUI extends Scene {
+        public static  uiView:any ={"type":"Scene","props":{"width":375,"height":667},"loadList":[],"loadList3D":[]};
+        constructor(){ super()}
+        createChildren():void {
+            super.createChildren();
+            this.createView(clickUI.uiView);
+        }
+    }
 }

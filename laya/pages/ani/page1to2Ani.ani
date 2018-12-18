@@ -1,5 +1,4 @@
 {
-    "x":0,
     "type":"View",
     "selectedBox":2,
     "searchKey":"View",
@@ -59,7 +58,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"y",
-                                "index":197
+                                "index":107
                             }],
                         "x":[
                             {
@@ -94,7 +93,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"scaleY",
-                                "index":197
+                                "index":107
                             }],
                         "scaleX":[
                             {
@@ -111,7 +110,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"scaleX",
-                                "index":197
+                                "index":107
                             }],
                         "anchorY":[
                             {
@@ -146,7 +145,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"alpha",
-                                "index":60
+                                "index":38
                             },
                             {
                                 "value":1,
@@ -154,7 +153,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"alpha",
-                                "index":105
+                                "index":61
                             },
                             {
                                 "value":1,
@@ -162,7 +161,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"alpha",
-                                "index":197
+                                "index":107
                             }]
                     }
                 },
@@ -247,7 +246,7 @@
                                 "tween":true,
                                 "target":5,
                                 "key":"scaleY",
-                                "index":130
+                                "index":80
                             }],
                         "scaleX":[
                             {
@@ -273,7 +272,7 @@
                                 "tween":true,
                                 "target":5,
                                 "key":"scaleX",
-                                "index":130
+                                "index":80
                             }],
                         "anchorY":[
                             {
@@ -335,7 +334,7 @@
                                 "tween":true,
                                 "target":5,
                                 "key":"alpha",
-                                "index":45
+                                "index":20
                             },
                             {
                                 "value":0,
@@ -343,7 +342,7 @@
                                 "tween":true,
                                 "target":5,
                                 "key":"alpha",
-                                "index":130
+                                "index":80
                             }]
                     }
                 }],
