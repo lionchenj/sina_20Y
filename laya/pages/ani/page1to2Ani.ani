@@ -1,4 +1,5 @@
 {
+    "x":0,
     "type":"View",
     "selectedBox":2,
     "searchKey":"View",
@@ -6,6 +7,7 @@
     "nodeParent":-1,
     "maxID":6,
     "label":"View",
+    "isOpen":null,
     "isDirectory":true,
     "isAniNode":true,
     "hasChild":true,
@@ -145,15 +147,7 @@
                                 "tween":true,
                                 "target":4,
                                 "key":"alpha",
-                                "index":38
-                            },
-                            {
-                                "value":1,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "key":"alpha",
-                                "index":61
+                                "index":20
                             },
                             {
                                 "value":1,
@@ -246,7 +240,7 @@
                                 "tween":true,
                                 "target":5,
                                 "key":"scaleY",
-                                "index":80
+                                "index":38
                             }],
                         "scaleX":[
                             {
@@ -272,7 +266,7 @@
                                 "tween":true,
                                 "target":5,
                                 "key":"scaleX",
-                                "index":80
+                                "index":38
                             }],
                         "anchorY":[
                             {
@@ -342,7 +336,7 @@
                                 "tween":true,
                                 "target":5,
                                 "key":"alpha",
-                                "index":80
+                                "index":38
                             }]
                     }
                 }],

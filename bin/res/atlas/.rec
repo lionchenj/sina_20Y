@@ -158,11 +158,13 @@ P 4B51A8BD c.png
 P 4BAB348E click_tip.png
 P 25235E3A click_tip_white.png
 P 67DE570C d.png
+P 16BA33B4 DBHit.png
+P 64AB65EE down.png
 P 011172FC first_button.png
 R FDD1A1A3 loading.png
 R 1F5EC009 loading_button.png
 P 44FB8B00 logo.png
-P 1004C7BD longClick.png
+P 915EB695 longClick.png
 P 125A71A0 num_0.png
 P 9E244ABB num_1.png
 P E2CBA877 num_10.png
@@ -174,7 +176,7 @@ P C232F7B6 num_6.png
 P F13A353A num_7.png
 P 54084B6A num_8.png
 P 3FEA1257 num_9.png
-P 7418DF96 page2_btn.png
+P A536CEE4 page2_btn.png
 P 4FCE9001 question.png
 P E3DA96CE question_bg.png
 P 15909C3C right.png
@@ -184,5 +186,4 @@ R 5BA53C5D score_3.jpg
 R E3F7C62E score_4.jpg
 P D3EC3E7F scroll_tip.jpg
 P A3C34F45 shake.jpg
-P 16BA33B4 skill.png
 P 1A36E3D8 wrong.png

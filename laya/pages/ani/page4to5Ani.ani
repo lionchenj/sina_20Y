@@ -125,7 +125,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleY",
-                                "index":169
+                                "index":40
                             }],
                         "scaleX":[
                             {
@@ -151,7 +151,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"scaleX",
-                                "index":169
+                                "index":40
                             }],
                         "anchorY":[
                             {
@@ -213,7 +213,7 @@
                                 "tween":true,
                                 "target":3,
                                 "key":"alpha",
-                                "index":169
+                                "index":40
                             }]
                     }
                 },

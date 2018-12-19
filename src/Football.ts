@@ -9,7 +9,6 @@ export default class Football extends Laya.Sprite {
     }
 
     init(): void {
-            
         this.bodyAni = new Laya.Animation()
         this.bodyAni.loadAnimation("ani/football.ani")
         this.addChild(this.bodyAni)

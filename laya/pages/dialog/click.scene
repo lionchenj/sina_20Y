@@ -1,6 +1,0 @@
-{
-    "type":"Scene",
-    "props":{"width":375,"sceneColor":"#000000","height":667},
-    "child":[
-        ]
-}

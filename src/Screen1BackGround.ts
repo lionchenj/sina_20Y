@@ -34,6 +34,9 @@ export default class Screen1BackGround extends Laya.Sprite {
     private HatAni: Laya.Animation
     private HeartAni: Laya.Animation
     private liuxiangAni: Laya.Animation
+    private longClick: Laya.Animation
+    private downClick: Laya.Animation
+    private DBHit: Laya.Animation
     private MedalAni: Laya.Animation
     // private ScoreboardAni: Laya.Animation
     private ShoesAni: Laya.Animation
@@ -102,27 +105,27 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.cupAni = new Laya.Animation()
         this.cupAni.loadAnimation("ani/CupAni.ani")
         this.addChild(this.cupAni)
-        this.cupAni.pos(400, 1020 + Constants.background1Height)
+        this.cupAni.pos(400, 1020 + 812)
 
         this.whistleAni = new Laya.Animation()
         this.whistleAni.loadAnimation("ani/WhistleAni.ani")
         this.addChild(this.whistleAni)
-        this.whistleAni.pos(100, 980 + Constants.background1Height)
+        this.whistleAni.pos(100, 980 + 812)
 
         this.ShotAni = new Laya.Animation()
         this.ShotAni.loadAnimation("ani/ShotAni.ani")
         this.addChild(this.ShotAni)
-        this.ShotAni.pos(220, 1850 + Constants.background1Height)
+        this.ShotAni.pos(220, 1850 + 812)
 
         this.text2002Ani = new Laya.Animation()
         this.text2002Ani.loadAnimation("ani/text2002Ani.ani")
         this.addChild(this.text2002Ani)
-        this.text2002Ani.pos(360, 2600 + Constants.background1Height)
+        this.text2002Ani.pos(360, 2600 + 812)
 
         this.winAni = new Laya.Animation()
         this.winAni.loadAnimation("ani/winAni.ani")
         this.addChild(this.winAni)
-        this.winAni.pos(260, 3050 + Constants.background1Height)
+        this.winAni.pos(260, 3050 + 812)
 
 
         //page2
@@ -160,6 +163,10 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.liuxiangAni.loadAnimation("ani/liuxiangAni.ani")
         this.addChild(this.liuxiangAni)
         this.liuxiangAni.pos(263, 6750)
+        this.downClick = new Laya.Animation()
+        this.downClick.loadAnimation("ani/downClick.ani")
+        this.addChild(this.downClick)
+        this.downClick.pos(263, 6950)
 
 
         //page3
@@ -187,7 +194,10 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.CrowdAni.loadAnimation("ani/CrowdAni.ani")
         this.addChild(this.CrowdAni)
         this.CrowdAni.pos(270, 9985)
-
+        this.longClick = new Laya.Animation()
+        this.longClick.loadAnimation("ani/longClick.ani")
+        this.addChild(this.longClick)
+        this.longClick.pos(270, 10200)
 
         //page4
         this.HeartAni = new Laya.Animation()
@@ -256,6 +266,11 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.BallManAni.loadAnimation("ani/BallManAni.ani")
         this.addChild(this.BallManAni)
         this.BallManAni.pos(265, 16467)
+        this.DBHit = new Laya.Animation()
+        this.DBHit.loadAnimation("ani/DBHit.ani")
+        this.addChild(this.DBHit)
+        this.DBHit.pos(265, 16467)
+        this.DBHit.play(0, true);
     }
     moveAni(aniName: AniName, y: number): void {
         switch (aniName) {
@@ -364,6 +379,7 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.winAni.gotoAndStop(0);
                 break;
             case "liuxiang":
+                this.downClick.play(0, true);
                 this.liuxiangAni.gotoAndStop(1);
                 break;
             case "liuxiang0":
@@ -372,7 +388,11 @@ export default class Screen1BackGround extends Laya.Sprite {
             case "liuxiang1":
                 this.liuxiangAni.gotoAndStop(30);
                 break;
+            case "downClick":
+                this.downClick.gotoAndStop(10);
+                break;
             case "crowd":
+                this.longClick.play(0, true);
                 this.CrowdAni.gotoAndStop(1);
                 break;
             case "crowd0":
@@ -380,6 +400,9 @@ export default class Screen1BackGround extends Laya.Sprite {
                 break;
             case "crowd1":
                 this.CrowdAni.gotoAndStop(30);
+                break;
+            case "longClick":
+                this.longClick.gotoAndStop(10);
                 break;
             case "winMan":
                 this.WinManAni.gotoAndStop(1);

@@ -756,6 +756,14 @@
                                 "tweenMethod":"linearNone",
                                 "tween":true,
                                 "target":4,
+                                "key":"alpha",
+                                "index":176
+                            },
+                            {
+                                "value":0,
+                                "tweenMethod":"linearNone",
+                                "tween":true,
+                                "target":4,
                                 "label":null,
                                 "key":"alpha",
                                 "index":180

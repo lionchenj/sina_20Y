@@ -49,7 +49,7 @@ class Main {
 
 	private console: Laya.Text;
 
-
+	private downIcon: Laya.Animation
 	private showQuestionIndexList = new Array<number>()	// 已经显示的问题index列表
 	private showingDialog = false
 
@@ -257,8 +257,13 @@ class Main {
 		Laya.stage.addChild(this.screen1BackGround);
 		this.beginListenDrag();
 
+		this.downIcon = new Laya.Animation();
+		this.downIcon.loadAnimation("ani/down.ani");
+		this.downIcon.pos(250, Laya.Browser.clientHeight + 200);
+		Laya.stage.addChild(this.downIcon);
+		this.downIcon.play(0, true);
 		this.football = new Football();
-		this.football.pos(300, 200);
+		this.football.pos(250, 200);
 		Laya.stage.addChild(this.football);
 		this.football.hide();
 		this.basketball = new Basketball();
@@ -318,13 +323,14 @@ class Main {
 				this.firstnum = 2030;
 				this.screen1BackGround.y = 10;
 				this.screen1BackGround.playAni("first");
-				this.screen1BackGround.startDrag(this.dragRegion, false, 0);
 			}
 		}
-		if (this.showingDialog && this.screen1BackGround.y <= -6350) {
+		if (this.showingDialog && this.screen1BackGround.y <= -6270) {
 			if (!this.hasPlayShotAni2) {
-				if (this.firstSt - Laya.stage.mouseY > 500) {
+				if (this.firstSt - Laya.stage.mouseY < -50) {
 					this.screen1BackGround.playAni("liuxiang");
+					this.screen1BackGround.stopAni("downClick");
+					this.downIcon.play(0, true);
 					this.showingDialog = false;
 					this.hasPlayShotAni2 = true;
 					this.playSound(Constants.sound1);
@@ -369,7 +375,7 @@ class Main {
 
 		// TODO: 根据实际情况显示点击提示
 		// this.showTipDialog("click_white");
-		// this.showTipDialog("click_black")
+		// this.showTipDialog("click_black");
 
 
 		if (this.screen1BackGround.y <= -2275) { // 不给拖动，摇一摇显示射门动画
@@ -378,36 +384,41 @@ class Main {
 			} else {
 				this.console.text += '没有显示过射门动画\n';
 				this.screen1BackGround.stopDrag();
+				this.downIcon.gotoAndStop(10);
 				// 显示过摇一摇提示
 				this.showShakeDialog();
 			}
 		}
-		if (this.screen1BackGround.y <= -6350) {
+		if (this.screen1BackGround.y <= -6270) {
 			if (this.hasPlayShotAni2) {
 				this.console.text += '已经显示过3动画\n';
 			} else {
+				this.screen1BackGround.y = Math.min(0, -6270)
 				this.showingDialog = true;
 				this.hasPlayShotAni2 = false;
+				this.downIcon.gotoAndStop(10);
 				this.console.text += '没有显示过2动画\n';
-				this.screen1BackGround.stopDrag();
 			}
 		}
-		if (this.screen1BackGround.y <= -9500) {
+		if (this.screen1BackGround.y <= -9530) {
 			if (this.hasPlayShotAni3) {
 				this.console.text += '已经显示过3动画\n';
 			} else {
+				this.screen1BackGround.y = Math.min(0, -9530)
 				this.showingDialog = true;
 				this.hasPlayShotAni3 = false;
+				this.downIcon.gotoAndStop(10);
 				this.console.text += '没有显示过3动画\n';
-				this.screen1BackGround.stopDrag();
 			}
 		}
 		if (this.screen1BackGround.y <= -12945) {
 			if (this.hasPlayShotAni4) {
 				this.console.text += '已经显示过射门动画\n';
 			} else {
+				this.screen1BackGround.y = Math.min(0, -12945)
 				this.console.text += '没有显示过射门动画\n';
 				this.screen1BackGround.stopDrag();
+				this.downIcon.gotoAndStop(10);
 				// 显示过摇一摇提示
 				this.showShakeDialog4();
 			}
@@ -416,17 +427,18 @@ class Main {
 			if (this.hasPlayShotAni5) {
 				this.console.text += '已经显示过5动画\n';
 			} else {
+				this.screen1BackGround.y = Math.min(0, -15946)
 				this.showingDialog = true;
 				this.hasPlayShotAni5 = false;
 				this.console.text += '没有显示过5动画\n';
-				this.screen1BackGround.stopDrag();
+				this.downIcon.gotoAndStop(10);
 				this.playSound(Constants.sound4);
 			}
 		}
 
 		if (this.screen1BackGround.y <= -815 && this.screen1BackGround.y >= -2215) { // 隐藏足球
 			this.football.show();
-			let z = parseInt((-this.screen1BackGround.y -815) / 10 + '');
+			let z = parseInt((-this.screen1BackGround.y - 815) / 10 + '');
 			this.football.goPath(z - 0);
 		} else {
 			this.football.goPath(140);
@@ -535,7 +547,7 @@ class Main {
 				this.screen1BackGround.stopAni("electricman");
 			}
 		}
-		if (this.screen1BackGround.y <= -6415 && this.screen1BackGround.y >= -8100) {
+		if (this.screen1BackGround.y <= -6415 && this.screen1BackGround.y >= -8110) {
 			this.screen1BackGround.stopAni("liuxiang0");
 		} else {
 			if (this.hasPlayShotAni2) {
@@ -593,7 +605,7 @@ class Main {
 				this.screen1BackGround.stopAni("text2008");
 			}
 		}
-		if (this.screen1BackGround.y <= - 9535 && this.screen1BackGround.y >= -11190) {
+		if (this.screen1BackGround.y <= -9535 && this.screen1BackGround.y >= -11190) {
 			this.screen1BackGround.stopAni("crowd0");
 		} else {
 			if (this.hasPlayShotAni3) {
@@ -602,7 +614,7 @@ class Main {
 				this.screen1BackGround.stopAni("crowd");
 			}
 		}
-		if (this.screen1BackGround.y <= - 9540 && this.screen1BackGround.y >= -11190) {
+		if (this.screen1BackGround.y <= -9540 && this.screen1BackGround.y >= -11190) {
 			this.page3e4s.show();
 			let z = parseInt((-this.screen1BackGround.y - 9540) / 10 + '');
 			this.page3e4s.goPath(z - 0);
@@ -754,11 +766,9 @@ class Main {
 				return
 			}
 			this.screen1BackGround.playAni("shot")
+			this.downIcon.play(0, true);
 			this.hasPlayShotAni = true
-			this.console.text += "播放射门动画";
-			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
 			this.playSound(Constants.sound0);
-			this.screen1BackGround.startDrag(this.dragRegion, false, 0)
 		}
 	}
 	onDeviceShake4(): void {
@@ -779,12 +789,9 @@ class Main {
 			}
 			this.swimming.hide();
 			this.screen1BackGround.playAni("winMan")
+			this.downIcon.play(0, true);
 			this.hasPlayShotAni4 = true
-			this.console.text += "播放射门动画";
-
-			// TODO: 播放实际需要的声音，并在其他需要的地方调用播放声音
 			this.playSound(Constants.sound3);
-			this.screen1BackGround.startDrag(this.dragRegion, false, 0)
 		}
 	}
 	onQuestionDialogClose(index: string, type: string): void {
@@ -878,7 +885,7 @@ class Main {
 		const offset = Laya.Browser.clientHeight
 		const hasShowLength = this.showQuestionIndexList.length
 		if (hasShowLength >= 10) {
-		// if (y) {
+			// if (y) {
 			return false
 		}
 		if (y > offset - QuestionShowY[hasShowLength]) {
@@ -1006,6 +1013,8 @@ class Main {
 	// 长按触发事件
 	private onBackgroundLongClick(): void {
 		this.screen1BackGround.playAni("crowd");
+		this.screen1BackGround.stopAni("longClick");
+		this.downIcon.play(0, true);
 		this.showingDialog = false;
 		this.hasPlayShotAni3 = true;
 		this.playSound(Constants.sound2);
