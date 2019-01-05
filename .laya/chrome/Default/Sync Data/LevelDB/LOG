@@ -1,3 +1,6 @@
-2018/12/13-11:44:46.511 8003 Reusing MANIFEST /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Sync Data/LevelDB/MANIFEST-000001
-2018/12/13-11:44:46.511 8003 Recovering log #3
-2018/12/13-11:44:46.514 8003 Reusing old log /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Sync Data/LevelDB/000003.log 
+2019/01/05-15:36:09.617 8003 Reusing MANIFEST /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Sync Data/LevelDB/MANIFEST-000001
+2019/01/05-15:36:09.617 8003 Recovering log #3
+2019/01/05-15:36:09.620 8003 Reusing old log /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Sync Data/LevelDB/000003.log 
+2019/01/05-18:28:39.385 10f17 Level-0 table #5: started
+2019/01/05-18:28:39.413 10f17 Level-0 table #5: 100856 bytes OK
+2019/01/05-18:28:39.418 10f17 Delete type=0 #3

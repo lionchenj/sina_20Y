@@ -17,20 +17,6 @@
             "x":15,
             "type":"GraphicNode",
             "searchKey":"GraphicNode",
-            "props":{"y":0,"x":0},
-            "nodeParent":2,
-            "label":"GraphicNode",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":4,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
-            "type":"GraphicNode",
-            "searchKey":"GraphicNode",
             "props":{},
             "nodeParent":2,
             "label":"GraphicNode",
@@ -365,118 +351,6 @@
                                 "target":3,
                                 "key":"alpha",
                                 "index":1
-                            }]
-                    }
-                },
-                {
-                    "target":4,
-                    "keyframes":{
-                        "y":[
-                            {
-                                "value":-74,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "key":"y",
-                                "index":0
-                            },
-                            {
-                                "value":-74,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "label":null,
-                                "key":"y",
-                                "index":1
-                            },
-                            {
-                                "value":-74,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "label":null,
-                                "key":"y",
-                                "index":10
-                            }],
-                        "x":[
-                            {
-                                "value":-182,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "key":"x",
-                                "index":0
-                            },
-                            {
-                                "value":-182,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "label":null,
-                                "key":"x",
-                                "index":1
-                            },
-                            {
-                                "value":-182,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "label":null,
-                                "key":"x",
-                                "index":10
-                            }],
-                        "skin":[
-                            {
-                                "value":"sports/page4_head.png",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":4,
-                                "key":"skin",
-                                "index":0
-                            },
-                            {
-                                "value":"sports/page4_head.png",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":4,
-                                "label":null,
-                                "key":"skin",
-                                "index":1
-                            },
-                            {
-                                "value":"sports/page4_head.png",
-                                "tweenMethod":"linearNone",
-                                "tween":false,
-                                "target":4,
-                                "label":null,
-                                "key":"skin",
-                                "index":10
-                            }],
-                        "alpha":[
-                            {
-                                "value":0,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "key":"alpha",
-                                "index":0
-                            },
-                            {
-                                "value":1,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "key":"alpha",
-                                "index":1
-                            },
-                            {
-                                "value":1,
-                                "tweenMethod":"linearNone",
-                                "tween":true,
-                                "target":4,
-                                "label":null,
-                                "key":"alpha",
-                                "index":10
                             }]
                     }
                 }],

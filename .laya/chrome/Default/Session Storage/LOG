@@ -1,3 +1,6 @@
-2018/12/13-11:44:48.972 1810b Reusing MANIFEST /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Session Storage/MANIFEST-000001
-2018/12/13-11:44:48.972 1810b Recovering log #3
-2018/12/13-11:44:48.973 1810b Reusing old log /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Session Storage/000003.log 
+2019/01/05-15:36:11.917 8003 Reusing MANIFEST /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Session Storage/MANIFEST-000001
+2019/01/05-15:36:11.918 8003 Recovering log #3
+2019/01/05-15:36:11.919 8003 Reusing old log /Users/mac/Documents/github/sina_20Y/.laya/chrome/Default/Session Storage/000003.log 
+2019/01/05-15:38:38.516 10f17 Level-0 table #5: started
+2019/01/05-15:38:38.526 10f17 Level-0 table #5: 20558 bytes OK
+2019/01/05-15:38:38.527 10f17 Delete type=0 #3

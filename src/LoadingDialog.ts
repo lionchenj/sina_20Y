@@ -19,7 +19,6 @@ export default class LoadingDialog extends ui.dialog.LoadingDialogUI {
             return
         }
         const num = Math.ceil(nber * 100) + "%"
-        console.log(num)
         this.progress.text = num;
         if (nber == 1) {
             this.on(Laya.Event.MOUSE_DOWN, this, this.onClick);

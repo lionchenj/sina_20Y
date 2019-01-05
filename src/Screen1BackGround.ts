@@ -17,8 +17,6 @@ export default class Screen1BackGround extends Laya.Sprite {
     private text2004Ani: Laya.Animation
     private text2008Ani: Laya.Animation
     private text2012Ani: Laya.Animation
-    private page2_start: Laya.Animation
-    private page3_start: Laya.Animation
     private BallAni: Laya.Animation
     private BallManAni: Laya.Animation
     private BoardAni: Laya.Animation
@@ -75,28 +73,31 @@ export default class Screen1BackGround extends Laya.Sprite {
         this.addChild(this.bg1)
 
         this.bg2 = new Laya.Sprite()
-        this.bg2.pos(0, Constants.background1Height + 970)
+        this.bg2.pos(0, Constants.background0Height + Constants.background1Height + 150)
         this.bg2.size(Constants.stageWidth, Constants.background2Height)
         const texture2 = Laya.loader.getRes(Constants.background2)
         this.bg2.graphics.drawImage(texture2)
         this.addChild(this.bg2)
 
         this.bg3 = new Laya.Sprite()
-        this.bg3.pos(0, Constants.background1Height + Constants.background2Height + 1940)
+        console.log('page3:'+(Constants.background0Height + Constants.background1Height + Constants.background2Height + 300))
+        this.bg3.pos(0, Constants.background0Height + Constants.background1Height + Constants.background2Height + 300)
         this.bg3.size(Constants.stageWidth, Constants.background3Height)
         const texture3 = Laya.loader.getRes(Constants.background3)
         this.bg3.graphics.drawImage(texture3)
         this.addChild(this.bg3)
 
         this.bg4 = new Laya.Sprite()
-        this.bg4.pos(0, Constants.background1Height + Constants.background2Height + Constants.background3Height + 2910)
+        console.log('page4:'+(Constants.background0Height + Constants.background1Height + Constants.background2Height + Constants.background3Height + 450))
+        this.bg4.pos(0, Constants.background0Height + Constants.background1Height + Constants.background2Height + Constants.background3Height + 450)
         this.bg4.size(Constants.stageWidth, Constants.background4Height)
         const texture4 = Laya.loader.getRes(Constants.background4)
         this.bg4.graphics.drawImage(texture4)
         this.addChild(this.bg4)
 
+        console.log('page5:'+(Constants.background0Height + Constants.background1Height + Constants.background2Height + Constants.background3Height + Constants.background4Height + 600))
         this.bg5 = new Laya.Sprite()
-        this.bg5.pos(0, Constants.background1Height + Constants.background2Height + Constants.background3Height + Constants.background4Height + 3880)
+        this.bg5.pos(0, Constants.background0Height + Constants.background1Height + Constants.background2Height + Constants.background3Height + Constants.background4Height + 600)
         this.bg5.size(Constants.stageWidth, Constants.background5Height)
         const texture5 = Laya.loader.getRes(Constants.background5)
         this.bg5.graphics.drawImage(texture5)
@@ -129,10 +130,6 @@ export default class Screen1BackGround extends Laya.Sprite {
 
 
         //page2
-        this.page2_start = new Laya.Animation()
-        this.page2_start.loadAnimation("ani/page2_start.ani")
-        this.addChild(this.page2_start)
-        this.page2_start.pos(250, 4880)
 
         this.dumbbellAni = new Laya.Animation()
         this.dumbbellAni.loadAnimation("ani/dumbbellAni.ani")
@@ -170,106 +167,94 @@ export default class Screen1BackGround extends Laya.Sprite {
 
 
         //page3
-        this.page3_start = new Laya.Animation()
-        this.page3_start.loadAnimation("ani/page3_start.ani")
-        this.addChild(this.page3_start)
-        this.page3_start.pos(250, 8250)
 
         this.MedalAni = new Laya.Animation()
         this.MedalAni.loadAnimation("ani/MedalAni.ani")
         this.addChild(this.MedalAni)
-        this.MedalAni.pos(333, 8900)
+        this.MedalAni.pos(333, 8900 - 820)
 
         this.StageAni = new Laya.Animation()
         this.StageAni.loadAnimation("ani/StageAni.ani")
         this.addChild(this.StageAni)
-        this.StageAni.pos(219, 9211)
+        this.StageAni.pos(219, 9211 - 820)
 
         this.text2008Ani = new Laya.Animation()
         this.text2008Ani.loadAnimation("ani/text2008Ani.ani")
         this.addChild(this.text2008Ani)
-        this.text2008Ani.pos(231, 9693)
+        this.text2008Ani.pos(231, 9693 - 820)
 
         this.CrowdAni = new Laya.Animation()
         this.CrowdAni.loadAnimation("ani/CrowdAni.ani")
         this.addChild(this.CrowdAni)
-        this.CrowdAni.pos(270, 9985)
+        this.CrowdAni.pos(270, 9985 - 820)
         this.longClick = new Laya.Animation()
         this.longClick.loadAnimation("ani/longClick.ani")
         this.addChild(this.longClick)
-        this.longClick.pos(270, 10200)
+        this.longClick.pos(270, 10200 - 820)
 
         //page4
         this.HeartAni = new Laya.Animation()
         this.HeartAni.loadAnimation("ani/HeartAni.ani")
         this.addChild(this.HeartAni)
-        this.HeartAni.pos(181, 11331)
+        this.HeartAni.pos(181, 11331 - 830 - 812)
 
         this.text2012Ani = new Laya.Animation()
         this.text2012Ani.loadAnimation("ani/text2012Ani.ani")
         this.addChild(this.text2012Ani)
-        this.text2012Ani.pos(259, 11705)
-
-        // this.WaterRightAni = new Laya.Animation()
-        // this.WaterRightAni.loadAnimation("ani/WaterRightAni.ani")
-        // this.addChild(this.WaterRightAni)
-        // this.WaterRightAni.pos(370, 9100)
+        this.text2012Ani.pos(259, 11705 - 830 - 812)
 
         this.BoardAni = new Laya.Animation()
         this.BoardAni.loadAnimation("ani/BoardAni.ani")
         this.addChild(this.BoardAni)
-        this.BoardAni.pos(257, 11922)
+        this.BoardAni.pos(257, 11922 - 830 - 812)
 
         this.WallAni = new Laya.Animation()
         this.WallAni.loadAnimation("ani/WallAni.ani")
         this.addChild(this.WallAni)
-        this.WallAni.pos(275, 12190)
+        this.WallAni.pos(275, 12190 - 830 - 812)
 
         this.GogglesAni = new Laya.Animation()
         this.GogglesAni.loadAnimation("ani/GogglesAni.ani")
         this.addChild(this.GogglesAni)
-        this.GogglesAni.pos(355, 12634)
+        this.GogglesAni.pos(355, 12634 - 830 - 812)
 
         this.WaterLeftAni = new Laya.Animation()
         this.WaterLeftAni.loadAnimation("ani/WaterLeftAni.ani")
         this.addChild(this.WaterLeftAni)
-        this.WaterLeftAni.pos(163, 13007)
+        this.WaterLeftAni.pos(163, 13007 - 830 - 812)
 
         this.WinManAni = new Laya.Animation()
         this.WinManAni.loadAnimation("ani/WinManAni.ani")
         this.addChild(this.WinManAni)
-        this.WinManAni.pos(254, 13480)
+        this.WinManAni.pos(254, 13480 - 830 - 812)
 
 
         //page5
-        // this.ScoreboardAni = new Laya.Animation()
-        // this.ScoreboardAni.loadAnimation("ani/ScoreboardAni.ani")
-        // this.addChild(this.ScoreboardAni)
-        // this.ScoreboardAni.pos(257, 14961)
 
-        this.BallAni = new Laya.Animation()
-        this.BallAni.loadAnimation("ani/BallAni.ani")
-        this.addChild(this.BallAni)
-        this.BallAni.pos(127, 14961)
+        // this.BallAni = new Laya.Animation()
+        // this.BallAni.loadAnimation("ani/BallAni.ani")
+        // this.addChild(this.BallAni)
+        // this.BallAni.pos(127, 14961 - 830)
 
         this.ShoesAni = new Laya.Animation()
         this.ShoesAni.loadAnimation("ani/ShoesAni.ani")
         this.addChild(this.ShoesAni)
-        this.ShoesAni.pos(338, 15649)
+        this.ShoesAni.pos(338, 15649 - 830 - 830 - 812)
 
         this.HatAni = new Laya.Animation()
         this.HatAni.loadAnimation("ani/HatAni.ani")
         this.addChild(this.HatAni)
-        this.HatAni.pos(185, 15923)
+        this.HatAni.pos(185, 15923 - 830 - 830 - 812)
 
         this.BallManAni = new Laya.Animation()
         this.BallManAni.loadAnimation("ani/BallManAni.ani")
         this.addChild(this.BallManAni)
-        this.BallManAni.pos(265, 16467)
+        this.BallManAni.pos(265, 16467 - 830 - 830 - 812)
+
         this.DBHit = new Laya.Animation()
         this.DBHit.loadAnimation("ani/DBHit.ani")
         this.addChild(this.DBHit)
-        this.DBHit.pos(265, 16467)
+        this.DBHit.pos(265, 16467 - 830 - 830 - 812)
         this.DBHit.play(0, true);
     }
     moveAni(aniName: AniName, y: number): void {
@@ -293,18 +278,6 @@ export default class Screen1BackGround extends Laya.Sprite {
                 break;
             case "shot":
                 this.ShotAni.gotoAndStop(0);
-                break
-            case "page2_start":
-                this.page2_start.gotoAndStop(0);
-                break
-            case "page2_start1":
-                this.page2_start.gotoAndStop(1);
-                break
-            case "page3_start":
-                this.page3_start.gotoAndStop(0);
-                break
-            case "page3_start1":
-                this.page3_start.gotoAndStop(1);
                 break
             case "text2002":
                 this.text2002Ani.gotoAndStop(10);

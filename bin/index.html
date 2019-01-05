@@ -31,6 +31,27 @@
      <script src="share/jquery-1.11.3.min.js"></script>
      <script src="share/share.js"></script>
      <script type="text/javascript">
+        //判断手机系统
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        //判断浏览器
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if(isWeiXin()){
+            console.log(" 是来自微信内置浏览器")
+        }else{
+            if(isiOS){
+
+            }
+        }
         //百度统计
         var _hmt = _hmt || [];
         (function() {

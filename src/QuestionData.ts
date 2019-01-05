@@ -13,12 +13,12 @@ export const QuestionShowY = [
     3307 + Laya.Browser.clientHeight,
     5827,
     6628,
-    9120,
-    9980,
-    12144,
-    13178,
-    15460,
-    15900
+    8200,
+    8900,
+    10320,
+    11320,
+    13100,
+    13600
 ]
 export  const QuestionData: Array<QuestionItem> = [
     {
