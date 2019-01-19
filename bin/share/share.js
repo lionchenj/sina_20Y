@@ -1,6 +1,7 @@
 function share(data){
 	 var ajax_data={};
-		ajax_data['url']=window.location.href;
+	 // ajax_data['url']=window.location.href;
+	 ajax_data['url']='https://dev170.weibanker.cn/chenjj/www/sina/index.html';
 		$.ajax({
 			url:'php/jssdk.php',
 			type: 'POST',
@@ -8,6 +9,7 @@ function share(data){
 			data:ajax_data,
 			timeout:30000,
 			success:function(res){
+				console.log(res)
 			wx.config({
 				appId:res.appId,
 				timestamp:res.timestamp,
@@ -55,14 +57,15 @@ function share(data){
 			
 		var shareData={};
 		shareData['title']=data.title;
-		shareData['desc']=data.desct;
+		var score = window.localStorage.getItem('score')
+		alert(score)
+		shareData['desc']='恭喜！($体育小百科)，您在新浪体育20周年答对'+score+'道题。';
 		shareData['imgUrl']=data.imgUrl;
 		shareData['success']=function(res){
-		  shareSuccess(res);
-     
+		  	shareSuccess(res);
 		};
 		shareData['cancel']=function(res){
-		 shareFail(res);
+		 	shareFail(res);
 		};
 		
 		wx.onMenuShareAppMessage(shareData);

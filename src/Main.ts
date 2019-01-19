@@ -13,6 +13,7 @@ import LoadingDialog from "./LoadingDialog";
 import ShakeDialog from "./ShakeDialog";
 import ScrollDialog, { TipType } from "./ScrollDialog";
 import ScoreResultDialog from "./ScoreResultDialog";
+let ismusic = true;
 class Main {
 	private firstSt: number = 0
 	private firstnum: number = 0
@@ -37,10 +38,11 @@ class Main {
 	private hasPlayShotAni3 = false;
 	private hasPlayShotAni4 = false;
 	private hasPlayShotAni5 = false;
-
+	private isPlaySound4 = true;
 
 	private console: Laya.Text;
 
+    private musicAni: Laya.Animation;
 	private downIcon: Laya.Animation
 	private showQuestionIndexList = new Array<number>()	// 已经显示的问题index列表
 	private showingDialog = false
@@ -263,6 +265,7 @@ class Main {
 		assets.push({url:'ani/WhistleAni.ani'})
 		assets.push({url:'ani/winAni.ani'})
 		assets.push({url:'ani/WinManAni.ani'})
+		assets.push({url:'ani/music.ani'})
 		// 预加载资源
 		Laya.loader.load(assets, Laya.Handler.create(this, this.onAssetsLoaded), Laya.Handler.create(this, this.onAssetsLoading, null, false));
 		Laya.loader.on(Laya.Event.ERROR, this, this.onError)
@@ -297,6 +300,13 @@ class Main {
 		this.downIcon.pos(250, Laya.Browser.clientHeight + 200);
 		Laya.stage.addChild(this.downIcon);
 		this.downIcon.play(0, true);
+
+		this.musicAni = new Laya.Animation();
+		this.musicAni.loadAnimation("ani/music.ani");
+		this.musicAni.pos(450, 50);
+		Laya.stage.addChild(this.musicAni);
+		this.musicAni.play(0, true);
+
 		this.football = new Football();
 		this.football.pos(250, 200);
 		Laya.stage.addChild(this.football);
@@ -313,7 +323,7 @@ class Main {
 		this.page3run = new page3run();
 		this.page3run.pos(300, 850);
 		Laya.stage.addChild(this.page3run);
-		console.log("onAssetsLoaded", Laya.stage.height, Laya.Browser.height, Laya.Browser.clientHeight)
+		// console.log("onAssetsLoaded", Laya.stage.height, Laya.Browser.height, Laya.Browser.clientHeight)
 
 		// 计算背景可拖动区域
 		const moableHeight = Laya.stage.height - Laya.Browser.clientHeight;
@@ -322,16 +332,17 @@ class Main {
 		Laya.stage.on(Laya.Event.MOUSE_MOVE, this, this.onMouseMove);
 		Laya.stage.on(Laya.Event.MOUSE_DOWN, this, this.onStartDrag);
 		// 播放背景音乐
-		this.bgmSoundChannel = Laya.SoundManager.playMusic(Constants.soundBgm8, 0)
+		setTimeout(() => {
+			this.bgmSoundChannel = Laya.SoundManager.playMusic(Constants.soundBgm8, 0);			
+		}, 200);
 	}
-
 	onError(err: string): void {
 		console.log("加载失败: " + err);
 		this.loadingDialog.updateTip("加载失败: " + err)
 	}
 
 	onMouseMove(): void {
-		console.log("onMouseMove(Y：", Laya.stage.mouseY, ";  y2：", this.screen1BackGround.y, '）');
+		// console.log("onMouseMove(Y：", Laya.stage.mouseY, ";  y2：", this.screen1BackGround.y, '）');
 		if (this.screen1BackGround.y == 0) {
 			this.firstnum = this.firstnum + (this.firstSt - Laya.stage.mouseY);
 			let z = parseInt(this.firstnum / 10 + '');
@@ -348,22 +359,35 @@ class Main {
 				this.screen1BackGround.playAni("first");
 			}
 		}
-		if (this.showingDialog && this.screen1BackGround.y <= -6270) {
+		if (this.showingDialog && this.screen1BackGround.y <= -6270 && this.screen1BackGround.y >= -8110) {
 			if (!this.hasPlayShotAni2) {
-				if (this.firstSt - Laya.stage.mouseY < -50) {
+				if (this.firstSt - Laya.stage.mouseY > -50) {
 					this.screen1BackGround.playAni("liuxiang");
 					this.screen1BackGround.stopAni("downClick");
-					this.downIcon.play(0, true);
-					this.showingDialog = false;
-					this.hasPlayShotAni2 = true;
 					this.playSound(Constants.sound1);
+					setTimeout(() => {
+						this.downIcon.play(0, true);
+						this.showingDialog = false;
+						this.hasPlayShotAni2 = true;
+					}, 1000);
 				}
 			}
 		}
 	}
 
 	onStartDrag(): void {
-		console.log("onStartDrag", Laya.stage.mouseX, Laya.stage.mouseY);
+		// console.log("onStartDrag", Laya.stage.mouseX, Laya.stage.mouseY);
+		if(Laya.stage.mouseX > 450 && Laya.stage.mouseY < 60){
+			if(ismusic){
+				this.musicAni.gotoAndStop(0);
+				this.bgmSoundChannel.pause();
+				ismusic = !ismusic;
+			} else {
+				this.musicAni.play(0,true);
+				this.bgmSoundChannel.resume();
+				ismusic = !ismusic;
+			}
+		}
 		this.firstSt = Laya.stage.mouseY;
 		if (this.showingDialog) {
 			if (this.screen1BackGround.y <= -8680) {
@@ -379,7 +403,7 @@ class Main {
 			}
 			return
 		}
-		this.screen1BackGround.startDrag(this.dragRegion, true, 0)
+		this.screen1BackGround.startDrag(this.dragRegion, true, 0,300,'',false,0.5)
 	}
 
 
@@ -408,7 +432,6 @@ class Main {
 				this.console.text += '没有显示过射门动画\n';
 				this.screen1BackGround.stopDrag();
 				this.downIcon.gotoAndStop(10);
-				// 显示过摇一摇提示
 				this.showShakeDialog();
 			}
 		}
@@ -442,20 +465,19 @@ class Main {
 				this.console.text += '没有显示过射门动画\n';
 				this.screen1BackGround.stopDrag();
 				this.downIcon.gotoAndStop(10);
-				// 显示过摇一摇提示
 				this.showShakeDialog4();
 			}
 		}
-		if (this.screen1BackGround.y <= -13460) {
+		if (this.screen1BackGround.y <= -13500) {
 			if (this.hasPlayShotAni5) {
+				this.screen1BackGround.stopDrag();
 				this.console.text += '已经显示过5动画\n';
 			} else {
-				this.screen1BackGround.y = Math.min(0, -13460)
+				this.screen1BackGround.y = Math.min(0, -13500)
 				this.showingDialog = true;
 				this.hasPlayShotAni5 = false;
 				this.console.text += '没有显示过5动画\n';
 				this.downIcon.gotoAndStop(10);
-				this.playSound(Constants.sound4);
 			}
 		}
 		//page1
@@ -498,12 +520,11 @@ class Main {
 			this.screen1BackGround.playAni("win");
 		}
 		//page2
-		if (this.screen1BackGround.y <= -4530 && this.screen1BackGround.y >= -5430) {
+		if (this.screen1BackGround.y <= -4510 && this.screen1BackGround.y >= -5400) {
 			this.running.show();
-			let z = parseInt((-this.screen1BackGround.y - 4530) / 10 + '');
+			let z = parseInt((-this.screen1BackGround.y - 4510) / 10 + '');
 			this.running.goPath(z - 0);
 		} else {
-			this.running.goPath(81);
 			this.running.hide();
 		}
 		if (this.screen1BackGround.y <= -4520) {
@@ -695,15 +716,15 @@ class Main {
 		} else {
 			this.basketball.hide();
 		}
-		// if (this.screen1BackGround.y <= -11680 && this.screen1BackGround.y >= -12550) {
-		// 	if (!this.screen1BackGround.isAniPlaying("ball")) {
-		// 		this.screen1BackGround.playAni("ball");
-		// 	}
-		// } else {
-		// 	if (this.screen1BackGround.isAniPlaying("ball")) {
-		// 		this.screen1BackGround.stopAni("ball");
-		// 	}
-		// }
+		if (this.screen1BackGround.y <= -11680 && this.screen1BackGround.y >= -12550) {
+			if (!this.screen1BackGround.isAniPlaying("ball")) {
+				this.screen1BackGround.playAni("ball");
+			}
+		} else {
+			if (this.screen1BackGround.isAniPlaying("ball")) {
+				this.screen1BackGround.stopAni("ball");
+			}
+		}
 		if (this.screen1BackGround.y <= -11680 && this.screen1BackGround.y >= -12550) {
 			if (!this.screen1BackGround.isAniPlaying("scoreboard")) {
 				this.screen1BackGround.playAni("scoreboard");
@@ -780,7 +801,7 @@ class Main {
 		}
 	}
 	onQuestionDialogClose(index: string, type: string): void {
-		console.log("onQuestionDialogClose", type, index);
+		// console.log("onQuestionDialogClose", type, index);
 		const right = (type === "true") // TODO: 计分
 		if (right) {
 			this.questionScore++;
@@ -801,26 +822,31 @@ class Main {
 		// 不让滚动了
 		Laya.stage.height = Laya.Browser.clientHeight
 		Laya.stage.width = Laya.Browser.clientWidth
-		// 合成图片
-		const tmp = new Laya.Sprite();
-		let bgImageUrl = ""
-		if (score >= 8) {
-			bgImageUrl = Constants.score4
-		} else if (score >= 5) {
-			bgImageUrl = Constants.score3
-		} else if (score >= 2) {
-			bgImageUrl = Constants.score2
-		} else {
-			bgImageUrl = Constants.score1
-		}
+		// // 合成图片
+		// const tmp = new Laya.Sprite();
+		// let bgImageUrl = ""
+		// if (score >= 8) {
+		// 	bgImageUrl = Constants.score4
+		// } else if (score >= 5) {
+		// 	bgImageUrl = Constants.score3
+		// } else if (score >= 2) {
+		// 	bgImageUrl = Constants.score2
+		// } else {
+		// 	bgImageUrl = Constants.score1
+		// }
+		window.location.href = 'https://dev170.weibanker.cn/chenjj/www/sina/scoreResult/scoreResult.html?score='+score;
+		return;
+		// Laya.LocalStorage.setItem('score',score+'');
+		// let name = Laya.LocalStorage.getItem('test')
+		// alert('name:'+name);
+		// const bgImage = Laya.Loader.getRes(bgImageUrl);
+		// tmp.graphics.fillText(name,250,50,'26px','#000000','center')
+		// tmp.graphics.drawTexture(bgImage, 0, 0);
+		// const scoreImage = Laya.loader.getRes(`view/num_${score}.png`);
+		// tmp.graphics.drawTexture(scoreImage, 400, 325)
 
-		const bgImage = Laya.Loader.getRes(bgImageUrl);
-		tmp.graphics.drawTexture(bgImage, 0, 0);
-		const scoreImage = Laya.loader.getRes(`view/num_${score}.png`);
-		tmp.graphics.drawTexture(scoreImage, 400, 325)
-
-		const htmlCanvas = tmp.drawToCanvas(512, 808, 0, 0);
-		htmlCanvas.toBase64("image/jpeg", 0.9, this.onResultScoreImageToBase64)
+		// const htmlCanvas = tmp.drawToCanvas(512, 808, 0, 0);
+		// htmlCanvas.toBase64("image/jpeg", 0.9, this.onResultScoreImageToBase64)
 
 
 
@@ -858,7 +884,6 @@ class Main {
 		divElement.innerHTML = innerHTML
 		// divElement.innerHTML = `<img src="view/score_1.jpg"></img>`
 		Laya.Browser.document.body.appendChild(divElement)
-
 	}
 
 	private onScoreDialogClose() {
@@ -870,7 +895,7 @@ class Main {
 		const offset = Laya.Browser.clientHeight
 		const hasShowLength = this.showQuestionIndexList.length
 		if (hasShowLength >= 10) {
-			// if (y) {
+		// if (y) {
 			return false
 		}
 		if (y > offset - QuestionShowY[hasShowLength]) {
@@ -979,17 +1004,21 @@ class Main {
 
 	// 点击触发事件
 	private onBackgroundClick(): void {
-		// alert('++1')
+		if(this.isPlaySound4){
+			this.playSound(Constants.sound4);
+			this.isPlaySound4 = false;	
+		}
 		let bally = this.ballY
 		this.ballY = bally + 5;
-		console.log(this.ballY)
+		// console.log(this.ballY)
 		if (this.ballY < 41) {
 			this.screen1BackGround.moveAni('ballMan', this.ballY)
 		} else {
-			this.showingDialog = false;
 			this.hasPlayShotAni5 = true;
 			setTimeout(() => {
-				this.showScoreResultDialg(this.questionScore)
+			window.location.href = 'https://dev170.weibanker.cn/chenjj/www/sina/scoreResult/scoreResult.html?score='+this.questionScore;
+				
+				// this.showScoreResultDialg(this.questionScore)
 			}, 1500);
 		}
 	}

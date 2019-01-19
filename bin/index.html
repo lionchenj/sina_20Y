@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <audio id="html_audio" style="display:none; height: 0" id="bg-music" src = './res/sound/bgm.mp3' preload="auto"></audio>
     <script type="text/javascript">
         function loadLib(url) {
             var script = document.createElement("script");
@@ -29,12 +30,13 @@
      <script type="text/javascript" src="index.js"></script>
      <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
      <script src="share/jquery-1.11.3.min.js"></script>
-     <script src="share/share.js"></script>
      <script type="text/javascript">
+     window.localStorage.setItem('test','这就是命')
         //判断手机系统
         var u = navigator.userAgent;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        
         //判断浏览器
         function isWeiXin() {
             var ua = window.navigator.userAgent.toLowerCase();
@@ -45,12 +47,21 @@
                 return false;
             }
         }
-        if(isWeiXin()){
-            console.log(" 是来自微信内置浏览器")
-        }else{
+            var myAudio = document.getElementById('bg-music');
             if(isiOS){
-
+                document.addEventListener("WeixinJSBridgeReady", function () { 
+                        myAudio.play();
+                        span_move_fun();                        
+                }, false);
             }
+        function span_move_fun(){
+            var span = document.getElementById("layaContainer");
+            span.addEventListener('touchstart', function(event) {
+                event.preventDefault();
+                myAudio.pause();
+                var html_audio = document.getElementById("html_audio");
+                html_audio.remove();
+            })
         }
         //百度统计
         var _hmt = _hmt || [];
@@ -60,24 +71,6 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
         })();
-     </script>
-     <!--*************************************
-     *    自定义分享  *
-     ***************************************-->
-     <script>
-        var share_data={};
-        share_data['title']="热血ZAI浪";
-        share_data['desct']="让更多中国人爱上体育。新浪体育20年，因为热爱！";
-        share_data['imgUrl']="http://www.datazan.cn/sinasports20/view/sinasports20.jpg";
-        share(share_data);
-        function shareSuccess(res){
-        //分享成功方法
-            //alert(res.errMsg+'成功')
-        }
-        function shareFail(res){
-        //分享失败执行
-            //alert(res.errMsg+"用户取消")
-        }
      </script>
 </body>
 

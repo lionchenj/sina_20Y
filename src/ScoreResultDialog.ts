@@ -34,8 +34,8 @@ export default class ScoreResultDialog extends ui.dialog.ResultDialogUI {
             this.bgImageView.loadImage(Constants.score1)
         }
         this.scoreImageView.visible = true
+        this.username.visible = true
         this.bgImageView.visible = true
-
         this.onceMoreButton.on(Laya.Event.CLICK, this, this.onOnceMore)
         this.shareButton.on(Laya.Event.CLICK, this, this.onShare)
         this.on(Laya.Event.MOUSE_DOWN, this, this.onDown)
@@ -48,7 +48,6 @@ export default class ScoreResultDialog extends ui.dialog.ResultDialogUI {
     }
     private onShare() {
         console.log("ScoreResultDialog", "clicked on share")
-        
     }
 
     private onDown() {
@@ -64,11 +63,9 @@ export default class ScoreResultDialog extends ui.dialog.ResultDialogUI {
         if (!this.isClicking) { // 不算长按
             return 
         }
-
         console.log("ScoreResultDialog", "long click")
-
         const htmlCanvas = this.bgImageView.drawToCanvas(512, 808, 0, 0)
-        htmlCanvas.toBase64("image/jpeg",0.9, this.onBgToBase64)
+        htmlCanvas.toBase64("image/jpeg",0.9, this.onBgToBase64);
     }
 
     private onBgToBase64(res) {

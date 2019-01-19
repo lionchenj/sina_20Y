@@ -33,7 +33,8 @@ export module ui.dialog {
 		public scoreImageView:Laya.Sprite;
 		public onceMoreButton:Laya.Button;
 		public shareButton:Laya.Button;
-        public static  uiView:any ={"type":"Dialog","props":{"width":512,"height":808},"compId":2,"child":[{"type":"Sprite","props":{"y":0,"x":0,"visible":false,"var":"bgImageView","texture":"view/score_1.jpg"},"compId":3},{"type":"Sprite","props":{"y":325,"x":400,"visible":false,"var":"scoreImageView","texture":"view/num_10.png"},"compId":4},{"type":"Button","props":{"y":618,"x":80,"width":150,"var":"onceMoreButton","height":50},"compId":5},{"type":"Button","props":{"y":618,"x":290,"width":150,"var":"shareButton","height":50},"compId":6}],"loadList":["view/score_1.jpg","view/num_10.png"],"loadList3D":[]};
+		public username:laya.display.Text;
+        public static  uiView:any ={"type":"Dialog","props":{"width":512,"height":808},"compId":2,"child":[{"type":"Sprite","props":{"y":0,"x":0,"visible":false,"var":"bgImageView","texture":"view/score_1.jpg"},"compId":3},{"type":"Sprite","props":{"y":325,"x":400,"visible":false,"var":"scoreImageView","texture":"view/num_10.png"},"compId":4},{"type":"Button","props":{"y":618,"x":80,"width":150,"var":"onceMoreButton","height":50},"compId":5},{"type":"Button","props":{"y":618,"x":290,"width":150,"var":"shareButton","height":50},"compId":6},{"type":"Text","props":{"y":79,"x":145,"width":222,"var":"username","text":"xiaoliang","name":"username","height":27,"fontSize":26,"align":"center","runtime":"laya.display.Text"},"compId":7}],"loadList":["view/score_1.jpg","view/num_10.png"],"loadList3D":[]};
         constructor(){ super()}
         createChildren():void {
             super.createChildren();

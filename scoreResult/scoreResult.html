@@ -1,0 +1,121 @@
+<html>
+
+<head>
+    <title>热血ZAI浪</title>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'
+    />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+    <style>
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        html,body {
+            background: #e43d24;
+            font-size: 10px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pageImg {
+            position: relative;
+            /* background: url("./images/score_1.jpg") center;
+            background-size: 100% 100%; */
+            display: none;
+            width: 100%;
+            /* min-height: 600px; */
+        }
+
+        .bg {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .score {
+            position: absolute;
+            top: 41%;
+            right: 13%;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .name {
+            position: absolute;
+            top: 8%;
+            right: 0;
+            text-align: center;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .btn {
+            position: absolute;
+            top: 77%;
+            text-align: center;
+            width: 100%;
+            font-size: 18px;
+            height: 5rem;
+            color: transparent;
+        }
+
+        .btn-click{
+            float: left;
+            height: 100%;
+            width: 50%;
+        }
+
+        .dialog {
+            background: #fff;
+            width: 60%;
+            display: none;
+            position: absolute;
+            top: 35%;
+            left: 20%;
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 10px;
+        }
+
+        .confirm {
+            border-top: 1px solid #eeeeee;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+    <audio style="opacity: 0; height: 0" id="bg-music" src='./bgm.mp3' preload="auto" autoplay="autoplay"></audio>
+    <div class="pageImg">
+        <div>
+            <img class="bg" src="./images/score_1.jpg">
+        </div>
+        <img class="score" src="./images/num_0.png">
+        <!-- <div class="name">小白</div> -->
+        <div class="btn">
+            <div class="again btn-click">123123</div>
+            <div class="share btn-click">456456</div>
+        </div>
+        <div class="dialog">
+            <div class="content">点击右上角按钮可以发送给朋友或分享到朋友圈</div>
+            <div class="confirm">确定</div>
+        </div>
+    </div>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="./jquery-1.11.3.min.js"></script>
+    <script src="./share.js"></script>
+    <script src="./save.js"></script>
+    <script src="./scoreResult.js"></script>
+</body>
+
+</html> 

@@ -231,10 +231,10 @@ export default class Screen1BackGround extends Laya.Sprite {
 
         //page5
 
-        // this.BallAni = new Laya.Animation()
-        // this.BallAni.loadAnimation("ani/BallAni.ani")
-        // this.addChild(this.BallAni)
-        // this.BallAni.pos(127, 14961 - 830)
+        this.BallAni = new Laya.Animation()
+        this.BallAni.loadAnimation("ani/BallAni.ani")
+        this.addChild(this.BallAni)
+        this.BallAni.pos(130, 14961 - 830 - 830 - 830)
 
         this.ShoesAni = new Laya.Animation()
         this.ShoesAni.loadAnimation("ani/ShoesAni.ani")
@@ -362,7 +362,7 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.liuxiangAni.gotoAndStop(30);
                 break;
             case "downClick":
-                this.downClick.gotoAndStop(10);
+                this.downClick.gotoAndStop(30);
                 break;
             case "crowd":
                 this.longClick.play(0, true);
@@ -415,7 +415,7 @@ export default class Screen1BackGround extends Laya.Sprite {
                 this.text2012Ani.play(0, false);
                 break;
             case "ball":
-                this.BallAni.play(1, false);
+                this.BallAni.play(1, true);
                 break;
             case "ballMan":
                 this.BallManAni.play(0, false);
